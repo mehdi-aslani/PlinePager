@@ -10100,8 +10100,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Aslani\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Aslani-Laptop\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -10109,22 +10108,16 @@
       "projectUniqueName": "D:\\PlinePager\\PlinePager\\PlinePager.csproj",
       "projectName": "PlinePager",
       "projectPath": "D:\\PlinePager\\PlinePager\\PlinePager.csproj",
-      "packagesPath": "C:\\Users\\Aslani\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\Aslani-Laptop\\.nuget\\packages\\",
       "outputPath": "D:\\PlinePager\\PlinePager\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Aslani\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Aslani-Laptop\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
