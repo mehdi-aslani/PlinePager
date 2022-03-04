@@ -1,0 +1,117 @@
+﻿@model PlinePager.Models.LoginPage
+@{ Layout = "_LayoutLogin"; }
+<style type="text/css">
+  
+   .main-head{
+       height: 150px;
+       background: #FFF;
+      
+   }
+   
+   .sidenav {
+       height: 100%;
+       background-color: #000;
+       overflow-x: hidden;
+       padding-top: 20px;
+   }
+   
+   
+   .main {
+       padding: 0px 10px;
+   }
+   
+   @@media screen and (max-height: 450px) {
+       .sidenav {padding-top: 15px;}
+   }
+   
+   @@media screen and (max-width: 450px) {
+       .login-form{
+           margin-top: 8%;
+       }
+   
+       .register-form{
+           margin-top: 10%;
+       }
+   }
+   
+   @@media screen and (min-width: 768px){
+       .main{
+           margin-left: 40%; 
+       }
+   
+       .sidenav{
+           width: 40%;
+           position: fixed;
+           z-index: 1;
+           top: 0;
+           left: 0;
+       }
+   
+       .login-form{
+           margin-top: 50%;
+       }
+   
+       .register-form{
+           margin-top: 20%;
+       }
+   }
+   
+   
+   .login-main-text{
+       margin-top: 20%;
+       padding: 60px;
+       color: #fff;
+   }
+   
+   .login-main-text h2{
+       font-weight: 300;
+   }
+   
+   .btn-black{
+       background-color: #000 !important;
+       color: #fff;
+   }
+   
+   input{
+        text-align: center;
+   }
+</style>
+
+<div class="sidenav">
+    <div class="login-main-text">
+        <h3 class="mt-5">سامانه پیجینگ پیشگام </h3>
+        <h3>کنترل کاربری</h3>
+        <h5>طراحی شرکت پیشگام ارتباطات اسپادانا</h5>
+        <h5 style="text-align: right; direction: ltr">https://www.peeco.ir/</h5>
+    </div>
+</div>
+<div class="main">
+    <div class="col-md-6 col-sm-12">
+        <div style="width: 410px" class="login-form">
+            <p>لطفا جهت احراز هویت نام کاربری و کلمه عبور خود را وارد کنید</p>
+            <br/>
+            <form asp-action="Login" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group m-3">
+                    <label asp-for="Username" class="control-label"></label>
+                    <input asp-for="Username" class="form-control" autocomplete="off"/>
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+                <div class="form-group m-3">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" autocomplete="off"/>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group form-check m-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RememberMe"/> @Html.DisplayNameFor(model => model.RememberMe)
+                    </label>
+                </div>
+                <div class="form-group m-3">
+                    <input type="submit" value="کنترل کاربری" class="btn btn-black"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

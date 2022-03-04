@@ -1,0 +1,46 @@
+@using PlinePager.Tools
+@model IEnumerable<PlinePager.Models.Users.TblUser>
+
+
+@(Html
+    .Grid(Model)
+    .Build(columns =>
+    {
+        columns.Add(model => model.UserName).Titled("نام کاربری");
+        columns.Add(model => model.FirstName).Titled("نام ");
+        columns.Add(model => model.LastName).Titled("نام خانوادگی ");
+        columns.Add(model => model.Department).Titled("واحد مرتبط");
+        columns.Add().Titled("وضعیت کاربر").Encoded(false).RenderedAs(model =>
+            model.Enable ? "کاربر فعال" : "کاربر غیر فعال"
+            );
+        columns.Add().Titled("").Encoded(false).RenderedAs(model =>
+            Html.ActionLink("ویرایش", "Edit", "User", new {id = model.Id},
+                new {@class = "btn btn-warning btn-sm"})
+            );
+        columns.Add().Titled("اعمال وضعیت").Encoded(false).RenderedAs(model =>
+            model.Enable ?
+                PlineHelper.ActiveLinkAjax(
+                    $"javascript:SetStatus('{model.Id}',false);", "غیر فعال", "btn btn-secondary btn-sm")
+                : PlineHelper.ActiveLinkAjax(
+                    $"javascript:SetStatus('{model.Id}',true);", "فعال", "btn btn-success btn-sm")
+            );
+        columns.Add().Titled("حذف").Encoded(false).RenderedAs(model =>
+            PlineHelper.ActiveLinkAjax(
+                $"javascript:DeleteItem('{model.Id}');", "حذف", "btn btn-danger btn-sm")
+            );
+    })
+    .Empty("هیچ کاربری وجود ندارد")
+    .Sortable()
+    .Filterable()
+    .Using(GridFilterMode.Row)
+    .Pageable(pager =>
+    {
+    pager.PageSizes = new Dictionary<Int32, String> {{ 10, "10" }, { 20, "20" }, { 50, "50" } , { 0, "همه" }};
+    pager.ShowPageSizes = true;
+    pager.PagesToDisplay = 5;
+    pager.CurrentPage = 1;
+    pager.RowsPerPage = 10;
+    })
+    .Css("table table-secondary table-striped")
+
+)

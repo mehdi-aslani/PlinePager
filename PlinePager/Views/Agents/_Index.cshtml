@@ -1,0 +1,52 @@
+@using PlinePager.Tools
+@model IEnumerable<PlinePager.Models.TblAgent>
+
+
+@(Html
+    .Grid(Model)
+    .Build(columns =>
+    {
+        columns.Add(model => model.Agent).Titled("نوع پیجر").UsingFilterOptions(new[]
+        {
+            new SelectListItem(),
+            new SelectListItem { Value = "0", Text = "پیجر SIP" },
+            new SelectListItem { Value = "1", Text = "کارت صدا" }
+        }).Encoded(false).RenderedAs(model =>
+            model.Agent== PlineFaxServer.Tools.Globals.AgentType.SIP ? "پیجر SIP" : "کارت صدا"
+        );
+        columns.Add(model => model.Username).Titled("شناسه پیجر");
+        columns.Add(model => model.Password).Titled("کلمه عبور");
+        columns.Add(model => model.Desc).Titled("توضیحات");
+        columns.Add(model => model.Enable).Titled("فعال/غیرفعال").UsingFilterOptions(new[]
+        {
+            new SelectListItem(),
+            new SelectListItem { Value = "true", Text = "فعال" },
+            new SelectListItem { Value = "false", Text = "غیرفعال" }
+        }).Encoded(false).RenderedAs(model =>
+            model.Enable ? "فعال" : "غیر فعال"
+            );
+        columns.Add().Titled("ویرایش").Encoded(false).RenderedAs(model =>
+            Html.ActionLink("ویرایش", "Edit", "Agents", new {id = model.Id},
+                new {@class = "btn btn-warning btn-sm"})
+            );
+
+        columns.Add().Titled("حذف").Encoded(false).RenderedAs(model =>
+            PlineHelper.ActiveLinkAjax(
+                $"javascript:DeleteItem('{model.Id}');", "حذف", "btn btn-danger btn-sm")
+            );
+    })
+    .Empty("هیچ ایتمی وجود ندارد")
+    .Sortable()
+    .Filterable()
+    .Using(GridFilterMode.Row)
+    .Pageable(pager =>
+    {
+    pager.PageSizes = new Dictionary<Int32, String> {{ 10, "10" }, { 20, "20" }, { 50, "50" } , { 0, "همه" }};
+    pager.ShowPageSizes = true;
+    pager.PagesToDisplay = 5;
+    pager.CurrentPage = 1;
+    pager.RowsPerPage = 10;
+    })
+    .Css("table table-secondary table-striped")
+
+)
