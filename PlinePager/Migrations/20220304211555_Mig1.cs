@@ -183,7 +183,7 @@ namespace PlinePager.Migrations
                     Agent = table.Column<int>(type: "INTEGER", nullable: false),
                     Username = table.Column<string>(type: "TEXT", maxLength: 32, nullable: false),
                     Password = table.Column<string>(type: "TEXT", maxLength: 32, nullable: true),
-                    AreaId = table.Column<long>(type: "INTEGER", nullable: false),
+                    AreaId1 = table.Column<long>(type: "INTEGER", nullable: true),
                     Desc = table.Column<string>(type: "TEXT", maxLength: 128, nullable: true),
                     Enable = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
@@ -191,11 +191,10 @@ namespace PlinePager.Migrations
                 {
                     table.PrimaryKey("PK_TblAgents", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TblAgents_tblAreas_AreaId",
-                        column: x => x.AreaId,
+                        name: "FK_TblAgents_tblAreas_AreaId1",
+                        column: x => x.AreaId1,
                         principalTable: "tblAreas",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -236,9 +235,9 @@ namespace PlinePager.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_TblAgents_AreaId",
+                name: "IX_TblAgents_AreaId1",
                 table: "TblAgents",
-                column: "AreaId");
+                column: "AreaId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TblAgents_Username",

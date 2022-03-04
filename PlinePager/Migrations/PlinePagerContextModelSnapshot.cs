@@ -154,7 +154,7 @@ namespace PlinePager.Migrations
                     b.Property<int>("Agent")
                         .HasColumnType("INTEGER");
 
-                    b.Property<long>("AreaId")
+                    b.Property<long?>("AreaId1")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Desc")
@@ -175,7 +175,7 @@ namespace PlinePager.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AreaId");
+                    b.HasIndex("AreaId1");
 
                     b.HasIndex("Username")
                         .IsUnique();
@@ -346,9 +346,7 @@ namespace PlinePager.Migrations
                 {
                     b.HasOne("PlinePager.Models.TblArea", "Area")
                         .WithMany()
-                        .HasForeignKey("AreaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AreaId1");
 
                     b.Navigation("Area");
                 });
