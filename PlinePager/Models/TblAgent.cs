@@ -36,10 +36,6 @@ namespace PlinePager.Models
         public TblArea Area { get; set; }
 
 
-        public long AreaId { get; set; }
-
-
-
         [Display(Name = "توضیحات")]
         [StringLength(128, MinimumLength = 0, ErrorMessage = "حداکثر تعداد کارکتر مجاز برای {0} 128 کاراکتر می باشد")]
         public string Desc { get; set; }

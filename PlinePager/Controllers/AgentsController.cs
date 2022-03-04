@@ -55,8 +55,10 @@ namespace PlinePager.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Agent,Username,Password,Area,Desc,Enable")] TblAgent tblAgent)
+        public async Task<IActionResult> Create(int? Area, [Bind("Id,Agent,Username,Password,Desc,Enable")] TblAgent tblAgent)
         {
+            var area =await _context.TblAreas.FirstAsync(t => t.Id == Area);
+            tblAgent.Area = area;
             if (ModelState.IsValid)
             {
                 int cntUsername = await _context.tblAgents.Where(t => t.Username == tblAgent.Username).CountAsync();

@@ -154,7 +154,7 @@ namespace PlinePager.Migrations
                     b.Property<int>("Agent")
                         .HasColumnType("INTEGER");
 
-                    b.Property<long>("Area")
+                    b.Property<long>("AreaId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Desc")
@@ -174,6 +174,8 @@ namespace PlinePager.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AreaId");
 
                     b.HasIndex("Username")
                         .IsUnique();
@@ -338,6 +340,17 @@ namespace PlinePager.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("PlinePager.Models.TblAgent", b =>
+                {
+                    b.HasOne("PlinePager.Models.TblArea", "Area")
+                        .WithMany()
+                        .HasForeignKey("AreaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Area");
                 });
 #pragma warning restore 612, 618
         }
