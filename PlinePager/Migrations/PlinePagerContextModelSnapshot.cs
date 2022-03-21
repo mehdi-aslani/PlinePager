@@ -154,7 +154,7 @@ namespace PlinePager.Migrations
                     b.Property<int>("Agent")
                         .HasColumnType("INTEGER");
 
-                    b.Property<long?>("AreaId1")
+                    b.Property<long>("AreaId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Desc")
@@ -175,12 +175,10 @@ namespace PlinePager.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AreaId1");
-
                     b.HasIndex("Username")
                         .IsUnique();
 
-                    b.ToTable("TblAgents");
+                    b.ToTable("tblAgents");
                 });
 
             modelBuilder.Entity("PlinePager.Models.TblArea", b =>
@@ -204,6 +202,34 @@ namespace PlinePager.Migrations
                         .IsUnique();
 
                     b.ToTable("tblAreas");
+                });
+
+            modelBuilder.Entity("PlinePager.Models.TblSound", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Enable")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("FileName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FileName")
+                        .IsUnique();
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("tblSounds");
                 });
 
             modelBuilder.Entity("PlinePager.Models.Users.TblUser", b =>
@@ -340,15 +366,6 @@ namespace PlinePager.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("PlinePager.Models.TblAgent", b =>
-                {
-                    b.HasOne("PlinePager.Models.TblArea", "Area")
-                        .WithMany()
-                        .HasForeignKey("AreaId1");
-
-                    b.Navigation("Area");
                 });
 #pragma warning restore 612, 618
         }

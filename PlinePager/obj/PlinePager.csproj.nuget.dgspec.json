@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\PlinePager\\PlinePager\\PlinePager.csproj": {}
+    "/home/aslani/Desktop/PlinePager/PlinePager/PlinePager.csproj": {}
   },
   "projects": {
-    "D:\\PlinePager\\PlinePager\\PlinePager.csproj": {
+    "/home/aslani/Desktop/PlinePager/PlinePager/PlinePager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PlinePager\\PlinePager\\PlinePager.csproj",
+        "projectUniqueName": "/home/aslani/Desktop/PlinePager/PlinePager/PlinePager.csproj",
         "projectName": "PlinePager",
-        "projectPath": "D:\\PlinePager\\PlinePager\\PlinePager.csproj",
-        "packagesPath": "C:\\Users\\Aslani-Laptop\\.nuget\\packages\\",
-        "outputPath": "D:\\PlinePager\\PlinePager\\obj\\",
+        "projectPath": "/home/aslani/Desktop/PlinePager/PlinePager/PlinePager.csproj",
+        "packagesPath": "/home/aslani/.nuget/packages/",
+        "outputPath": "/home/aslani/Desktop/PlinePager/PlinePager/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Aslani-Laptop\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/aslani/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -91,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.201/RuntimeIdentifierGraph.json"
         }
       }
     }

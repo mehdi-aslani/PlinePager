@@ -1,0 +1,46 @@
+@model IEnumerable<PlinePager.Models.TblSound>
+
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery _xsrf
+
+@functions {
+
+    private string GetAntiXsrfRequestToken()
+    {
+        return _xsrf.GetAndStoreTokens(Context).RequestToken;
+    }
+
+}
+
+<div class="row">
+    <div class="col-8 offset-2">
+        <h3>لیست فایل های صوتی</h3>
+        <hr/>
+        <p>
+            <a class="btn btn-primary" asp-action="Create">ایجاد فایل صوتی جدید</a>
+        </p>
+        <hr/>
+        <style type="text/css">
+            .gCol {
+                text-align: center;
+            }
+        </style>
+        @Html.AjaxGrid(Url.Action("Index"))
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function DeleteItem(id){
+        if (confirm("برای حذف این آیتم مطمئن هستید؟")){
+            var token="@GetAntiXsrfRequestToken()";
+            $.post("@Url.Action("Delete")",{id:id , __RequestVerificationToken:token},
+                function (data){
+                    if (data.error !== ""){
+                        toastNotifyError(data.error);
+                    }else {
+                        location.reload();
+                    }
+                },"JSON");
+            }
+        }
+</script>

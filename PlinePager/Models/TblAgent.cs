@@ -7,7 +7,7 @@ using static PlineFaxServer.Tools.Globals;
 
 namespace PlinePager.Models
 {
-    [Table("TblAgents")]
+    [Table("tblAgents")]
     public class TblAgent
     {
         [Key]
@@ -32,13 +32,11 @@ namespace PlinePager.Models
         public string Password { get; set; }
 
         [Display(Name = "عضو ناحیه")]
-        [NotNull]
-        public TblArea Area { get; set; }
-
-        [Display(Name = "عضو ناحیه")]
         [Required(ErrorMessage = "{0} نمی تواند خالی باشد")]
-        [NotMapped]
         public long AreaId { get; set; }
+
+        [ForeignKey("AreaId")]
+        private TblArea Area { get; set; }
 
 
         [Display(Name = "توضیحات")]
@@ -52,7 +50,6 @@ namespace PlinePager.Models
         internal static void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<TblAgent>().HasIndex(t => t.Username).IsUnique(true);
-
         }
     }
 }

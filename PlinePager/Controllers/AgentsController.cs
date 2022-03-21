@@ -22,25 +22,19 @@ namespace PlinePager.Controllers
         public IActionResult Index()
         {
             if (HttpContext.Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                List<SelectListItem> areas = _context.TblAreas.ToList().ConvertAll(a =>
+                {
+                    return new SelectListItem()
+                    {
+                        Text = a.Name,
+                        Value = a.Id.ToString(),
+                    };
+                });
+                ViewBag.areas = areas.ToArray();
                 return PartialView("_Index", _context.Set<TblAgent>());
+            }
             return View();
-        }
-
-        public async Task<IActionResult> Details(long? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tblAgent = await _context.tblAgents
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (tblAgent == null)
-            {
-                return NotFound();
-            }
-
-            return View(tblAgent);
         }
 
         public IActionResult Create()
@@ -55,11 +49,11 @@ namespace PlinePager.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Agent,Username,Password,Area,Desc,Enable")] TblAgent tblAgent)
+        public async Task<IActionResult> Create([Bind("Id,Agent,Username,Password,AreaId,Desc,Enable")] TblAgent tblAgent)
         {
             if (ModelState.IsValid)
             {
-                int cntUsername = await _context.tblAgents.Where(t => t.Username == tblAgent.Username).CountAsync();
+                int cntUsername = await _context.TblAgents.Where(t => t.Username == tblAgent.Username).CountAsync();
                 if (cntUsername > 0)
                 {
                     ModelState.AddModelError("username", "این  شناسه پیجر قبلا تعریف شده است");
@@ -80,7 +74,7 @@ namespace PlinePager.Controllers
                 return NotFound();
             }
 
-            var tblAgent = await _context.tblAgents.FindAsync(id);
+            var tblAgent = await _context.TblAgents.FindAsync(id);
             if (tblAgent == null)
             {
                 return NotFound();
@@ -99,7 +93,7 @@ namespace PlinePager.Controllers
 
             if (ModelState.IsValid)
             {
-                int count = await _context.tblAgents.Where(t => t.Username == tblAgent.Username && t.Id != id).CountAsync();
+                int count = await _context.TblAgents.Where(t => t.Username == tblAgent.Username && t.Id != id).CountAsync();
                 if (count > 0)
                 {
                     ModelState.AddModelError("Name", "این نام قبلا استفاده شده است");
@@ -134,15 +128,15 @@ namespace PlinePager.Controllers
         {
             try
             {
-                var tblAgent = await _context.tblAgents.FindAsync(id);
-                _context.tblAgents.Remove(tblAgent);
+                var tblAgent = await _context.TblAgents.FindAsync(id);
+                _context.TblAgents.Remove(tblAgent);
                 var res = await _context.SaveChangesAsync();
 
                 if (res == 0)
                 {
                     return Json(new
                     {
-                        error = "خطا در حذف کاربر. لطفا با راهبر سیستم تماس بگیرید."
+                        error = "خطا در حذف پیجر. لطفا با راهبر سیستم تماس بگیرید."
                     });
                 }
 
@@ -152,7 +146,7 @@ namespace PlinePager.Controllers
             {
                 return Json(new
                 {
-                    error = "خطا در حذف کاربر. لطفا با راهبر سیستم تماس بگیرید."
+                    error = "خطا در حذف پیجر. لطفا با راهبر سیستم تماس بگیرید."
                 });
             }
 
@@ -160,7 +154,7 @@ namespace PlinePager.Controllers
 
         private bool TblAgentExists(long id)
         {
-            return _context.tblAgents.Any(e => e.Id == id);
+            return _context.TblAgents.Any(e => e.Id == id);
         }
     }
 }

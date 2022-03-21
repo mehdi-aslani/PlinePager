@@ -25,24 +25,7 @@ namespace PlinePager.Controllers
                 return PartialView("_Index", _context.Set<TblArea>());
             return View();
         }
-
-        public async Task<IActionResult> Details(long? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tblArea = await _context.TblAreas
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (tblArea == null)
-            {
-                return NotFound();
-            }
-
-            return View(tblArea);
-        }
-
+        
         public IActionResult Create()
         {
             return View();
@@ -136,6 +119,15 @@ namespace PlinePager.Controllers
                     });
                 }
 
+                var cntAgent = await _context.TblAgents.Where(t => t.AreaId == id).CountAsync();
+                if (cntAgent > 0)
+                {
+                    return Json(new
+                    {
+                        error = "امکان حذف این ناحیه به دلیل تخصیص پبجر وجود ندارد"
+                    });
+                }
+
                 var tblArea = await _context.TblAreas.FindAsync(id);
                 _context.TblAreas.Remove(tblArea);
                 var res = await _context.SaveChangesAsync();
@@ -144,7 +136,7 @@ namespace PlinePager.Controllers
                 {
                     return Json(new
                     {
-                        error = "خطا در حذف کاربر. لطفا با راهبر سیستم تماس بگیرید."
+                        error = "خطا در حذف ناحیه. لطفا با راهبر سیستم تماس بگیرید."
                     });
                 }
                 return Json(new { error = "" });
@@ -153,7 +145,7 @@ namespace PlinePager.Controllers
             {
                 return Json(new
                 {
-                    error = "خطا در حذف کاربر. لطفا با راهبر سیستم تماس بگیرید."
+                    error = "خطا در حذف ناحیه. لطفا با راهبر سیستم تماس بگیرید."
                 });
             }
         }

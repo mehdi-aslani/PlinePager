@@ -17,6 +17,7 @@
     <title>سامامه پیجینگ پیشگام</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.rtl.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/bootstrap-icons-1.5.0/bootstrap-icons.css" />
+    <link rel="stylesheet" href="~/lib/select2/css/select2.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet" />
 </head>
@@ -48,55 +49,20 @@
                                         پیجرها
                                     </a>
                                 </li>
-                                <li>
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="ReceiveFax" asp-action="Index"
-                                       asp-route-id="">
-                                        فکس های دریافتی حذف شده
-                                    </a>
-                                </li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="SendFax" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                فکس های ارسالی
+                                مدیریت فایل های صوتی
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="SendFax">
                                 <li>
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="SendFax" asp-action="Index"
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Sounds" asp-action="Index"
                                        asp-route-id="">
-                                        فکس های درحال ارسال
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="SendFax" asp-action="Index"
-                                       asp-route-id="">
-                                        فکس های ارسال شده
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="SendFax" asp-action="Index"
-                                       asp-route-id="">
-                                        فکس های ارسالی آرشیو شده
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="SendFax" asp-action="Index"
-                                       asp-route-id="">
-                                        فکس های ارسالی لغو شده
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="SendFax" asp-action="Index"
-                                       asp-route-id="">
-                                        فکس های ارسالی حذف شده
+                                        بارگذاری فایل های صوتی
                                     </a>
                                 </li>
                             </ul>
-                        </li>
-                        <li>
-                            <a class="nav-link text-light" asp-area="" asp-controller="Contact" asp-action="Index">
-                                دفتر تلفن
-                            </a>
                         </li>
                         @if (result.Result != null && result.Result.UserName.Equals("admin", StringComparison.OrdinalIgnoreCase))
                         {
@@ -133,17 +99,7 @@
                             </ul>
                         </li>
                     </ul>
-                    <div class="navbar-nav d-flex">
-                        <a id="new-fax-a" class="nav-link text-light position-relative" asp-area="" asp-controller="ReceiveFax" asp-action="Index"
-                           asp-route-id="1"
-                           title="شما 0 فکس جدید دارید">
-                            <i style="font-size: 14pt;" class="bi bi-bell-fill"></i>
-                            <span class="position-absolute top-25 start-75 translate-middle badge rounded-pill bg-danger">
-                                <span id="new-fax-span">0</span>
-                                <span class="visually-hidden">unread messages</span>
-                            </span>
-                        </a>
-                    </div>
+                    
                 </div>
             </div>
         </nav>
@@ -162,6 +118,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/mvc-grid/mvc-grid.js"></script>
+    <script src="~/lib/select2/js/select2.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
     @await Component.InvokeAsync("Notyf")
     <script>

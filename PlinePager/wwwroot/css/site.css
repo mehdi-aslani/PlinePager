@@ -88,3 +88,7 @@ body {
     color: red;
     font-size: 18pt;
 }
+
+.select2 {
+    width: 100%;
+}

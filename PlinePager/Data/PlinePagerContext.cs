@@ -11,7 +11,7 @@ namespace PlinePager.Data
 {
     public class PlinePagerContext : IdentityDbContext<TblUser>
     {
-        public PlinePagerContext (DbContextOptions<PlinePagerContext> options)
+        public PlinePagerContext(DbContextOptions<PlinePagerContext> options)
             : base(options)
         {
         }
@@ -20,11 +20,12 @@ namespace PlinePager.Data
         {
             TblArea.OnModelCreating(builder);
             TblAgent.OnModelCreating(builder);
+            TblSound.OnModelCreating(builder);
             base.OnModelCreating(builder);
         }
 
-        public DbSet<PlinePager.Models.TblAgent> tblAgents { get; set; }
-
+        public DbSet<PlinePager.Models.TblAgent> TblAgents { get; set; }
         public DbSet<PlinePager.Models.TblArea> TblAreas { get; set; }
+        public DbSet<PlinePager.Models.TblSound> TblSounds { get; set; }
     }
 }

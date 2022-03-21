@@ -1,0 +1,31 @@
+@model PlinePager.Models.TblSound
+
+
+<div class="row">
+    <div class="col-8 offset-2">
+        <h3>ایجاد فایل صوتی جدید</h3>
+        <hr/>
+        <form asp-action="Create" enctype="multipart/form-data" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control"/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="FileName" class="control-label"></label>
+                <input type="file" asp-for="FileName" class="form-control"/>
+                <span asp-validation-for="FileName" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3 form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Enable"/> @Html.DisplayNameFor(model => model.Enable)
+                </label>
+            </div>
+            <div class="form-group mb-3">
+                <input type="submit" value="ذخیره" class="btn btn-primary"/>
+                <a asp-action="Index" class="btn btn-danger">انصراف</a>
+            </div>
+        </form>
+    </div>
+</div>
