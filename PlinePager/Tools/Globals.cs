@@ -45,5 +45,10 @@ namespace PlineFaxServer.Tools
                 return false;
             }
         }
+
+        public static void CallFile(int idSound, int idAgent)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

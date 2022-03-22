@@ -12,120 +12,126 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>سامامه پیجینگ پیشگام</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.rtl.min.css" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/bootstrap-icons-1.5.0/bootstrap-icons.css" />
-    <link rel="stylesheet" href="~/lib/select2/css/select2.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.rtl.min.css"/>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/bootstrap-icons-1.5.0/bootstrap-icons.css"/>
+    <link rel="stylesheet" href="~/lib/select2/css/select2.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css"/>
+    <link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet"/>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-dark bg-dark navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">داشبورد</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="ReceiveFax" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                پیجرها
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="ReceiveFax">
-                                <li>
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Areas" asp-action="Index"
-                                       asp-route-id="">
-                                        ناحیه ها
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Agents" asp-action="Index"
-                                       asp-route-id="">
-                                        پیجرها
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="SendFax" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                مدیریت فایل های صوتی
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="SendFax">
-                                <li>
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Sounds" asp-action="Index"
-                                       asp-route-id="">
-                                        بارگذاری فایل های صوتی
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        @if (result.Result != null && result.Result.UserName.Equals("admin", StringComparison.OrdinalIgnoreCase))
-                        {
+<header>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">داشبورد</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="ReceiveFax" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            پیجرها
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="ReceiveFax">
                             <li>
-                                <a class="nav-link text-light" asp-area="" asp-controller="User" asp-action="Index">
-                                    مدیریت کاربران
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Areas" asp-action="Index"
+                                   asp-route-id="">
+                                    ناحیه ها
                                 </a>
                             </li>
-                        }
-                    </ul>
-                    <ul class="navbar-nav d-flex">
-                        <li class="nav-item drop downd-flex dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="UserIcon" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i style="font-size: 20pt;" class="bi bi-person-circle"></i>
-                                @{
-                                    var fullName = "کاربر ناشناس";
-                                    if (result.Result != null)
-                                    {
-                                        fullName = $"{result.Result.FirstName} {result.Result.LastName}";
-                                    }
-                                }
-                                @fullName
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Agents" asp-action="Index"
+                                   asp-route-id="">
+                                    پیجرها
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="Sounds" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            مدیریت فایل های صوتی
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="Sounds">
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Sounds" asp-action="Index"
+                                   asp-route-id="">
+                                    بارگذاری فایل های صوتی
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Sounds" asp-action="IndexTest"
+                                   asp-route-id="">
+                                    تست فایل های صوتی
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    @if (result.Result != null && result.Result.UserName.Equals("admin", StringComparison.OrdinalIgnoreCase))
+                    {
+                        <li>
+                            <a class="nav-link text-light" asp-area="" asp-controller="User" asp-action="Index">
+                                مدیریت کاربران
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="UserIcon">
-                                <li>
-                                    <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="ChangePassword">تغییر کلمه عبور</a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Logout">خروج</a>
-                                </li>
-                            </ul>
                         </li>
-                    </ul>
-                    
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container-fluid">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+                    }
+                </ul>
+                <ul class="navbar-nav d-flex">
+                    <li class="nav-item drop downd-flex dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="UserIcon" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i style="font-size: 20pt;" class="bi bi-person-circle"></i>
+                            @{
+                                var fullName = "کاربر ناشناس";
+                                if (result.Result != null)
+                                {
+                                    fullName = $"{result.Result.FirstName} {result.Result.LastName}";
+                                }
+                            }
+                            @fullName
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="UserIcon">
+                            <li>
+                                <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="ChangePassword">تغییر کلمه عبور</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Logout">خروج</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - PlinePager - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/mvc-grid/mvc-grid.js"></script>
-    <script src="~/lib/select2/js/select2.min.js"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-    @await Component.InvokeAsync("Notyf")
-    <script>
+    </nav>
+</header>
+<div class="container-fluid">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2022 - PlinePager - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+</footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/mvc-grid/mvc-grid.js"></script>
+<script src="~/lib/select2/js/select2.min.js"></script>
+@await RenderSectionAsync("Scripts", required: false)
+@await Component.InvokeAsync("Notyf")
+<script>
         document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
     </script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script type="text/javascript">
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script type="text/javascript">
     </script>
 
 </body>

@@ -24,7 +24,7 @@ namespace PlinePager.Controllers
         }
 
         // GET: Sounds
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             if (HttpContext.Request.Headers["X-Requested-With"] == "XMLHttpRequest")
                 return PartialView("_Index", _context.Set<TblSound>());
@@ -190,6 +190,27 @@ namespace PlinePager.Controllers
                     error = "خطا در حذف فایل صوتی. لطفا با راهبر سیستم تماس بگیرید."
                 });
             }
+        }
+
+        public IActionResult IndexTest()
+        {
+            if (HttpContext.Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+                return PartialView("_IndexTest", _context.Set<TblSound>());
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult StartTestSound(int id, int agent)
+        {
+            Globals.CallFile(id, agent);
+            return View("SoundTest");
+        }
+
+        public IActionResult SoundTest(int id)
+        {
+            var agents = _context.TblAgents.Where(t => t.Enable == true).ToList();
+            ViewBag.id = id;
+            return View(agents);
         }
 
         private bool TblSoundExists(long id)

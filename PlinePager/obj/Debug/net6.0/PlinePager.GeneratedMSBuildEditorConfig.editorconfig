@@ -91,8 +91,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU291bmRzL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/aslani/Desktop/PlinePager/PlinePager/Views/Sounds/IndexTest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU291bmRzL0luZGV4VGVzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/aslani/Desktop/PlinePager/PlinePager/Views/Sounds/SoundTest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU291bmRzL1NvdW5kVGVzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/aslani/Desktop/PlinePager/PlinePager/Views/Sounds/_Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU291bmRzL19JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/aslani/Desktop/PlinePager/PlinePager/Views/Sounds/_IndexTest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU291bmRzL19JbmRleFRlc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/aslani/Desktop/PlinePager/PlinePager/Views/User/ChangePassword.cshtml]

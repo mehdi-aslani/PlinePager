@@ -24,7 +24,7 @@
                 text-align: center;
             }
         </style>
-        @Html.AjaxGrid(Url.Action("Index"))
+        @Html.AjaxGrid(Url.Action("Index", "Sounds") ?? string.Empty)
     </div>
 </div>
 
