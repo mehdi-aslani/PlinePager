@@ -1,28 +1,56 @@
-@model List<TblAgent>
+@using PlinePager.Data
+@using Microsoft.CodeAnalysis.Scripting
+@model SoundTest
+@inject PlinePagerContext _context
+@{
+    var agents = _context.TblAgents.Where(t => t.Enable == true).ToList();
+}
 
 
 <div class="row">
     <div class="col-4 offset-4">
         <form asp-action="StartTestSound" asp-controller="Sounds" asp-route-id="@null" method="POST">
-            <input type="hidden" name="id" value="@ViewBag.id">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SoundId">
             <div class="row mb-3">
                 <div class="col-12">
                     <label class="form-label">پیجر</label>
-                    <select class="form-select" name="agent">
-                        @foreach (var item in Model)
+                    <select class="form-select" asp-for="AgentId">
+                        @foreach (var item in agents)
                         {
                             <option value="@item.Id">@item.Username</option>
                         }
                     </select>
+                    <span asp-validation-for="AgentId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-12">
+                    <label class="form-label">بلندی صدا</label>
+                    <select class="form-select" asp-for="Volume">
+                        @for (int i = -10; i <= 10; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                    <span asp-validation-for="Volume" class="text-danger"></span>
                 </div>
             </div>
 
             <div class="row mb-3">
                 <div class="col-12">
                     <input type="submit" value="شروع تست" class="btn btn-success"/>
+                    <a href="javascript:Hangup();" class="btn btn-warning">قطع صدا</a>
                     <a href="@Url.Action("IndexTest")" class="btn btn-danger">بازگشت</a>
                 </div>
             </div>
         </form>
     </div>
 </div>
+
+<script type="text/javascript">
+    function Hangup(){
+        alert("?????");
+    }
+</script>

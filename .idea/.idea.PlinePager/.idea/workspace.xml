@@ -6,23 +6,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37e56588-1397-418f-8bb2-263a81bfb6e1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/PlinePager/Views/Sounds/IndexTest.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/Views/Sounds/SoundTest.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/Views/Sounds/_IndexTest.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PlinePager/Models/SoundTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PlinePager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PlinePager/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/Controllers/SoundsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Controllers/SoundsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/Db/pline-pagr.db" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Db/pline-pagr.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Views/Agents/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Views/Agents/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Views/Areas/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Views/Areas/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Views/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Views/Sounds/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Views/Sounds/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Tools/Globals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Tools/Globals.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Views/Sounds/SoundTest.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Views/Sounds/SoundTest.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/ref/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/ref/PlinePager.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/refint/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/refint/PlinePager.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/staticwebassets.pack.sentinel" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -100,7 +94,8 @@
       <workItem from="1647751513283" duration="1543000" />
       <workItem from="1647759452930" duration="13694000" />
       <workItem from="1647839093116" duration="1687000" />
-      <workItem from="1647979938821" duration="4566000" />
+      <workItem from="1647979938821" duration="4868000" />
+      <workItem from="1648012057402" duration="10932000" />
     </task>
     <servers />
   </component>
@@ -116,17 +111,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/PlinePager/Controllers/SoundsController.cs</url>
-          <line>204</line>
-          <properties documentPath="$PROJECT_DIR$/PlinePager/Controllers/SoundsController.cs" initialLine="204" containingFunctionPresentation="method 'StartTestSound'">
+          <url>file://$PROJECT_DIR$/PlinePager/Tools/Globals.cs</url>
+          <line>27</line>
+          <properties documentPath="$PROJECT_DIR$/PlinePager/Tools/Globals.cs" initialLine="27" containingFunctionPresentation="method 'RunCmd'">
             <startOffsets>
-              <option value="6749" />
+              <option value="544" />
             </startOffsets>
             <endOffsets>
-              <option value="6774" />
+              <option value="939" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="1" />
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

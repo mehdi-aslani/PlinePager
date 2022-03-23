@@ -200,17 +200,36 @@ namespace PlinePager.Controllers
         }
 
         [HttpPost]
-        public IActionResult StartTestSound(int id, int agent)
+        public async Task<IActionResult> StartTestSound([Bind("SoundId", "AgentId", "Volume")] SoundTest soundTest)
         {
-            Globals.CallFile(id, agent);
+            if (ModelState.IsValid)
+            {
+                var agentM = await _context.TblAgents.Where(t => t.Id == soundTest.AgentId).FirstAsync();
+                var soundM = await _context.TblSounds.Where(t => t.Id == soundTest.SoundId).FirstAsync();
+
+                string agent = agentM.Agent == Globals.AgentType.Console ? "CONSOLE" : "SIP";
+                agent = $"{agent}/{agentM.Username}";
+
+                var err = Globals.CallFileOnAgent(
+                    Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", soundM.FileName), agent,
+                    soundTest.Volume);
+                Globals.Hangup("1000");
+                if (err != string.Empty)
+                {
+                    ModelState.AddModelError("", err);
+                }
+            }
+
             return View("SoundTest");
         }
 
         public IActionResult SoundTest(int id)
         {
-            var agents = _context.TblAgents.Where(t => t.Enable == true).ToList();
-            ViewBag.id = id;
-            return View(agents);
+            return View(new SoundTest()
+            {
+                Volume = 0,
+                SoundId = id,
+            });
         }
 
         private bool TblSoundExists(long id)
