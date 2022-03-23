@@ -204,6 +204,45 @@ namespace PlinePager.Migrations
                     b.ToTable("tblAreas");
                 });
 
+            modelBuilder.Entity("PlinePager.Models.TblSchedule", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Areas")
+                        .IsRequired()
+                        .HasMaxLength(2048)
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("Enable")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Schedules")
+                        .IsRequired()
+                        .HasMaxLength(2048)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Sounds")
+                        .IsRequired()
+                        .HasMaxLength(2048)
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Volume")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("tblSchedules");
+                });
+
             modelBuilder.Entity("PlinePager.Models.TblSound", b =>
                 {
                     b.Property<long>("Id")
@@ -214,6 +253,7 @@ namespace PlinePager.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("FileName")
+                        .HasMaxLength(512)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")

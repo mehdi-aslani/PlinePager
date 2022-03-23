@@ -213,7 +213,6 @@ namespace PlinePager.Controllers
                 var err = Globals.CallFileOnAgent(
                     Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", soundM.FileName), agent,
                     soundTest.Volume);
-                Globals.Hangup("1000");
                 if (err != string.Empty)
                 {
                     ModelState.AddModelError("", err);
@@ -221,6 +220,15 @@ namespace PlinePager.Controllers
             }
 
             return View("SoundTest");
+        }
+
+        [HttpPost]
+        public IActionResult Hangup(int id)
+        {
+            var agent = _context.TblAgents.First(t => t.Id == id);
+            bool r;
+            r = Globals.Hangup(agent.Agent == Globals.AgentType.Sip ? $"SIP/{agent.Username}" : $"CONSOLE/{agent.Username}");
+            return Json(new {result = r});
         }
 
         public IActionResult SoundTest(int id)

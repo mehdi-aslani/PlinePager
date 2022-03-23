@@ -12,7 +12,6 @@
             Html.ActionLink("ویرایش", "Edit", "Areas", new {id = model.Id},
                 new {@class = "btn btn-warning btn-sm"})
             );
-
         columns.Add().Titled("حذف").Encoded(false).RenderedAs(model =>
             PlineHelper.ActiveLinkAjax(
                 $"javascript:DeleteItem('{model.Id}');", "حذف", "btn btn-danger btn-sm")
@@ -30,6 +29,6 @@
     pager.CurrentPage = 1;
     pager.RowsPerPage = 10;
     })
-    .Css("table table-secondary table-striped")
+    .Css("table table-secondary table-striped gCol")
 
 )

@@ -92,3 +92,7 @@ body {
 .select2 {
     width: 100%;
 }
+
+.gCol {
+    text-align: center;
+}

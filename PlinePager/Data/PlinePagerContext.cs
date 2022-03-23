@@ -21,11 +21,13 @@ namespace PlinePager.Data
             TblArea.OnModelCreating(builder);
             TblAgent.OnModelCreating(builder);
             TblSound.OnModelCreating(builder);
+            TblSchedule.OnModelCreating(builder);
             base.OnModelCreating(builder);
         }
 
         public DbSet<PlinePager.Models.TblAgent> TblAgents { get; set; }
         public DbSet<PlinePager.Models.TblArea> TblAreas { get; set; }
-        public DbSet<PlinePager.Models.TblSound> TblSounds { get; set; }
+        public DbSet<TblSound?> TblSounds { get; set; }
+        public DbSet<PlinePager.Models.TblSchedule> TblSchedules { get; set; }
     }
 }

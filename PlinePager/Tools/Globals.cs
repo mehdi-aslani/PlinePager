@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
 using PlinePager.Data;
+using PlinePager.Models;
 
 namespace PlineFaxServer.Tools
 {
@@ -21,6 +23,49 @@ namespace PlineFaxServer.Tools
             Console = 1,
         }
 
+        public static void CreateAgents(IEnumerable<TblAgent> agents)
+        {
+            var ext = File.ReadAllText("/etc/asterisk/extensions.conf", Encoding.ASCII);
+            if (!ext.Contains("[pline-page]"))
+            {
+                var extentions = "[pline-page]\n" +
+                                 "exten => _*0000,1,NoOp(${users},${vol})\n" +
+                                 "\tsame => n,Set(VOLUME(TX)=${vol})\n" +
+                                 "\tsame => n,Set(VOLUME(RX)=${vol})\n" +
+                                 "\tsame => n,Page(${users})\n" +
+                                 "\tsame => n,Hangup()\n";
+                ext += $"\n{extentions}\n";
+                File.WriteAllText("/etc/asterisk/extensions.conf", ext, Encoding.ASCII);
+            }
+
+            var sip = File.ReadAllText("/etc/asterisk/sip.conf", Encoding.ASCII);
+            if (!sip.Contains("#include sip-pline-pager.conf"))
+            {
+                sip += "\n#include sip-pline-pager.conf\n";
+                File.WriteAllText("/etc/asterisk/sip.conf", sip, Encoding.ASCII);
+            }
+
+            string plinePager = "";
+            foreach (var agent in agents)
+            {
+                if (agent.Agent == AgentType.Sip && agent.Enable)
+                {
+                    plinePager += $"[{agent.Username}]\n";
+                    plinePager += $"username={agent.Username}\n";
+                    plinePager += $"secret={agent.Password}\n";
+                    plinePager += "type=friend\n";
+                    plinePager += "host=dynamic\n";
+                    plinePager += "disallow=all\n";
+                    plinePager += "call-limit=1\n";
+                    plinePager += "allow=ulaw,ulaw,gsm\n";
+                    plinePager += "\n";
+                }
+            }
+
+            File.WriteAllText("/etc/asterisk/sip-pline-pager.conf", plinePager, Encoding.ASCII);
+            RunCmd("/usr/sbin/asterisk", "-x reload");
+        }
+
         public static string RunCmd(string app, string args)
         {
             try
@@ -31,11 +76,12 @@ namespace PlineFaxServer.Tools
                     {
                         FileName = app,
                         Arguments = $" {args}",
-                        RedirectStandardOutput = false,
+                        RedirectStandardOutput = true,
                         UseShellExecute = false,
                         CreateNoWindow = true,
                     }
                 };
+                p.Start();
                 string output = p.StandardOutput.ReadToEnd();
                 return output;
             }
@@ -85,9 +131,9 @@ namespace PlineFaxServer.Tools
                               "Setvar: users=" + agent + "\n" +
                               "Setvar: vol=" + volume + "\n" +
                               "CallerID: \"00000000\"<pline-page>\n" +
-                              "MaxRetries: 0\n" +
-                              "WaitTime: 45\n" +
-                              "RetryTime: 1\n" +
+                              //"MaxRetries: 0\n" +
+                              //"WaitTime: 45\n" +
+                              //"RetryTime: 1\n" +
                               "Application: Playback\n" +
                               "Data: " + sound + "\n";
                 var path = $"/var/spool/asterisk/outgoing/{Globals.GenerateId()}.call";
@@ -101,10 +147,28 @@ namespace PlineFaxServer.Tools
             }
         }
 
-        public static void Hangup(string agent)
+        public static bool Hangup(string agent)
         {
-            string result = RunCmd("/usr/sbin/asterisk", "-x 'core show channels'");
-            Console.WriteLine(result);
+            bool r = false;
+            string result = RunCmd("/usr/sbin/asterisk", "-x \"core show channels\"");
+            if (result != null && result.Trim() != string.Empty)
+            {
+                string[] items = result.Split(new string[] {"\n"}, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var i in items)
+                {
+                    if (i.StartsWith(agent))
+                    {
+                        var channels = i.Split(new string[] {" "}, StringSplitOptions.RemoveEmptyEntries);
+                        if (channels.Length > 0)
+                        {
+                            RunCmd("/usr/sbin/asterisk", $"-x \"hangup request {channels[0].Trim()}\"");
+                            r = true;
+                        }
+                    }
+                }
+            }
+
+            return r;
         }
     }
 }

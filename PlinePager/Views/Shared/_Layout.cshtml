@@ -17,9 +17,12 @@
     <title>سامامه پیجینگ پیشگام</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.rtl.min.css"/>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/bootstrap-icons-1.5.0/bootstrap-icons.css"/>
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="~/lib/select2/css/select2.min.css"/>
-    <link rel="stylesheet" href="~/css/site.css"/>
+    <link rel="stylesheet" href="~/lib/persian-date-time-picker/bootstrap-datepicker.min.css"/>
     <link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="~/css/site.css"/>
+
 </head>
 <body>
 <header>
@@ -66,6 +69,31 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Sounds" asp-action="IndexTest"
                                    asp-route-id="">
                                     تست فایل های صوتی
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="Schedule" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            زمان بندی پخش فایل های صوتی
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="Schedule">
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Schedules" asp-action="Index"
+                                   asp-route-id="">
+                                    زمان بندی های پخش
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Sounds" asp-action="IndexTest"
+                                   asp-route-id="">
+                                    اذان و مناجات
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Sounds" asp-action="IndexTest"
+                                   asp-route-id="">
+                                    مناسبت ها
                                 </a>
                             </li>
                         </ul>
@@ -125,6 +153,8 @@
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/mvc-grid/mvc-grid.js"></script>
 <script src="~/lib/select2/js/select2.min.js"></script>
+<script src="~/lib/persian-date-time-picker/bootstrap-datepicker.min.js"></script>
+<script src="~/lib/persian-date-time-picker/bootstrap-datepicker.fa.min.js"></script>
 @await RenderSectionAsync("Scripts", required: false)
 @await Component.InvokeAsync("Notyf")
 <script>

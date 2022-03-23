@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using PlineFaxServer.Tools;
 using PlinePager.Data;
 using PlinePager.Models;
 
@@ -34,6 +35,7 @@ namespace PlinePager.Controllers
                 ViewBag.areas = areas.ToArray();
                 return PartialView("_Index", _context.Set<TblAgent>());
             }
+
             return View();
         }
 
@@ -49,7 +51,8 @@ namespace PlinePager.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Agent,Username,Password,AreaId,Desc,Enable")] TblAgent tblAgent)
+        public async Task<IActionResult> Create([Bind("Id,Agent,Username,Password,AreaId,Desc,Enable")]
+            TblAgent tblAgent)
         {
             if (ModelState.IsValid)
             {
@@ -58,12 +61,14 @@ namespace PlinePager.Controllers
                 {
                     ModelState.AddModelError("username", "این  شناسه پیجر قبلا تعریف شده است");
                     return View(tblAgent);
-
                 }
+
                 _context.Add(tblAgent);
                 await _context.SaveChangesAsync();
+                Globals.CreateAgents(_context.TblAgents.Where(t => t.Enable == true).ToList());
                 return RedirectToAction(nameof(Index));
             }
+
             return View(tblAgent);
         }
 
@@ -79,12 +84,14 @@ namespace PlinePager.Controllers
             {
                 return NotFound();
             }
+
             return View(tblAgent);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,Agent,Username,Password,AreaId,Desc,Enable")] TblAgent tblAgent)
+        public async Task<IActionResult> Edit(long id, [Bind("Id,Agent,Username,Password,AreaId,Desc,Enable")]
+            TblAgent tblAgent)
         {
             if (id != tblAgent.Id)
             {
@@ -93,7 +100,8 @@ namespace PlinePager.Controllers
 
             if (ModelState.IsValid)
             {
-                int count = await _context.TblAgents.Where(t => t.Username == tblAgent.Username && t.Id != id).CountAsync();
+                int count = await _context.TblAgents.Where(t => t.Username == tblAgent.Username && t.Id != id)
+                    .CountAsync();
                 if (count > 0)
                 {
                     ModelState.AddModelError("Name", "این نام قبلا استفاده شده است");
@@ -103,6 +111,7 @@ namespace PlinePager.Controllers
                 try
                 {
                     _context.Update(tblAgent);
+                    Globals.CreateAgents(_context.TblAgents.Where(t => t.Enable == true).ToList());
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -116,8 +125,10 @@ namespace PlinePager.Controllers
                         throw;
                     }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(tblAgent);
         }
 
@@ -140,7 +151,7 @@ namespace PlinePager.Controllers
                     });
                 }
 
-                return Json(new { error = "" });
+                return Json(new {error = ""});
             }
             catch
             {
@@ -149,7 +160,6 @@ namespace PlinePager.Controllers
                     error = "خطا در حذف پیجر. لطفا با راهبر سیستم تماس بگیرید."
                 });
             }
-
         }
 
         private bool TblAgentExists(long id)
