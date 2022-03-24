@@ -10,34 +10,79 @@ namespace PlinePager.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
-        
+
         [Display(Name = "نام زمان بندی")]
         [Required(ErrorMessage = "{0} نمی تواند خالی باشد")]
         public string Name { get; set; }
-        
+
         [Display(Name = "ناحیه ها پخش")]
         [Required(ErrorMessage = "{0} نمی تواند خالی باشد")]
         [StringLength(2048)]
-        public string Areas { get; set; }
-        
+        public string Areas { get; set; } = null;
+
         [Display(Name = "صدا های پخش")]
         [Required(ErrorMessage = "{0} نمی تواند خالی باشد")]
         [StringLength(2048)]
-        public string Sounds { get; set; }
-        
-        [Display(Name = "زمان بندی")]
-        [Required(ErrorMessage = "{0} نمی تواند خالی باشد")]
-        [StringLength(2048)]
-        public string Schedules { get; set; }
-        
+        public string Sounds { get; set; } = null;
+
         [Display(Name = "حجم صدا")]
         [Required(ErrorMessage = "{0} نمی تواند خالی باشد")]
         [Range(-10, 10, ErrorMessage = "بازه انتخاب شده باید بین -10 تا 10 باشد")]
         public int Volume { get; set; }
-        
-        [Display(Name = "فعال/غیرفعال")]
-        public bool Enable { get; set; } = true;
-        
+
+        [Display(Name = "فعال/غیرفعال")] public bool Enable { get; set; } = true;
+
+
+        /********************************************************************************/
+        [Display(Name = "از تاریخ")]
+        [Required(ErrorMessage = "{0} نمی تواند خالی باشد")]
+        [MaxLength(10, ErrorMessage = "{0} باید 10 کارکتر باشد.")]
+        [MinLength(10, ErrorMessage = "{0} باید 10 کارکتر باشد.")]
+        public string OfDate { get; set; }
+
+        [Display(Name = "ساعت")]
+        [Required(ErrorMessage = "{0} نمی تواند خالی باشد")]
+        [Range(0, 23, ErrorMessage = "بازه انتخاب شده {0} باید بین {1} تا {2} باشد")]
+        public int OfHour { get; set; }
+
+        [Display(Name = "دقیقه")]
+        [Required(ErrorMessage = "{0} نمی تواند خالی باشد")]
+        [Range(0, 59, ErrorMessage = "بازه انتخاب شده {0} باید بین {1} تا {2} باشد")]
+        public int OfMinute { get; set; }
+
+        public bool IntervalEnable { get; set; }
+
+        [Display(Name = "روز")]
+        [Required(ErrorMessage = "{0} نمی تواند خالی باشد")]
+        [Range(0, 365, ErrorMessage = "بازه انتخاب شده {0} باید بین {1} تا {2} باشد")]
+        public int IntervalDay { get; set; }
+
+        [Display(Name = "ساعت")]
+        [Required(ErrorMessage = "{0} نمی تواند خالی باشد")]
+        [Range(0, 23, ErrorMessage = "بازه انتخاب شده {0} باید بین {1} تا {2} باشد")]
+        public int IntervalHour { get; set; }
+
+        [Display(Name = "دقیقه")]
+        [Required(ErrorMessage = "{0} نمی تواند خالی باشد")]
+        [Range(0, 59, ErrorMessage = "بازه انتخاب شده {0} باید بین {1} تا {2} باشد")]
+        public int IntervalMinute { get; set; }
+
+        public bool ToDateEnable { get; set; }
+
+        [Display(Name = "تا تاریخ")]
+        //[Required(ErrorMessage = "{0} نمی تواند خالی باشد")]
+        public string ToDate { get; set; }
+
+        [Display(Name = "ساعت")]
+        [Required(ErrorMessage = "{0} نمی تواند خالی باشد")]
+        [Range(0, 23, ErrorMessage = "بازه انتخاب شده {0} باید بین {1} تا {2} باشد")]
+        public int ToHour { get; set; }
+
+        [Display(Name = "دقیقه")]
+        [Required(ErrorMessage = "{0} نمی تواند خالی باشد")]
+        [Range(0, 59, ErrorMessage = "بازه انتخاب شده {0} باید بین {1} تا {2} باشد")]
+        public int ToMinute { get; set; }
+
         internal static void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<TblSchedule>().HasIndex(t => t.Name).IsUnique(true);

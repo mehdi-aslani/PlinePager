@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlinePager.Data;
 
@@ -10,9 +11,10 @@ using PlinePager.Data;
 namespace PlinePager.Migrations
 {
     [DbContext(typeof(PlinePagerContext))]
-    partial class PlinePagerContextModelSnapshot : ModelSnapshot
+    [Migration("20220324204401_migr3")]
+    partial class migr3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.2");
@@ -236,7 +238,6 @@ namespace PlinePager.Migrations
 
                     b.Property<string>("OfDate")
                         .IsRequired()
-                        .HasMaxLength(10)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("OfHour")
@@ -251,15 +252,16 @@ namespace PlinePager.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ToDate")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("ToDateEnable")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ToHour")
+                    b.Property<int>("ToMinute")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ToMinute")
+                    b.Property<int>("ToOfHour")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Volume")

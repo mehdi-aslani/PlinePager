@@ -41,11 +41,75 @@
                     <input class="form-check-input" asp-for="Enable"/> @Html.DisplayNameFor(model => model.Enable)
                 </label>
             </div>
+            <hr/>
             <div class="form-group mb-3">
-                <label asp-for="Schedules" class="control-label"></label>
-                <input  asp-for="Schedules" class="form-control"/>
-                <span asp-validation-for="Schedules" class="text-danger"></span>
-                <input id="textBoxInputId"/>
+                <label>از تاریخ:</label>
+                <input asp-for="OfDate" readonly="readonly" id="ofDate" class="gCol" style="width: 150px;"/>
+                <label>ساعت:</label>
+                <select asp-for="OfHour">
+                    @for (int i = 0; i < 24; i++)
+                    {
+                        <option value="@i">@i.ToString("00") ساعت</option>
+                    }
+                </select>:
+                <select asp-for="OfMinute">
+                    @for (int i = 0; i < 60; i++)
+                    {
+                        <option value="@i">@i.ToString("00") دقیقه</option>
+                    }
+                </select>
+                <br/>
+                <span asp-validation-for="OfDate" class="text-danger"></span>
+                <span asp-validation-for="OfHour" class="text-danger"></span>
+                <span asp-validation-for="OfMinute" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <input asp-for="IntervalEnable" type="checkbox" class="form-check-input" onchange="IntervalChange(this)"/>
+                <label disabled="disabled" class="interval">با فاصله تکرار:</label>
+                <select asp-for="IntervalDay" disabled="disabled" class="interval">
+                    @for (int i = 0; i <= 365; i++)
+                    {
+                        <option value="@i">@i.ToString() روز</option>
+                    }
+                </select>-
+                <select asp-for="IntervalHour" disabled="disabled" class="interval">
+                    @for (int i = 0; i < 24; i++)
+                    {
+                        <option value="@i">@i.ToString("00") ساعت</option>
+                    }
+                </select>:
+                <select asp-for="IntervalMinute" disabled="disabled" class="interval">
+                    @for (int i = 0; i < 60; i++)
+                    {
+                        <option value="@i">@i.ToString("00") دقیقه</option>
+                    }
+                </select>
+                <br/>
+                <span asp-validation-for="IntervalDay" class="text-danger"></span>
+                <span asp-validation-for="IntervalHour" class="text-danger"></span>
+                <span asp-validation-for="IntervalMinute" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <input asp-for="ToDateEnable" type="checkbox" class="form-check-input" onchange="EndTimeChange(this)"/>
+                <label>تا تاریخ:</label>
+                <input asp-for="ToDate" readonly="readonly" class="end-time gCol" disabled="disabled" id="toDate" style="width: 150px;"/>
+                <label>ساعت:</label>
+                <select asp-for="ToHour" class="end-time" disabled="disabled">
+                    @for (int i = 0; i < 24; i++)
+                    {
+                        <option value="@i">@i.ToString("00") ساعت</option>
+                    }
+                </select>:
+                <select asp-for="ToMinute" class="end-time" disabled="disabled">
+                    @for (int i = 0; i < 60; i++)
+                    {
+                        <option value="@i">@i.ToString("00") دقیقه</option>
+                    }
+                </select>
+                <br/>
+                <span asp-validation-for="ToDate" class="text-danger"></span>
+                <span asp-validation-for="ToHour" class="text-danger"></span>
+                <span asp-validation-for="ToMinute" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
                 <input type="submit" value="ذخیره" class="btn btn-primary"/>
@@ -69,10 +133,25 @@
             dir: "rtl",
             multiple: false,
         });
-        $('#textBoxInputId').datepicker({
+        $('#ofDate,#toDate').datepicker({
             isRTL: true,
             dateFormat: "yy/mm/dd"
         });
     });
+    function IntervalChange(e){
+        if (e.checked){
+            $(".interval").removeAttr("disabled");            
+        }else{
+            $(".interval").attr("disabled","disabled");
+        }        
+    }
+    function EndTimeChange(e){
+        if (e.checked){
+            $(".end-time").removeAttr("disabled");            
+        }else{
+            $(".end-time").attr("disabled","disabled");
+        }        
+    }
+    
 </script>
 }

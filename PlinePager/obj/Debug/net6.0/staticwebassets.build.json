@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "tYjucW8nWbNWPmeYZqRyv2z+QhhZAGimy3Qi9gMu9T8=",
+  "Hash": "y/c5Az2gBE3kg5SVuyS7sQzDs6vAvRMW8xSukq1hyB4=",
   "Source": "PlinePager",
   "BasePath": "_content/PlinePager",
   "Mode": "Default",
@@ -26586,6 +26586,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/lib/select2/js/select2.min.js"
+    },
+    {
+      "Identity": "/home/aslani/Desktop/PlinePager/PlinePager/wwwroot/sounds/upload-files/7fb339bd8ce84c4e90beb359b27fb4e2.wav",
+      "SourceId": "PlinePager",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/aslani/Desktop/PlinePager/PlinePager/wwwroot/",
+      "BasePath": "_content/PlinePager",
+      "RelativePath": "sounds/upload-files/7fb339bd8ce84c4e90beb359b27fb4e2.wav",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/sounds/upload-files/7fb339bd8ce84c4e90beb359b27fb4e2.wav"
     },
     {
       "Identity": "/home/aslani/Desktop/PlinePager/PlinePager/wwwroot/sounds/upload-files/e2b2d8c807514a61abe78b0570a94c15.wav",

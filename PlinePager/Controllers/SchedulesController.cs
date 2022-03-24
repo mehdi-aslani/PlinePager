@@ -57,7 +57,7 @@ namespace PlinePager.Controllers
             {
                 Enable = true,
                 Volume = 0,
-                Schedules = "{}",
+                ToDate = "0000/00/00"
             });
         }
 
@@ -66,7 +66,9 @@ namespace PlinePager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Areas,Sounds,Schedules,Volume,Enable")]
+        public async Task<IActionResult> Create(string[] Areas,
+            [Bind(
+                "Id,Name,Areas,Sounds,Volume,Enable,OfDate,OfHour,OfMinute,IntervalEnable,IntervalDay,IntervalHour,IntervalMinute,ToDateEnable,ToDate,ToHour,ToMinute")]
             TblSchedule tblSchedule)
         {
             ViewBag.Areas = Areas;
@@ -107,7 +109,9 @@ namespace PlinePager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,Name,Areas,Sounds,Schedules,Volume,Enable")]
+        public async Task<IActionResult> Edit(long id,
+            [Bind(
+                "Id,Name,Areas,Sounds,Volume,Enable,OfDate,OfHour,OfMinute,IntervalEnable,IntervalDay,IntervalHour,IntervalMinute,ToDateEnable,ToDate,ToHour,ToMinute")]
             TblSchedule tblSchedule)
         {
             ViewBag.Areas = Areas;
@@ -148,10 +152,33 @@ namespace PlinePager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long id)
         {
-            var tblSchedule = await _context.TblSchedules.FindAsync(id);
-            _context.TblSchedules.Remove(tblSchedule);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                var tblSchedule = await _context.TblSchedules.FindAsync(id);
+                _context.TblSchedules.Remove(tblSchedule);
+                int result = await _context.SaveChangesAsync();
+                if (result > 0)
+                {
+                    return Json(new
+                    {
+                        error = ""
+                    });
+                }
+                else
+                {
+                    return Json(new
+                    {
+                        error = "خطا در حذف زمانبندی پخش. لطفا با راهبر سیستم تماس بگیرید."
+                    });
+                }
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = "خطا در حذف زمانبندی پخش. لطفا با راهبر سیستم تماس بگیرید."
+                });
+            }
         }
 
         private bool TblScheduleExists(long id)
