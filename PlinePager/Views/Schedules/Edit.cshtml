@@ -1,3 +1,4 @@
+@using Newtonsoft.Json
 @model PlinePager.Models.TblSchedule
 
 @{
@@ -18,12 +19,12 @@
             </div>
             <div class="form-group mb-3">
                 <label asp-for="Areas" class="control-label"></label>
-                <select asp-for="Areas" class="form-select select" asp-items="@(new SelectList(areas, "Id", "Name"))"></select>
+                <select asp-for="Areas" id="areas" class="form-select select" asp-items="@(new SelectList(areas, "Id", "Name"))"></select>
                 <span asp-validation-for="Areas" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
                 <label asp-for="Sounds" class="control-label"></label>
-                <select asp-for="Sounds" class="form-select select" asp-items="@(new SelectList(sounds, "Id", "Name"))"></select>
+                <select asp-for="Sounds" id="sounds" class="form-select select" asp-items="@(new SelectList(sounds, "Id", "Name"))"></select>
                 <span asp-validation-for="Sounds" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
@@ -119,12 +120,14 @@
     </div>
 </div>
 
+
+
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
     <script type="text/javascript">
-    $(function(){
+$(function(){
         $(".select").select2({
             dir: "rtl",
             multiple: true,
@@ -139,6 +142,8 @@
         });
         IntervalChange($("#IntervalEnable")[0]);
         EndTimeChange($("#ToDateEnable")[0]);
+        $("#areas").val(JSON.parse('@Html.Raw(Model.Areas)')).trigger('change');
+        $("#sounds").val(JSON.parse('@Html.Raw(Model.Sounds)')).trigger('change');
     });
     function IntervalChange(e){
         if (e.checked){
@@ -157,3 +162,4 @@
     
 </script>
 }
+

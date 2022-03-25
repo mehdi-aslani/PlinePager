@@ -5,23 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37e56588-1397-418f-8bb2-263a81bfb6e1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/global.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PlinePager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PlinePager/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/Controllers/SchedulesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Controllers/SchedulesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Db/pline-pagr.db" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Db/pline-pagr.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Db/pline-pagr.db-shm" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Db/pline-pagr.db-shm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/Db/pline-pagr.db-wal" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Db/pline-pagr.db-wal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Migrations/PlinePagerContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Migrations/PlinePagerContextModelSnapshot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/Models/TblSchedule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Models/TblSchedule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Views/Schedules/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Views/Schedules/Create.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Tools/Globals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Tools/Globals.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/Views/Schedules/Details.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Views/Schedules/Details.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/Views/Schedules/Edit.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Views/Schedules/Edit.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Views/Schedules/_Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Views/Schedules/_Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/ref/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/ref/PlinePager.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/refint/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/refint/PlinePager.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/staticwebassets.build.json" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/staticwebassets.build.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/staticwebassets.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/staticwebassets.development.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/staticwebassets.pack.sentinel" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,11 +44,11 @@
     <setting file="file://$PROJECT_DIR$/PlinePager/Data/PlinePagerContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PlinePager/Models/TblSchedule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PlinePager/Views/Agents/Create.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6B2E01DD-B516-4C67-B011-970CB002DE33/2F/ToCollection.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/PlinePager/Controllers/AgentsController.cs" />
-      <option value="$PROJECT_DIR$/PlinePager/Tools/Globals.cs" />
       <option value="$PROJECT_DIR$/PlinePager/Data/PlinePagerContext.cs" />
       <option value="$PROJECT_DIR$/PlinePager/wwwroot/css/site.css" />
       <option value="$PROJECT_DIR$/PlinePager/Views/Agents/_Index.cshtml" />
@@ -60,16 +57,17 @@
       <option value="$PROJECT_DIR$/PlinePager/Views/User/_Index.cshtml" />
       <option value="$PROJECT_DIR$/PlinePager/Views/Sounds/SoundTest.cshtml" />
       <option value="$PROJECT_DIR$/PlinePager/Views/Areas/_Index.cshtml" />
-      <option value="$PROJECT_DIR$/PlinePager/Views/Schedules/_Index.cshtml" />
       <option value="$PROJECT_DIR$/PlinePager/Models/Schedules.cs" />
       <option value="$PROJECT_DIR$/PlinePager/Controllers/SoundsController.cs" />
       <option value="$PROJECT_DIR$/PlinePager/Views/Schedules/Index.cshtml" />
       <option value="$PROJECT_DIR$/PlinePager/Views/Shared/_Layout.cshtml" />
-      <option value="$PROJECT_DIR$/PlinePager/Views/Schedules/Details.cshtml" />
+      <option value="$PROJECT_DIR$/PlinePager/Views/Schedules/Create.cshtml" />
       <option value="$PROJECT_DIR$/PlinePager/Models/TblSchedule.cs" />
       <option value="$PROJECT_DIR$/PlinePager/Views/Schedules/Edit.cshtml" />
+      <option value="$PROJECT_DIR$/PlinePager/Views/Schedules/_Index.cshtml" />
+      <option value="$PROJECT_DIR$/PlinePager/Tools/Globals.cs" />
       <option value="$PROJECT_DIR$/PlinePager/Controllers/SchedulesController.cs" />
-      <option value="$PROJECT_DIR$/PlinePager/Views/Schedules/Create.cshtml" />
+      <option value="$PROJECT_DIR$/PlinePager/Views/Schedules/Details.cshtml" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="26c5Wo03BJlPcqZaGi6jkGMo15M" />
@@ -151,6 +149,7 @@
       <workItem from="1648062476061" duration="9361000" />
       <workItem from="1648111007682" duration="1583000" />
       <workItem from="1648148959983" duration="8723000" />
+      <workItem from="1648192466582" duration="15911000" />
     </task>
     <servers />
   </component>
@@ -173,24 +172,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/PlinePager/Controllers/SchedulesController.cs</url>
-          <line>73</line>
-          <properties documentPath="$PROJECT_DIR$/PlinePager/Controllers/SchedulesController.cs" initialLine="73" containingFunctionPresentation="method 'Create'">
-            <startOffsets>
-              <option value="2341" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2363" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

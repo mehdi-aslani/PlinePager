@@ -7,6 +7,8 @@
     .Build(columns =>
     {
         columns.Add(model => model.Name).Titled("نام زمان بندی پخش");
+        columns.Add(model => model.OfDate).Titled("تاریخ شروع");
+        columns.Add(model => model.ToDate).Titled("تاریخ پایان");
         columns.Add(model => model.Enable).Titled("فعال/غیرفعال").UsingFilterOptions(new[]
         {
             new SelectListItem(),

@@ -17,12 +17,12 @@ namespace PlinePager.Models
 
         [Display(Name = "ناحیه ها پخش")]
         [Required(ErrorMessage = "{0} نمی تواند خالی باشد")]
-        [StringLength(2048)]
+        [StringLength(255)]
         public string Areas { get; set; } = null;
 
         [Display(Name = "صدا های پخش")]
         [Required(ErrorMessage = "{0} نمی تواند خالی باشد")]
-        [StringLength(2048)]
+        [StringLength(255)]
         public string Sounds { get; set; } = null;
 
         [Display(Name = "حجم صدا")]

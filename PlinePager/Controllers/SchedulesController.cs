@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using PlineFaxServer.Tools;
 using PlinePager.Data;
 using PlinePager.Models;
 
@@ -19,8 +22,8 @@ namespace PlinePager.Controllers
             _context = context;
         }
 
-        private IEnumerable<TblArea> Areas => _context.TblAreas.ToList();
-        private IEnumerable<TblSound> Sounds => _context.TblSounds.Where(t => t.Enable == true).ToList();
+        private IEnumerable<TblArea> AreasList => _context.TblAreas.ToList();
+        private IEnumerable<TblSound> SoundsList => _context.TblSounds.Where(t => t.Enable == true).ToList();
 
         // GET: Schedules
         public IActionResult Index()
@@ -40,19 +43,27 @@ namespace PlinePager.Controllers
 
             var tblSchedule = await _context.TblSchedules
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (tblSchedule == null)
             {
                 return NotFound();
             }
 
+            var areas = JsonConvert.DeserializeObject<long[]>(tblSchedule.Areas);
+            ViewBag.tblAreas = _context.TblAreas
+                .Where(t => areas.Contains(t.Id)).ToList();
+            var sounds = JsonConvert.DeserializeObject<long[]>(tblSchedule.Sounds);
+            ViewBag.tblSounds = _context.TblSounds
+                .Where(t => sounds.Contains(t.Id)).ToList();
+            
             return View(tblSchedule);
         }
 
         // GET: Schedules/Create
         public IActionResult Create()
         {
-            ViewBag.Areas = Areas;
-            ViewBag.Sounds = Sounds;
+            ViewBag.Areas = AreasList;
+            ViewBag.Sounds = SoundsList;
             return View(new TblSchedule()
             {
                 Enable = true,
@@ -66,30 +77,35 @@ namespace PlinePager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(string[] Areas,
+        public async Task<IActionResult> Create(long[] Areas, long[] Sounds,
             [Bind(
                 "Id,Name,Areas,Sounds,Volume,Enable,OfDate,OfHour,OfMinute,IntervalEnable,IntervalDay,IntervalHour,IntervalMinute,ToDateEnable,ToDate,ToHour,ToMinute")]
             TblSchedule tblSchedule)
         {
-            ViewBag.Areas = Areas;
-            ViewBag.Sounds = Sounds;
-
             if (ModelState.IsValid)
             {
-                _context.Add(tblSchedule);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (await _context.TblSchedules.Where(t => t.Name == tblSchedule.Name).AnyAsync())
+                {
+                    ModelState.AddModelError("Name", "نام وارد شده تکراری است");
+                }
+                else
+                {
+                    tblSchedule.Areas = JsonConvert.SerializeObject(Areas);
+                    tblSchedule.Sounds = JsonConvert.SerializeObject(Sounds);
+                    _context.Add(tblSchedule);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
             }
 
+            ViewBag.Areas = AreasList;
+            ViewBag.Sounds = SoundsList;
             return View(tblSchedule);
         }
 
         // GET: Schedules/Edit/5
         public async Task<IActionResult> Edit(long? id)
         {
-            ViewBag.Areas = Areas;
-            ViewBag.Sounds = Sounds;
-
             if (id == null)
             {
                 return NotFound();
@@ -101,6 +117,8 @@ namespace PlinePager.Controllers
                 return NotFound();
             }
 
+            ViewBag.Areas = AreasList;
+            ViewBag.Sounds = SoundsList;
             return View(tblSchedule);
         }
 
@@ -109,14 +127,11 @@ namespace PlinePager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id,
+        public async Task<IActionResult> Edit(long id, long[] Areas, long[] Sounds,
             [Bind(
                 "Id,Name,Areas,Sounds,Volume,Enable,OfDate,OfHour,OfMinute,IntervalEnable,IntervalDay,IntervalHour,IntervalMinute,ToDateEnable,ToDate,ToHour,ToMinute")]
             TblSchedule tblSchedule)
         {
-            ViewBag.Areas = Areas;
-            ViewBag.Sounds = Sounds;
-
             if (id != tblSchedule.Id)
             {
                 return NotFound();
@@ -126,8 +141,18 @@ namespace PlinePager.Controllers
             {
                 try
                 {
-                    _context.Update(tblSchedule);
-                    await _context.SaveChangesAsync();
+                    if (await _context.TblSchedules.Where(t => t.Name == tblSchedule.Name && t.Id != tblSchedule.Id)
+                        .AnyAsync())
+                    {
+                        ModelState.AddModelError("Name", "نام وارد شده تکراری است");
+                    }
+                    else
+                    {
+                        tblSchedule.Areas = JsonConvert.SerializeObject(Areas);
+                        tblSchedule.Sounds = JsonConvert.SerializeObject(Sounds);
+                        _context.Update(tblSchedule);
+                        await _context.SaveChangesAsync();
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -144,6 +169,8 @@ namespace PlinePager.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
+            ViewBag.Areas = AreasList;
+            ViewBag.Sounds = SoundsList;
             return View(tblSchedule);
         }
 
