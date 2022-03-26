@@ -12,6 +12,7 @@ using AspNetCoreHero.ToastNotification.Extensions;
 using AspNetCoreHero.ToastNotification;
 using PlinePager.Models.Users;
 using PlineFaxServer.Tools;
+using PlinePager.Tools;
 
 namespace PlinePager
 {
@@ -29,34 +30,34 @@ namespace PlinePager
         {
             services.AddControllersWithViews();
             services.AddDistributedMemoryCache(); //memory is configured for caching.
-            services.AddSession(option =>
-            {
-                option.IOTimeout = TimeSpan.FromMinutes(5);
-            }); //you've configured session
+            services.AddSession(option => { option.IOTimeout = TimeSpan.FromMinutes(5); }); //you've configured session
+
+            // services.AddDbContext<PlinePagerContext>(options =>
+            //         options.UseSqlite(Configuration.GetConnectionString("SqliteDB")));
 
             services.AddDbContext<PlinePagerContext>(options =>
-                    options.UseSqlite(Configuration.GetConnectionString("SqliteDB")));
+                options.UseNpgsql(Configuration.GetConnectionString("psql")));
 
             services.AddTransient<Seeder>();
 
             services.AddIdentity<TblUser, IdentityRole>(options =>
-            {
-                // Password settings.
-                options.Password.RequireDigit = false;
-                options.Password.RequireLowercase = false;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = false;
-                options.Password.RequiredLength = 6;
-                options.Password.RequiredUniqueChars = 0;
-                // Lockout settings.
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
-                options.Lockout.MaxFailedAccessAttempts = 5;
-                options.Lockout.AllowedForNewUsers = true;
-                // User settings.
-                options.User.AllowedUserNameCharacters =
-                    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
-                options.User.RequireUniqueEmail = false;
-            })
+                {
+                    // Password settings.
+                    options.Password.RequireDigit = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequiredLength = 6;
+                    options.Password.RequiredUniqueChars = 0;
+                    // Lockout settings.
+                    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                    options.Lockout.MaxFailedAccessAttempts = 5;
+                    options.Lockout.AllowedForNewUsers = true;
+                    // User settings.
+                    options.User.AllowedUserNameCharacters =
+                        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+                    options.User.RequireUniqueEmail = false;
+                })
                 .AddEntityFrameworkStores<PlinePagerContext>()
                 .AddDefaultTokenProviders();
 
@@ -76,7 +77,12 @@ namespace PlinePager
                 options.DefaultScheme =
                     CookieAuthenticationDefaults.AuthenticationScheme;
             }).AddCookie();
-            services.AddNotyf(config => { config.DurationInSeconds = 5; config.IsDismissable = true; config.Position = NotyfPosition.TopLeft; });
+            services.AddNotyf(config =>
+            {
+                config.DurationInSeconds = 5;
+                config.IsDismissable = true;
+                config.Position = NotyfPosition.TopLeft;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -92,9 +98,6 @@ namespace PlinePager
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            using var scope = app.ApplicationServices.CreateScope();
-            scope.ServiceProvider.GetService<Seeder>()?.DatabaseInit();
-            scope.ServiceProvider.GetService<Seeder>()?.StartQueue();
 
             app.UseNotyf();
             app.UseHttpsRedirection();
@@ -112,6 +115,9 @@ namespace PlinePager
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            using var scope = app.ApplicationServices.CreateScope();
+            scope.ServiceProvider.GetService<Seeder>()?.DatabaseInit();
+            scope.ServiceProvider.GetService<Seeder>()?.StartQueue();
         }
     }
 }

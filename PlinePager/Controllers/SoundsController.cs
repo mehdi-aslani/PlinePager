@@ -227,7 +227,9 @@ namespace PlinePager.Controllers
         {
             var agent = _context.TblAgents.First(t => t.Id == id);
             bool r;
-            r = Globals.Hangup(agent.Agent == Globals.AgentType.Sip ? $"SIP/{agent.Username}" : $"CONSOLE/{agent.Username}");
+            r = Globals.Hangup(agent.Agent == Globals.AgentType.Sip
+                ? $"SIP/{agent.Username}"
+                : $"CONSOLE/{agent.Username}");
             return Json(new {result = r});
         }
 

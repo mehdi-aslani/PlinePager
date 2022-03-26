@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/aslani/Desktop/PlinePager/PlinePager/PlinePager.csproj": {}
+    "/home/aslani/Project/PlinePager/PlinePager/PlinePager.csproj": {}
   },
   "projects": {
-    "/home/aslani/Desktop/PlinePager/PlinePager/PlinePager.csproj": {
+    "/home/aslani/Project/PlinePager/PlinePager/PlinePager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/aslani/Desktop/PlinePager/PlinePager/PlinePager.csproj",
+        "projectUniqueName": "/home/aslani/Project/PlinePager/PlinePager/PlinePager.csproj",
         "projectName": "PlinePager",
-        "projectPath": "/home/aslani/Desktop/PlinePager/PlinePager/PlinePager.csproj",
+        "projectPath": "/home/aslani/Project/PlinePager/PlinePager/PlinePager.csproj",
         "packagesPath": "/home/aslani/.nuget/packages/",
-        "outputPath": "/home/aslani/Desktop/PlinePager/PlinePager/obj/",
+        "outputPath": "/home/aslani/Project/PlinePager/PlinePager/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/aslani/.nuget/NuGet/NuGet.Config"
@@ -75,6 +75,10 @@
             "NonFactors.Grid.Mvc6": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[6.0.3, )"
             }
           },
           "imports": [

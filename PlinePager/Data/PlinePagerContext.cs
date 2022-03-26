@@ -14,6 +14,7 @@ namespace PlinePager.Data
         public PlinePagerContext(DbContextOptions<PlinePagerContext> options)
             : base(options)
         {
+            
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -27,7 +28,7 @@ namespace PlinePager.Data
 
         public DbSet<PlinePager.Models.TblAgent> TblAgents { get; set; }
         public DbSet<PlinePager.Models.TblArea> TblAreas { get; set; }
-        public DbSet<TblSound?> TblSounds { get; set; }
+        public DbSet<TblSound> TblSounds { get; set; }
         public DbSet<PlinePager.Models.TblSchedule> TblSchedules { get; set; }
     }
 }

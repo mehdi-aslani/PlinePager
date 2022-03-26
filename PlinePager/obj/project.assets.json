@@ -1630,6 +1630,33 @@
           "NonFactors.Grid.Core.Mvc6": "[7.0.0]"
         }
       },
+      "Npgsql/6.0.3": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/Npgsql.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Npgsql.dll": {}
+        }
+      },
+      "Npgsql.EntityFrameworkCore.PostgreSQL/6.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "6.0.1",
+          "Microsoft.EntityFrameworkCore.Abstractions": "6.0.1",
+          "Microsoft.EntityFrameworkCore.Relational": "6.0.1",
+          "Npgsql": "6.0.3"
+        },
+        "compile": {
+          "lib/net6.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {}
+        }
+      },
       "NuGet.Common/5.11.0": {
         "type": "package",
         "dependencies": {
@@ -5875,6 +5902,43 @@
         "content/js/mvc-grid/mvc-grid.js",
         "nonfactors.grid.mvc6.7.0.0.nupkg.sha512",
         "nonfactors.grid.mvc6.nuspec"
+      ]
+    },
+    "Npgsql/6.0.3": {
+      "sha512": "yt/3XFRhHsJ01a4+qHM9+0mtitQ3DY2wJLyGP9vtvZa1cB1nSAw762GJGdSX3Bbc7wZKzeo4dc4drD3yvQe7gA==",
+      "type": "package",
+      "path": "npgsql/6.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net5.0/Npgsql.dll",
+        "lib/net5.0/Npgsql.xml",
+        "lib/net6.0/Npgsql.dll",
+        "lib/net6.0/Npgsql.xml",
+        "lib/netcoreapp3.1/Npgsql.dll",
+        "lib/netcoreapp3.1/Npgsql.xml",
+        "lib/netstandard2.0/Npgsql.dll",
+        "lib/netstandard2.0/Npgsql.xml",
+        "lib/netstandard2.1/Npgsql.dll",
+        "lib/netstandard2.1/Npgsql.xml",
+        "npgsql.6.0.3.nupkg.sha512",
+        "npgsql.nuspec",
+        "postgresql.png"
+      ]
+    },
+    "Npgsql.EntityFrameworkCore.PostgreSQL/6.0.3": {
+      "sha512": "4FJ4ww7EdMKlg0Bdug783V5+OVTczu7HF1ra7FOWin/3w1v/EplVGXUQlW/4JPVloe6nnsnvmfzKCY4JiHspHw==",
+      "type": "package",
+      "path": "npgsql.entityframeworkcore.postgresql/6.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net6.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll",
+        "npgsql.entityframeworkcore.postgresql.6.0.3.nupkg.sha512",
+        "npgsql.entityframeworkcore.postgresql.nuspec",
+        "postgresql.png"
       ]
     },
     "NuGet.Common/5.11.0": {
@@ -10171,7 +10235,8 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.2",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.2",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.2",
-      "NonFactors.Grid.Mvc6 >= 7.0.0"
+      "NonFactors.Grid.Mvc6 >= 7.0.0",
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 6.0.3"
     ]
   },
   "packageFolders": {
@@ -10180,11 +10245,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/aslani/Desktop/PlinePager/PlinePager/PlinePager.csproj",
+      "projectUniqueName": "/home/aslani/Project/PlinePager/PlinePager/PlinePager.csproj",
       "projectName": "PlinePager",
-      "projectPath": "/home/aslani/Desktop/PlinePager/PlinePager/PlinePager.csproj",
+      "projectPath": "/home/aslani/Project/PlinePager/PlinePager/PlinePager.csproj",
       "packagesPath": "/home/aslani/.nuget/packages/",
-      "outputPath": "/home/aslani/Desktop/PlinePager/PlinePager/obj/",
+      "outputPath": "/home/aslani/Project/PlinePager/PlinePager/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/aslani/.nuget/NuGet/NuGet.Config"
@@ -10248,6 +10313,10 @@
           "NonFactors.Grid.Mvc6": {
             "target": "Package",
             "version": "[7.0.0, )"
+          },
+          "Npgsql.EntityFrameworkCore.PostgreSQL": {
+            "target": "Package",
+            "version": "[6.0.3, )"
           }
         },
         "imports": [
