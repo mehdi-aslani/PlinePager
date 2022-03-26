@@ -109,15 +109,18 @@ namespace PlinePager
 
             app.UseStatusCodePagesWithRedirects("/Home/Error/{0}");
             app.UseSession();
+            
+            var scope = app.ApplicationServices.CreateScope();
+            scope.ServiceProvider.GetService<Seeder>()?.DatabaseInit();
+            scope.ServiceProvider.GetService<Seeder>()?.StartQueue();
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-            using var scope = app.ApplicationServices.CreateScope();
-            scope.ServiceProvider.GetService<Seeder>()?.DatabaseInit();
-            scope.ServiceProvider.GetService<Seeder>()?.StartQueue();
+            
         }
     }
 }

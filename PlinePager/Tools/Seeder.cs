@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Timers;
 using Microsoft.EntityFrameworkCore;
 using PlinePager.Data;
@@ -10,11 +9,11 @@ using PlinePager.Models;
 
 namespace PlinePager.Tools
 {
-    public class Seeder
+    public class Seeder 
     {
         private Timer _timer;
         private Timer _timerUpdate;
-        private PlinePagerContext _context;
+        private readonly PlinePagerContext _context;
 
         public Seeder(PlinePagerContext context)
         {
@@ -65,17 +64,17 @@ namespace PlinePager.Tools
                                                         string.Compare(date, _lastUpdateDate,
                                                             StringComparison.Ordinal) > 0))
                 {
+                    this._lstSchedule =
+                        await _context.TblSchedules.Where(t => t.Enable && t.OfDate == date).ToListAsync();
                     _lastUpdateDate = date;
-                    this._lstSchedule = await _context.TblSchedules.Where(t => t.Enable == true && t.OfDate == date)
-                        .ToListAsync();
                 }
 
                 if (_lstSchedule is {Count: > 0})
                     _timer.Start();
             }
-            catch
+            catch (Exception ex)
             {
-                // ignored
+                Console.WriteLine(ex);
             }
 
             _timerUpdate.Start();

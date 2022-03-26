@@ -873,3 +873,5 @@ D:/PlinePager/PlinePager/bin/Debug/net6.0/runtimes/win-x86/native/e_sqlite3.dll
 /home/aslani/Project/PlinePager/PlinePager/obj/Debug/net6.0/ref/PlinePager.dll
 /home/aslani/Project/PlinePager/PlinePager/bin/Debug/net6.0/Npgsql.dll
 /home/aslani/Project/PlinePager/PlinePager/bin/Debug/net6.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/home/aslani/Desktop/PlinePager/PlinePager/bin/Debug/net6.0/Npgsql.dll
+/home/aslani/Desktop/PlinePager/PlinePager/bin/Debug/net6.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
