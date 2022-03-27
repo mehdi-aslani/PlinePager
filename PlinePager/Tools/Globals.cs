@@ -25,6 +25,8 @@ namespace PlineFaxServer.Tools
             Console = 1,
         }
 
+        public static bool ForceReload { get; set; } = true;
+
         public static void CreateAgents(IEnumerable<TblAgent> agents)
         {
             var ext = File.ReadAllText("/etc/asterisk/extensions.conf", Encoding.ASCII);
@@ -172,8 +174,5 @@ namespace PlineFaxServer.Tools
 
             return r;
         }
-
-
-       
     }
 }

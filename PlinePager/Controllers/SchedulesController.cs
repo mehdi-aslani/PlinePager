@@ -55,7 +55,7 @@ namespace PlinePager.Controllers
             var sounds = JsonConvert.DeserializeObject<long[]>(tblSchedule.Sounds);
             ViewBag.tblSounds = _context.TblSounds
                 .Where(t => sounds.Contains(t.Id)).ToList();
-            
+
             return View(tblSchedule);
         }
 
@@ -94,6 +94,7 @@ namespace PlinePager.Controllers
                     tblSchedule.Sounds = JsonConvert.SerializeObject(Sounds);
                     _context.Add(tblSchedule);
                     await _context.SaveChangesAsync();
+                    Globals.ForceReload = true;
                     return RedirectToAction(nameof(Index));
                 }
             }
@@ -152,6 +153,7 @@ namespace PlinePager.Controllers
                         tblSchedule.Sounds = JsonConvert.SerializeObject(Sounds);
                         _context.Update(tblSchedule);
                         await _context.SaveChangesAsync();
+                        Globals.ForceReload = true;
                     }
                 }
                 catch (DbUpdateConcurrencyException)
@@ -186,6 +188,7 @@ namespace PlinePager.Controllers
                 int result = await _context.SaveChangesAsync();
                 if (result > 0)
                 {
+                    Globals.ForceReload = true;
                     return Json(new
                     {
                         error = ""

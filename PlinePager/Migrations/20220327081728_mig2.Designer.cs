@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PlinePager.Data;
@@ -11,9 +12,10 @@ using PlinePager.Data;
 namespace PlinePager.Migrations
 {
     [DbContext(typeof(PlinePagerContext))]
-    partial class PlinePagerContextModelSnapshot : ModelSnapshot
+    [Migration("20220327081728_mig2")]
+    partial class mig2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -271,9 +273,6 @@ namespace PlinePager.Migrations
 
                     b.Property<int>("OfMinute")
                         .HasColumnType("integer");
-
-                    b.Property<bool>("Played")
-                        .HasColumnType("boolean");
 
                     b.Property<string>("Sounds")
                         .IsRequired()

@@ -50,6 +50,9 @@ namespace PlinePager.Models
         [Range(0, 59, ErrorMessage = "بازه انتخاب شده {0} باید بین {1} تا {2} باشد")]
         public int OfMinute { get; set; }
 
+
+        [Display(Name = "تکرار دوره زمانی")]
+        [Required(ErrorMessage = "{0} نمی تواند خالی باشد")]
         public bool IntervalEnable { get; set; }
 
         [Display(Name = "روز")]
@@ -67,6 +70,8 @@ namespace PlinePager.Models
         [Range(0, 59, ErrorMessage = "بازه انتخاب شده {0} باید بین {1} تا {2} باشد")]
         public int IntervalMinute { get; set; }
 
+        [Display(Name = "تا تاریخ")]
+        [Required(ErrorMessage = "{0} نمی تواند خالی باشد")]
         public bool ToDateEnable { get; set; }
 
         [Display(Name = "تا تاریخ")]
@@ -82,6 +87,13 @@ namespace PlinePager.Models
         [Required(ErrorMessage = "{0} نمی تواند خالی باشد")]
         [Range(0, 59, ErrorMessage = "بازه انتخاب شده {0} باید بین {1} تا {2} باشد")]
         public int ToMinute { get; set; }
+
+
+        public bool Ended { get; set; } = false;
+        public bool Played { get; set; } = false;
+        public string NextDate { get; set; }
+        public int NextHour { get; set; }
+        public int NextMinute { get; set; }
 
         internal static void OnModelCreating(ModelBuilder builder)
         {
