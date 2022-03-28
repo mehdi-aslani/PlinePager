@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/aslani/Project/PlinePager/PlinePager/PlinePager.csproj": {}
+    "/home/aslani/Desktop/PlinePager/PlinePager/PlinePager.csproj": {}
   },
   "projects": {
-    "/home/aslani/Project/PlinePager/PlinePager/PlinePager.csproj": {
+    "/home/aslani/Desktop/PlinePager/PlinePager/PlinePager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/aslani/Project/PlinePager/PlinePager/PlinePager.csproj",
+        "projectUniqueName": "/home/aslani/Desktop/PlinePager/PlinePager/PlinePager.csproj",
         "projectName": "PlinePager",
-        "projectPath": "/home/aslani/Project/PlinePager/PlinePager/PlinePager.csproj",
+        "projectPath": "/home/aslani/Desktop/PlinePager/PlinePager/PlinePager.csproj",
         "packagesPath": "/home/aslani/.nuget/packages/",
-        "outputPath": "/home/aslani/Project/PlinePager/PlinePager/obj/",
+        "outputPath": "/home/aslani/Desktop/PlinePager/PlinePager/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/aslani/.nuget/NuGet/NuGet.Config"

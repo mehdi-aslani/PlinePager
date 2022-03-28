@@ -3,18 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Timers;
 using Microsoft.EntityFrameworkCore;
 using PlineFaxServer.Tools;
 using PlinePager.Data;
 using PlinePager.Models;
+using Timer = System.Timers.Timer;
 
 namespace PlinePager.Tools
 {
     public class Seeder
     {
         private Timer _timerSchedule;
-        private const int TimeSchedule = 1;
+        private const int TimeSchedule = 6;
         private Timer _timerUpdate;
         private const int TimeUpdate = 3;
         private readonly PlinePagerContext _context;
@@ -39,6 +41,7 @@ namespace PlinePager.Tools
             }
         }
 
+
         public void StartQueue()
         {
             _timerSchedule = new Timer() {Interval = TimeSchedule * 1000, Enabled = true};
@@ -47,10 +50,12 @@ namespace PlinePager.Tools
             _timerUpdate = new() {Interval = TimeUpdate * 1000, Enabled = true};
             _timerUpdate.Elapsed += TimerOnElapsedUpdate;
             _timerUpdate.Start();
+
+            Globals.TimerSchedule = _timerSchedule;
+            Globals.TimerUpdate = _timerUpdate;
         }
 
-
-        private async void TimerOnElapsedUpdate(object sender, ElapsedEventArgs e)
+        private void TimerOnElapsedUpdate(object sender, ElapsedEventArgs e)
         {
             _timerUpdate.Stop();
             //_timerSchedule.Stop();
@@ -69,18 +74,19 @@ namespace PlinePager.Tools
                      string.Compare(date, _lastUpdateDate,
                          StringComparison.Ordinal) > 0))
                 {
-                    this._lstSchedule =
-                        await _context.TblSchedules.Where(t =>
+                    _lstSchedule =
+                        _context.TblSchedules.Where(t =>
                                 t.Enable && t.Ended == false && (
                                     (t.ToDateEnable && t.OfDate.CompareTo(date) <= 0 &&
                                      t.ToDate.CompareTo(date) >= 0) ||
                                     (t.ToDateEnable == false && t.OfDate == date) ||
                                     t.NextDate == date))
-                            .ToListAsync();
+                            .ToList();
                     _lstSchedule.ForEach(item =>
                     {
                         //B>A
-                        double diffSecs = PersianDateDiffToSeconds(date, hour, minute, item.ToDate, item.ToHour,
+                        double diffSecs = PersianDateDiffToSeconds(date, hour, minute,
+                            item.ToDate, item.ToHour,
                             item.ToMinute);
                         if (diffSecs > 0 && item.IntervalEnable)
                         {
@@ -100,6 +106,7 @@ namespace PlinePager.Tools
 
                     Globals.ForceReload = false;
                     _lastUpdateDate = date;
+                    Globals.NeedToUpdate = false;
                 }
 
                 // if (_lstSchedule is {Count: > 0} && _timerSchedule.Enabled == false)
@@ -156,7 +163,7 @@ namespace PlinePager.Tools
 
         private void TimerOnElapsed(object sender, ElapsedEventArgs e)
         {
-            if (_lstSchedule == null || _lstSchedule.Count == 0)
+            if (Globals.NeedToUpdate || _lstSchedule == null || _lstSchedule.Count == 0)
                 return;
             _timerSchedule.Stop();
             DateTime dt = DateTime.Now;

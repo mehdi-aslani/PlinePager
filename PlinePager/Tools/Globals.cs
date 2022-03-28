@@ -9,6 +9,7 @@ using System.Threading;
 using Newtonsoft.Json.Linq;
 using PlinePager.Data;
 using PlinePager.Models;
+using Timer = System.Timers.Timer;
 
 namespace PlineFaxServer.Tools
 {
@@ -26,7 +27,26 @@ namespace PlineFaxServer.Tools
         }
 
         public static bool ForceReload { get; set; } = true;
+        public static bool NeedToUpdate { get; set; } = true;
+        public static Timer TimerSchedule { get; set; }
+        public static Timer TimerUpdate { get; set; }
 
+        public static void TimersSet(bool enable)
+        {
+            if (enable)
+            {
+                // TimerSchedule.Start();
+                TimerUpdate.Start();
+            }
+            else
+            {
+                NeedToUpdate = true;
+                TimerSchedule.Stop();
+                TimerUpdate.Stop();
+                Thread.Sleep(1000);
+            }
+        }
+        
         public static void CreateAgents(IEnumerable<TblAgent> agents)
         {
             var ext = File.ReadAllText("/etc/asterisk/extensions.conf", Encoding.ASCII);

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,6 +12,7 @@ using Newtonsoft.Json.Linq;
 using PlineFaxServer.Tools;
 using PlinePager.Data;
 using PlinePager.Models;
+using PlinePager.Tools;
 
 namespace PlinePager.Controllers
 {
@@ -64,11 +67,13 @@ namespace PlinePager.Controllers
         {
             ViewBag.Areas = AreasList;
             ViewBag.Sounds = SoundsList;
+            PersianCalendar p = new PersianCalendar();
             return View(new TblSchedule()
             {
                 Enable = true,
                 Volume = 0,
-                ToDate = "0000/00/00"
+                ToDate =
+                    $"{p.GetYear(DateTime.Now):0000}/{p.GetMonth(DateTime.Now):00}/{p.GetDayOfMonth(DateTime.Now):00}"
             });
         }
 
@@ -140,6 +145,7 @@ namespace PlinePager.Controllers
 
             if (ModelState.IsValid)
             {
+                Globals.TimersSet(false);
                 try
                 {
                     if (await _context.TblSchedules.Where(t => t.Name == tblSchedule.Name && t.Id != tblSchedule.Id)
@@ -156,18 +162,12 @@ namespace PlinePager.Controllers
                             Globals.ForceReload = true;
                     }
                 }
-                catch (DbUpdateConcurrencyException)
+                catch
                 {
-                    if (!TblScheduleExists(tblSchedule.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    ModelState.AddModelError("", "در ویرایش اطلاعات خطایی رخ داده است");
                 }
 
+                Globals.TimersSet(true);
                 return RedirectToAction(nameof(Index));
             }
 
