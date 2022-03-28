@@ -79,7 +79,7 @@ namespace PlinePager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(long[] Areas, long[] Sounds,
             [Bind(
-                "Id,Name,Areas,Sounds,Volume,Enable,OfDate,OfHour,OfMinute,IntervalEnable,IntervalDay,IntervalHour,IntervalMinute,ToDateEnable,ToDate,ToHour,ToMinute")]
+                "Id,Name,Areas,Sounds,Volume,Enable,OfDate,OfHour,OfMinute,IntervalEnable,IntervalDay,IntervalHour,IntervalMinute,ToDateEnable,ToDate,ToHour,ToMinute,Ended,Played,NextDate,NextHour,NextMinute")]
             TblSchedule tblSchedule)
         {
             if (ModelState.IsValid)
@@ -130,7 +130,7 @@ namespace PlinePager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(long id, long[] Areas, long[] Sounds,
             [Bind(
-                "Id,Name,Areas,Sounds,Volume,Enable,OfDate,OfHour,OfMinute,IntervalEnable,IntervalDay,IntervalHour,IntervalMinute,ToDateEnable,ToDate,ToHour,ToMinute")]
+                "Id,Name,Areas,Sounds,Volume,Enable,OfDate,OfHour,OfMinute,IntervalEnable,IntervalDay,IntervalHour,IntervalMinute,ToDateEnable,ToDate,ToHour,ToMinute,Ended,Played,NextDate,NextHour,NextMinute")]
             TblSchedule tblSchedule)
         {
             if (id != tblSchedule.Id)

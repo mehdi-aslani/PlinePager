@@ -75,12 +75,25 @@
                 @Html.DisplayNameFor(model => model.ToDateEnable)
             </dt>
             <dd class="col-sm-10">
-                @Html.Raw(Model.ToDate) 
+                @Html.Raw(Model.ToDate)
                 -
                 @Html.Raw(Model.ToHour.ToString("00"))
                 ساعت
                 :
                 @Html.Raw(Model.ToMinute.ToString("00"))
+                دقیقه
+            </dd>
+
+            <dt class="col-sm-2">
+                زمان پخش بعدی در
+            </dt>
+            <dd class="col-sm-10">
+                @Html.Raw(Model.NextDate)
+                -
+                @Html.Raw(Model.NextHour.ToString("00"))
+                ساعت
+                :
+                @Html.Raw(Model.NextMinute.ToString("00"))
                 دقیقه
             </dd>
 
