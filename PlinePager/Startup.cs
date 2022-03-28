@@ -32,11 +32,14 @@ namespace PlinePager
             services.AddDistributedMemoryCache(); //memory is configured for caching.
             services.AddSession(option => { option.IOTimeout = TimeSpan.FromMinutes(5); }); //you've configured session
 
-            // services.AddDbContext<PlinePagerContext>(options =>
-            //         options.UseSqlite(Configuration.GetConnectionString("SqliteDB")));
-
             services.AddDbContext<PlinePagerContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("psql")));
+                options.UseSqlite(Configuration.GetConnectionString("SqliteDB")).EnableSensitiveDataLogging()
+            );
+
+            //services.AddDbContext<PlinePagerContext>(options =>
+            //    options.UseNpgsql(Configuration.GetConnectionString("psql")).EnableSensitiveDataLogging()
+            //);
+
 
             services.AddTransient<Seeder>();
 
@@ -109,18 +112,17 @@ namespace PlinePager
 
             app.UseStatusCodePagesWithRedirects("/Home/Error/{0}");
             app.UseSession();
-            
+
             var scope = app.ApplicationServices.CreateScope();
             scope.ServiceProvider.GetService<Seeder>()?.DatabaseInit();
             scope.ServiceProvider.GetService<Seeder>()?.StartQueue();
-            
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-            
         }
     }
 }

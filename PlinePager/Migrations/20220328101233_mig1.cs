@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -14,10 +13,10 @@ namespace PlinePager.Migrations
                 name: "AspNetRoles",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "text", nullable: false),
-                    Name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "text", nullable: true)
+                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -28,27 +27,27 @@ namespace PlinePager.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "text", nullable: false),
-                    FirstName = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: true),
-                    LastName = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: true),
-                    Department = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: true),
-                    Enable = table.Column<bool>(type: "boolean", nullable: false),
-                    Role = table.Column<string>(type: "text", nullable: true),
-                    UserChanePassword = table.Column<bool>(type: "boolean", nullable: false),
-                    UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "boolean", nullable: false),
-                    PasswordHash = table.Column<string>(type: "text", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "text", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "text", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "text", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "boolean", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "boolean", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "boolean", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    FirstName = table.Column<string>(type: "TEXT", maxLength: 128, nullable: true),
+                    LastName = table.Column<string>(type: "TEXT", maxLength: 128, nullable: true),
+                    Department = table.Column<string>(type: "TEXT", maxLength: 128, nullable: true),
+                    Enable = table.Column<bool>(type: "INTEGER", nullable: false),
+                    Role = table.Column<string>(type: "TEXT", nullable: true),
+                    UserChanePassword = table.Column<bool>(type: "INTEGER", nullable: false),
+                    UserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "INTEGER", nullable: false),
+                    PasswordHash = table.Column<string>(type: "TEXT", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "TEXT", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "TEXT", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "TEXT", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "INTEGER", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -59,14 +58,14 @@ namespace PlinePager.Migrations
                 name: "tblAgents",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Agent = table.Column<int>(type: "integer", nullable: false),
-                    Username = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
-                    Password = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: true),
-                    AreaId = table.Column<long>(type: "bigint", nullable: false),
-                    Desc = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: true),
-                    Enable = table.Column<bool>(type: "boolean", nullable: false)
+                    Id = table.Column<long>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Agent = table.Column<int>(type: "INTEGER", nullable: false),
+                    Username = table.Column<string>(type: "TEXT", maxLength: 32, nullable: false),
+                    Password = table.Column<string>(type: "TEXT", maxLength: 32, nullable: true),
+                    AreaId = table.Column<long>(type: "INTEGER", nullable: false),
+                    Desc = table.Column<string>(type: "TEXT", maxLength: 128, nullable: true),
+                    Enable = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -77,10 +76,10 @@ namespace PlinePager.Migrations
                 name: "tblAreas",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
-                    Desc = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: true)
+                    Id = table.Column<long>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 32, nullable: false),
+                    Desc = table.Column<string>(type: "TEXT", maxLength: 128, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -91,24 +90,29 @@ namespace PlinePager.Migrations
                 name: "tblSchedules",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Areas = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    Sounds = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    Volume = table.Column<int>(type: "integer", nullable: false),
-                    Enable = table.Column<bool>(type: "boolean", nullable: false),
-                    OfDate = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false),
-                    OfHour = table.Column<int>(type: "integer", nullable: false),
-                    OfMinute = table.Column<int>(type: "integer", nullable: false),
-                    IntervalEnable = table.Column<bool>(type: "boolean", nullable: false),
-                    IntervalDay = table.Column<int>(type: "integer", nullable: false),
-                    IntervalHour = table.Column<int>(type: "integer", nullable: false),
-                    IntervalMinute = table.Column<int>(type: "integer", nullable: false),
-                    ToDateEnable = table.Column<bool>(type: "boolean", nullable: false),
-                    ToDate = table.Column<string>(type: "text", nullable: true),
-                    ToHour = table.Column<int>(type: "integer", nullable: false),
-                    ToMinute = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<long>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Areas = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
+                    Sounds = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
+                    Volume = table.Column<int>(type: "INTEGER", nullable: false),
+                    Enable = table.Column<bool>(type: "INTEGER", nullable: false),
+                    OfDate = table.Column<string>(type: "TEXT", maxLength: 10, nullable: false),
+                    OfHour = table.Column<int>(type: "INTEGER", nullable: false),
+                    OfMinute = table.Column<int>(type: "INTEGER", nullable: false),
+                    IntervalEnable = table.Column<bool>(type: "INTEGER", nullable: false),
+                    IntervalDay = table.Column<int>(type: "INTEGER", nullable: false),
+                    IntervalHour = table.Column<int>(type: "INTEGER", nullable: false),
+                    IntervalMinute = table.Column<int>(type: "INTEGER", nullable: false),
+                    ToDateEnable = table.Column<bool>(type: "INTEGER", nullable: false),
+                    ToDate = table.Column<string>(type: "TEXT", nullable: true),
+                    ToHour = table.Column<int>(type: "INTEGER", nullable: false),
+                    ToMinute = table.Column<int>(type: "INTEGER", nullable: false),
+                    Ended = table.Column<bool>(type: "INTEGER", nullable: false),
+                    Played = table.Column<bool>(type: "INTEGER", nullable: false),
+                    NextDate = table.Column<string>(type: "TEXT", nullable: true),
+                    NextHour = table.Column<int>(type: "INTEGER", nullable: false),
+                    NextMinute = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -119,11 +123,11 @@ namespace PlinePager.Migrations
                 name: "tblSounds",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "character varying(64)", maxLength: 64, nullable: false),
-                    FileName = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
-                    Enable = table.Column<bool>(type: "boolean", nullable: false)
+                    Id = table.Column<long>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 64, nullable: false),
+                    FileName = table.Column<string>(type: "TEXT", maxLength: 512, nullable: true),
+                    Enable = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -134,11 +138,11 @@ namespace PlinePager.Migrations
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    RoleId = table.Column<string>(type: "text", nullable: false),
-                    ClaimType = table.Column<string>(type: "text", nullable: true),
-                    ClaimValue = table.Column<string>(type: "text", nullable: true)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    RoleId = table.Column<string>(type: "TEXT", nullable: false),
+                    ClaimType = table.Column<string>(type: "TEXT", nullable: true),
+                    ClaimValue = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -155,11 +159,11 @@ namespace PlinePager.Migrations
                 name: "AspNetUserClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    UserId = table.Column<string>(type: "text", nullable: false),
-                    ClaimType = table.Column<string>(type: "text", nullable: true),
-                    ClaimValue = table.Column<string>(type: "text", nullable: true)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    UserId = table.Column<string>(type: "TEXT", nullable: false),
+                    ClaimType = table.Column<string>(type: "TEXT", nullable: true),
+                    ClaimValue = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -176,10 +180,10 @@ namespace PlinePager.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "text", nullable: false),
-                    ProviderKey = table.Column<string>(type: "text", nullable: false),
-                    ProviderDisplayName = table.Column<string>(type: "text", nullable: true),
-                    UserId = table.Column<string>(type: "text", nullable: false)
+                    LoginProvider = table.Column<string>(type: "TEXT", nullable: false),
+                    ProviderKey = table.Column<string>(type: "TEXT", nullable: false),
+                    ProviderDisplayName = table.Column<string>(type: "TEXT", nullable: true),
+                    UserId = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -196,8 +200,8 @@ namespace PlinePager.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "text", nullable: false),
-                    RoleId = table.Column<string>(type: "text", nullable: false)
+                    UserId = table.Column<string>(type: "TEXT", nullable: false),
+                    RoleId = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -220,10 +224,10 @@ namespace PlinePager.Migrations
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "text", nullable: false),
-                    LoginProvider = table.Column<string>(type: "text", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Value = table.Column<string>(type: "text", nullable: true)
+                    UserId = table.Column<string>(type: "TEXT", nullable: false),
+                    LoginProvider = table.Column<string>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Value = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {

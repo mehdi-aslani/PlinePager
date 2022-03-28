@@ -152,8 +152,8 @@ namespace PlinePager.Controllers
                         tblSchedule.Areas = JsonConvert.SerializeObject(Areas);
                         tblSchedule.Sounds = JsonConvert.SerializeObject(Sounds);
                         _context.Update(tblSchedule);
-                        int i=await _context.SaveChangesAsync();
-                        Globals.ForceReload = true;
+                        if (await _context.SaveChangesAsync() > 0)
+                            Globals.ForceReload = true;
                     }
                 }
                 catch (DbUpdateConcurrencyException)

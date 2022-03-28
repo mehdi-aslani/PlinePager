@@ -7,9 +7,26 @@
     <list default="true" id="37e56588-1397-418f-8bb2-263a81bfb6e1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PlinePager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PlinePager/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/Controllers/SchedulesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Controllers/SchedulesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Tools/Seeder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Tools/Seeder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Db/pline-pagr.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Migrations/20220326114546_mig1.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Migrations/20220326114546_mig1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Migrations/20220327081728_mig2.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Migrations/20220327081728_mig2.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Migrations/20220327082022_mig3.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Migrations/20220327082022_mig3.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Migrations/PlinePagerContextModelSnapshot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Models/TblSchedule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Models/TblSchedule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/ref/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/ref/PlinePager.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/refint/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/refint/PlinePager.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/staticwebassets.build.json" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/staticwebassets.build.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/staticwebassets.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/staticwebassets.development.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/staticwebassets.pack.sentinel" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,14 +77,14 @@
       <option value="$PROJECT_DIR$/PlinePager/Views/Schedules/_Index.cshtml" />
       <option value="$PROJECT_DIR$/PlinePager/Controllers/SoundsController.cs" />
       <option value="$PROJECT_DIR$/PlinePager/appsettings.Development.json" />
-      <option value="$PROJECT_DIR$/PlinePager/Data/PlinePagerContext.cs" />
-      <option value="$PROJECT_DIR$/PlinePager/Startup.cs" />
-      <option value="$PROJECT_DIR$/PlinePager/appsettings.json" />
       <option value="$PROJECT_DIR$/PlinePager/Tools/Globals.cs" />
       <option value="$PROJECT_DIR$/PlinePager/Views/Schedules/Details.cshtml" />
-      <option value="$PROJECT_DIR$/PlinePager/Models/TblSchedule.cs" />
-      <option value="$PROJECT_DIR$/PlinePager/Controllers/SchedulesController.cs" />
       <option value="$PROJECT_DIR$/PlinePager/Tools/Seeder.cs" />
+      <option value="$PROJECT_DIR$/PlinePager/Data/PlinePagerContext.cs" />
+      <option value="$PROJECT_DIR$/PlinePager/appsettings.json" />
+      <option value="$PROJECT_DIR$/PlinePager/Startup.cs" />
+      <option value="$PROJECT_DIR$/PlinePager/Controllers/SchedulesController.cs" />
+      <option value="$PROJECT_DIR$/PlinePager/Models/TblSchedule.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="26c5Wo03BJlPcqZaGi6jkGMo15M" />
@@ -153,7 +170,7 @@
       <workItem from="1648192466582" duration="15911000" />
       <workItem from="1648274745188" duration="12124000" />
       <workItem from="1648324247637" duration="2963000" />
-      <workItem from="1648379700392" duration="16369000" />
+      <workItem from="1648379700392" duration="22033000" />
     </task>
     <servers />
   </component>
@@ -182,16 +199,16 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/PlinePager/Controllers/SchedulesController.cs</url>
-          <line>135</line>
-          <properties documentPath="$PROJECT_DIR$/PlinePager/Controllers/SchedulesController.cs" initialLine="135" containingFunctionPresentation="method 'Edit'">
+          <line>152</line>
+          <properties documentPath="$PROJECT_DIR$/PlinePager/Controllers/SchedulesController.cs" initialLine="152" containingFunctionPresentation="method 'Edit'">
             <startOffsets>
-              <option value="4834" />
+              <option value="5446" />
             </startOffsets>
             <endOffsets>
-              <option value="4859" />
+              <option value="5503" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="38" />
+          <option name="timeStamp" value="47" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

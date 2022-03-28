@@ -89,6 +89,7 @@ namespace PlinePager.Models
         public int ToMinute { get; set; }
 
 
+        
         public bool Ended { get; set; } = false;
         public bool Played { get; set; } = false;
         public string NextDate { get; set; }

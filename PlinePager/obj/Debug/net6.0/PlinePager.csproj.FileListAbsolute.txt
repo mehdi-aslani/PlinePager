@@ -580,6 +580,8 @@ D:/PlinePager/PlinePager/bin/Debug/net6.0/runtimes/win-x86/native/e_sqlite3.dll
 /home/aslani/Desktop/PlinePager/PlinePager/obj/Debug/net6.0/PlinePager.pdb
 /home/aslani/Desktop/PlinePager/PlinePager/obj/Debug/net6.0/PlinePager.genruntimeconfig.cache
 /home/aslani/Desktop/PlinePager/PlinePager/obj/Debug/net6.0/ref/PlinePager.dll
+/home/aslani/Desktop/PlinePager/PlinePager/bin/Debug/net6.0/Npgsql.dll
+/home/aslani/Desktop/PlinePager/PlinePager/bin/Debug/net6.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
 /home/aslani/Project/PlinePager/PlinePager/bin/Debug/net6.0/appsettings.Development.json
 /home/aslani/Project/PlinePager/PlinePager/bin/Debug/net6.0/appsettings.json
 /home/aslani/Project/PlinePager/PlinePager/bin/Debug/net6.0/PlinePager.staticwebassets.runtime.json
@@ -644,6 +646,8 @@ D:/PlinePager/PlinePager/bin/Debug/net6.0/runtimes/win-x86/native/e_sqlite3.dll
 /home/aslani/Project/PlinePager/PlinePager/bin/Debug/net6.0/Microsoft.Win32.SystemEvents.dll
 /home/aslani/Project/PlinePager/PlinePager/bin/Debug/net6.0/Newtonsoft.Json.dll
 /home/aslani/Project/PlinePager/PlinePager/bin/Debug/net6.0/Mvc.Grid.Core.dll
+/home/aslani/Project/PlinePager/PlinePager/bin/Debug/net6.0/Npgsql.dll
+/home/aslani/Project/PlinePager/PlinePager/bin/Debug/net6.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
 /home/aslani/Project/PlinePager/PlinePager/bin/Debug/net6.0/NuGet.Common.dll
 /home/aslani/Project/PlinePager/PlinePager/bin/Debug/net6.0/NuGet.Configuration.dll
 /home/aslani/Project/PlinePager/PlinePager/bin/Debug/net6.0/NuGet.DependencyResolver.Core.dll
@@ -871,7 +875,3 @@ D:/PlinePager/PlinePager/bin/Debug/net6.0/runtimes/win-x86/native/e_sqlite3.dll
 /home/aslani/Project/PlinePager/PlinePager/obj/Debug/net6.0/PlinePager.pdb
 /home/aslani/Project/PlinePager/PlinePager/obj/Debug/net6.0/PlinePager.genruntimeconfig.cache
 /home/aslani/Project/PlinePager/PlinePager/obj/Debug/net6.0/ref/PlinePager.dll
-/home/aslani/Project/PlinePager/PlinePager/bin/Debug/net6.0/Npgsql.dll
-/home/aslani/Project/PlinePager/PlinePager/bin/Debug/net6.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
-/home/aslani/Desktop/PlinePager/PlinePager/bin/Debug/net6.0/Npgsql.dll
-/home/aslani/Desktop/PlinePager/PlinePager/bin/Debug/net6.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
