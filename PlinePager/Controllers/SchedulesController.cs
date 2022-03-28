@@ -152,7 +152,7 @@ namespace PlinePager.Controllers
                         tblSchedule.Areas = JsonConvert.SerializeObject(Areas);
                         tblSchedule.Sounds = JsonConvert.SerializeObject(Sounds);
                         _context.Update(tblSchedule);
-                        await _context.SaveChangesAsync();
+                        int i=await _context.SaveChangesAsync();
                         Globals.ForceReload = true;
                     }
                 }

@@ -113,13 +113,13 @@ namespace PlinePager.Tools
             _timerUpdate.Start();
         }
 
-        private DateTime AddTime(string persianDate, double seconds)
+        private DateTime AddTime(string persianDate, int hour, int minute, double seconds)
         {
             PersianCalendar p = new PersianCalendar();
             string[] parts = persianDate.Split('/', '-');
             DateTime dta = p.ToDateTime(Convert.ToInt32(parts[0]), Convert.ToInt32(parts[1]), Convert.ToInt32(parts[2]),
-                0, 0, 0, 0);
-            var newDate = dta.AddMilliseconds(seconds);
+                hour, minute, 0, 0);
+            var newDate = dta.AddSeconds(seconds);
             return newDate;
         }
 
@@ -167,13 +167,12 @@ namespace PlinePager.Tools
             string persianDate =
                 $"{persianCalendar.GetYear(dt):0000}/{persianCalendar.GetMonth(dt):00}/{persianCalendar.GetDayOfMonth(dt):00}";
             using var list = _lstSchedule.Where(t =>
-                (
-                    (t.OfHour == hour && t.OfMinute == minute) ||
-                    (t.NextDate == persianDate && t.NextHour == hour && t.NextMinute == minute)
-                ) &&
-                t.Ended == false
+                    (
+                        (t.OfHour == hour && t.OfMinute == minute) ||
+                        (t.NextDate == persianDate && t.NextHour == hour && t.NextMinute == minute)
+                    ) &&
+                    t.Ended == false
                 //  && t.Played == false 
-                
             ).GetEnumerator();
 
             int changes = 0;
@@ -196,17 +195,21 @@ namespace PlinePager.Tools
                 {
                     double seconds = (item.IntervalDay * 3600 * 24) + (item.IntervalHour * 3600) +
                                      (item.IntervalMinute * 60);
-                    var newDate = AddTime(item.NextDate ?? item.OfDate, seconds);
+                    DateTime newDate;
+                    newDate = item.NextDate is null or ""
+                        ? AddTime(item.OfDate, item.OfHour, item.OfMinute, seconds)
+                        : AddTime(item.NextDate, item.NextHour, item.NextMinute, seconds);
+
                     var p = new PersianCalendar();
-                    item.NextDate = $"{p.GetYear(newDate):0000}/{p.GetMonth(newDate):00}/{p.GetYear(newDate):00}";
+                    item.NextDate = $"{p.GetYear(newDate):0000}/{p.GetMonth(newDate):00}/{p.GetDayOfMonth(newDate):00}";
                     item.NextHour = p.GetHour(newDate);
                     item.NextMinute = p.GetMinute(newDate);
                 }
                 else
                 {
                     item.Ended = true;
-                    
                 }
+
                 item.Played = true;
                 changes++;
                 _context.Update(item);
