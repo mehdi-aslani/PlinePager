@@ -2,14 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using PlineFaxServer.Tools;
 using PlinePager.Data;
 using PlinePager.Models;
 using PlinePager.Tools;
@@ -95,6 +93,15 @@ namespace PlinePager.Controllers
                 }
                 else
                 {
+                    if (tblSchedule.IntervalEnable && tblSchedule.ToDateEnable == false)
+                    {
+                        PersianCalendar p = new PersianCalendar();
+                        tblSchedule.ToDate =
+                            $"{(p.GetYear(DateTime.Now) + 1):0000}/{p.GetMonth(DateTime.Now):00}/{p.GetDayOfMonth(DateTime.Now):00}";
+                        tblSchedule.ToHour = 0;
+                        tblSchedule.ToMinute = 0;
+                    }
+
                     tblSchedule.Areas = JsonConvert.SerializeObject(Areas);
                     tblSchedule.Sounds = JsonConvert.SerializeObject(Sounds);
                     _context.Add(tblSchedule);
@@ -145,7 +152,6 @@ namespace PlinePager.Controllers
 
             if (ModelState.IsValid)
             {
-                Globals.TimersSet(false);
                 try
                 {
                     if (await _context.TblSchedules.Where(t => t.Name == tblSchedule.Name && t.Id != tblSchedule.Id)
@@ -162,12 +168,18 @@ namespace PlinePager.Controllers
                             Globals.ForceReload = true;
                     }
                 }
-                catch
+                catch (DbUpdateConcurrencyException)
                 {
-                    ModelState.AddModelError("", "در ویرایش اطلاعات خطایی رخ داده است");
+                    if (!TblScheduleExists(tblSchedule.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
 
-                Globals.TimersSet(true);
                 return RedirectToAction(nameof(Index));
             }
 

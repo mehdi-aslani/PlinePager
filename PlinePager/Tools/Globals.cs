@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Threading;
-using Newtonsoft.Json.Linq;
-using PlinePager.Data;
+using Newtonsoft.Json;
 using PlinePager.Models;
-using Timer = System.Timers.Timer;
 
-namespace PlineFaxServer.Tools
+namespace PlinePager.Tools
 {
     public static class Globals
     {
@@ -27,26 +26,7 @@ namespace PlineFaxServer.Tools
         }
 
         public static bool ForceReload { get; set; } = true;
-        public static bool NeedToUpdate { get; set; } = true;
-        public static Timer TimerSchedule { get; set; }
-        public static Timer TimerUpdate { get; set; }
 
-        public static void TimersSet(bool enable)
-        {
-            if (enable)
-            {
-                // TimerSchedule.Start();
-                TimerUpdate.Start();
-            }
-            else
-            {
-                NeedToUpdate = true;
-                TimerSchedule.Stop();
-                TimerUpdate.Stop();
-                Thread.Sleep(1000);
-            }
-        }
-        
         public static void CreateAgents(IEnumerable<TblAgent> agents)
         {
             var ext = File.ReadAllText("/etc/asterisk/extensions.conf", Encoding.ASCII);
@@ -170,7 +150,7 @@ namespace PlineFaxServer.Tools
                 return ex.ToString();
             }
         }
-
+        
         public static bool Hangup(string agent)
         {
             bool r = false;
@@ -193,6 +173,42 @@ namespace PlineFaxServer.Tools
             }
 
             return r;
+        }
+
+        public static List<T> ConvertToList<T>(DataTable dt)
+        {
+            var columnNames = dt.Columns.Cast<DataColumn>().Select(c => c.ColumnName.ToLower()).ToList();
+            var properties = typeof(T).GetProperties();
+            return dt.AsEnumerable().Select(row =>
+            {
+                var objT = Activator.CreateInstance<T>();
+                foreach (var pro in properties)
+                {
+                    if (columnNames.Contains(pro.Name.ToLower()))
+                    {
+                        try
+                        {
+                            pro.SetValue(objT, row[pro.Name]);
+                        }
+                        catch (Exception ex)
+                        {
+                            //ignore
+                        }
+                    }
+                }
+
+                return objT;
+            }).ToList();
+        }
+
+        public static DateTime AddTime(string persianDate, int hour, int minute, double seconds)
+        {
+            PersianCalendar p = new PersianCalendar();
+            string[] parts = persianDate.Split('/', '-');
+            DateTime dta = p.ToDateTime(Convert.ToInt32(parts[0]), Convert.ToInt32(parts[1]), Convert.ToInt32(parts[2]),
+                hour, minute, 0, 0);
+            var newDate = dta.AddSeconds(seconds);
+            return newDate;
         }
     }
 }

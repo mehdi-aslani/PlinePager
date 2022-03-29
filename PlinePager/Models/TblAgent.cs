@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
-using static PlineFaxServer.Tools.Globals;
+using static PlinePager.Tools.Globals;
 
 namespace PlinePager.Models
 {

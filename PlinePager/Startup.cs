@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using AspNetCoreHero.ToastNotification.Extensions;
 using AspNetCoreHero.ToastNotification;
 using PlinePager.Models.Users;
-using PlineFaxServer.Tools;
 using PlinePager.Tools;
 
 namespace PlinePager
@@ -32,15 +31,14 @@ namespace PlinePager
             services.AddDistributedMemoryCache(); //memory is configured for caching.
             services.AddSession(option => { option.IOTimeout = TimeSpan.FromMinutes(5); }); //you've configured session
 
+            // services.AddDbContext<PlinePagerContext>(options =>
+            //     options.UseSqlite(Configuration.GetConnectionString("SqliteDB")).EnableSensitiveDataLogging()
+            // );
+
             services.AddDbContext<PlinePagerContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("SqliteDB")).EnableSensitiveDataLogging()
+                options.UseNpgsql(Configuration.GetConnectionString("psql")).EnableSensitiveDataLogging()
             );
-
-            //services.AddDbContext<PlinePagerContext>(options =>
-            //    options.UseNpgsql(Configuration.GetConnectionString("psql")).EnableSensitiveDataLogging()
-            //);
-
-
+            
             services.AddTransient<Seeder>();
 
             services.AddIdentity<TblUser, IdentityRole>(options =>
