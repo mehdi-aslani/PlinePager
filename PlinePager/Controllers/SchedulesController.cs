@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,7 @@ using PlinePager.Tools;
 
 namespace PlinePager.Controllers
 {
+    [Authorize]
     public class SchedulesController : Controller
     {
         private readonly PlinePagerContext _context;

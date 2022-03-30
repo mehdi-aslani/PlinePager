@@ -1,0 +1,150 @@
+@model PlinePager.Models.TblAzan
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>TblAzan</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="EnableA" /> @Html.DisplayNameFor(model => model.EnableA)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="HourA" class="control-label"></label>
+                <input asp-for="HourA" class="form-control" />
+                <span asp-validation-for="HourA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MinuteA" class="control-label"></label>
+                <input asp-for="MinuteA" class="form-control" />
+                <span asp-validation-for="MinuteA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SecondA" class="control-label"></label>
+                <input asp-for="SecondA" class="form-control" />
+                <span asp-validation-for="SecondA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoundsBeforeA" class="control-label"></label>
+                <input asp-for="SoundsBeforeA" class="form-control" />
+                <span asp-validation-for="SoundsBeforeA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoundsA" class="control-label"></label>
+                <input asp-for="SoundsA" class="form-control" />
+                <span asp-validation-for="SoundsA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoundsAfterA" class="control-label"></label>
+                <input asp-for="SoundsAfterA" class="form-control" />
+                <span asp-validation-for="SoundsAfterA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AreasA" class="control-label"></label>
+                <input asp-for="AreasA" class="form-control" />
+                <span asp-validation-for="AreasA" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="EnableB" /> @Html.DisplayNameFor(model => model.EnableB)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="HourB" class="control-label"></label>
+                <input asp-for="HourB" class="form-control" />
+                <span asp-validation-for="HourB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MinuteB" class="control-label"></label>
+                <input asp-for="MinuteB" class="form-control" />
+                <span asp-validation-for="MinuteB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SecondB" class="control-label"></label>
+                <input asp-for="SecondB" class="form-control" />
+                <span asp-validation-for="SecondB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoundsBeforeB" class="control-label"></label>
+                <input asp-for="SoundsBeforeB" class="form-control" />
+                <span asp-validation-for="SoundsBeforeB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoundsB" class="control-label"></label>
+                <input asp-for="SoundsB" class="form-control" />
+                <span asp-validation-for="SoundsB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoundsAfterB" class="control-label"></label>
+                <input asp-for="SoundsAfterB" class="form-control" />
+                <span asp-validation-for="SoundsAfterB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AreasB" class="control-label"></label>
+                <input asp-for="AreasB" class="form-control" />
+                <span asp-validation-for="AreasB" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="EnableC" /> @Html.DisplayNameFor(model => model.EnableC)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="HourC" class="control-label"></label>
+                <input asp-for="HourC" class="form-control" />
+                <span asp-validation-for="HourC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MinuteC" class="control-label"></label>
+                <input asp-for="MinuteC" class="form-control" />
+                <span asp-validation-for="MinuteC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SecondC" class="control-label"></label>
+                <input asp-for="SecondC" class="form-control" />
+                <span asp-validation-for="SecondC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoundsBeforeC" class="control-label"></label>
+                <input asp-for="SoundsBeforeC" class="form-control" />
+                <span asp-validation-for="SoundsBeforeC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoundsC" class="control-label"></label>
+                <input asp-for="SoundsC" class="form-control" />
+                <span asp-validation-for="SoundsC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoundsAfterC" class="control-label"></label>
+                <input asp-for="SoundsAfterC" class="form-control" />
+                <span asp-validation-for="SoundsAfterC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AreasC" class="control-label"></label>
+                <input asp-for="AreasC" class="form-control" />
+                <span asp-validation-for="AreasC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

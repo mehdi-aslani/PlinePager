@@ -12,8 +12,8 @@ using PlinePager.Data;
 namespace PlinePager.Migrations
 {
     [DbContext(typeof(PlinePagerContext))]
-    [Migration("20220329153826_mig1")]
-    partial class mig1
+    [Migration("20220330110427_mig2")]
+    partial class mig2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -217,6 +217,98 @@ namespace PlinePager.Migrations
                         .IsUnique();
 
                     b.ToTable("tblAreas");
+                });
+
+            modelBuilder.Entity("PlinePager.Models.TblAzan", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("AreasA")
+                        .HasColumnType("text");
+
+                    b.Property<string>("AreasB")
+                        .HasColumnType("text");
+
+                    b.Property<string>("AreasC")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Date")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("EnableA")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("EnableB")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("EnableC")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("HourA")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("HourB")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("HourC")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("MinuteA")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("MinuteB")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("MinuteC")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SecondA")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SecondB")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SecondC")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("SoundsA")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SoundsAfterA")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SoundsAfterB")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SoundsAfterC")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SoundsB")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SoundsBeforeA")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SoundsBeforeB")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SoundsBeforeC")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SoundsC")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Date")
+                        .IsUnique();
+
+                    b.ToTable("tblAzans");
                 });
 
             modelBuilder.Entity("PlinePager.Models.TblSchedule", b =>

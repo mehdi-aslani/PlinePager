@@ -12,16 +12,15 @@ using Newtonsoft.Json;
 using Npgsql;
 using PlinePager.Data;
 using PlinePager.Models;
-using SQLitePCL;
 
 namespace PlinePager.Tools
 {
     public class Seeder
     {
         private Timer _timerSchedule;
-        private const int TimeSchedule = 1;
+        private const int TimeSchedule = 10;
         private Timer _timerUpdate;
-        private const int TimeUpdate = 3;
+        private const int TimeUpdate = 1;
         private List<TblSchedule> _lstSchedule;
         private readonly PlinePagerContext _context;
         private readonly IConfiguration _configuration;
@@ -59,7 +58,7 @@ namespace PlinePager.Tools
         private void TimerOnElapsedUpdate(object sender, ElapsedEventArgs e)
         {
             _timerUpdate.Stop();
-            //_timerSchedule.Stop();
+            _timerSchedule.Stop();
             var dt = DateTime.Now;
             var hour = dt.Hour;
             var minute = dt.Minute;
@@ -78,7 +77,7 @@ namespace PlinePager.Tools
                     var query = "SELECT * FROM \"tblSchedules\" WHERE " +
                                 "\"Enable\"=True AND \"Ended\"=False AND (" +
                                 $"(\"ToDateEnable\"=True AND \"IntervalEnable\"=True AND '{date}' BETWEEN \"OfDate\" AND \"ToDate\") OR " +
-                                $"(\"ToDateEnable\"=False AND \"IntervalEnable\"=True AND \"OfDate\">='{date}') OR " +
+                                $"(\"ToDateEnable\"=False AND \"IntervalEnable\"=True AND \"OfDate\"<='{date}') OR " +
                                 $"(\"IntervalEnable\"=False AND \"OfDate\"='{date}') OR " +
                                 $"\"NextDate\"='{date}')";
 
@@ -94,14 +93,14 @@ namespace PlinePager.Tools
                     _lstSchedule.ForEach(item =>
                         {
                             //B>A
-                            double diffSecs = PersianDateDiffToSeconds(item.OfDate, item.OfHour, item.OfMinute,
+                            double diffSecs = Globals.PersianDateDiffToSeconds(item.OfDate, item.OfHour, item.OfMinute,
                                 date, hour, minute);
                             if (diffSecs > 0 && item.IntervalEnable)
                             {
                                 long intervalSecs = (item.IntervalDay * 3600 * 24) + (item.IntervalHour * 3600) +
                                                     (item.IntervalMinute * 60);
                                 var b = diffSecs % intervalSecs;
-                                var dtNext = DateTime.Now.AddSeconds(b);
+                                var dtNext = dt.AddSeconds(intervalSecs - b);
                                 var pNext = new PersianCalendar();
                                 item.NextDate =
                                     $"{pNext.GetYear(dtNext):0000}/{pNext.GetMonth(dtNext):00}/{pNext.GetDayOfMonth(dtNext):00}";
@@ -122,8 +121,8 @@ namespace PlinePager.Tools
                     _lastUpdateDate = date;
                 }
 
-                // if (_lstSchedule is {Count: > 0} && _timerSchedule.Enabled == false)
-                //     _timerSchedule.Start();
+                if (_lstSchedule is {Count: > 0} && _timerSchedule.Enabled == false)
+                    _timerSchedule.Start();
             }
             catch (Exception ex)
             {
@@ -131,35 +130,6 @@ namespace PlinePager.Tools
             }
 
             _timerUpdate.Start();
-        }
-
-
-        private double PersianDateDiffToSeconds(string persianDateA, int hourA, int minuteA, string persianDateB,
-            int hourB,
-            int minuteB)
-        {
-            try
-            {
-                string[] persianDate1 = persianDateA.Split('/');
-                string[] persianDate2 = persianDateB.Split('/');
-
-                PersianCalendar date1 = new PersianCalendar();
-                DateTime dateTimeA = date1.ToDateTime(Convert.ToInt32(persianDate1[0]),
-                    Convert.ToInt32(persianDate1[1]),
-                    Convert.ToInt32(persianDate1[2]), hourA, minuteA, 0, 0);
-
-                PersianCalendar date2 = new PersianCalendar();
-                DateTime dateTimeB = date2.ToDateTime(Convert.ToInt32(persianDate2[0]),
-                    Convert.ToInt32(persianDate2[1]),
-                    Convert.ToInt32(persianDate2[2]), hourB, minuteB, 0, 0);
-
-                double different = (dateTimeB - dateTimeA).TotalSeconds;
-                return different;
-            }
-            catch
-            {
-                return 0;
-            }
         }
 
         private DateTime PersianToGeorgia(string persian, int hour, int minute)
@@ -240,7 +210,6 @@ namespace PlinePager.Tools
                     $"WHERE \"Id\"={item.Id}"
                 );
             });
-
             _timerSchedule.Start();
         }
 

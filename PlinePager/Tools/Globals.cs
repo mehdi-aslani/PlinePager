@@ -210,5 +210,33 @@ namespace PlinePager.Tools
             var newDate = dta.AddSeconds(seconds);
             return newDate;
         }
+        
+        public static double PersianDateDiffToSeconds(string persianDateA, int hourA, int minuteA, string persianDateB,
+            int hourB,
+            int minuteB)
+        {
+            try
+            {
+                string[] persianDate1 = persianDateA.Split('/');
+                string[] persianDate2 = persianDateB.Split('/');
+
+                PersianCalendar date1 = new PersianCalendar();
+                DateTime dateTimeA = date1.ToDateTime(Convert.ToInt32(persianDate1[0]),
+                    Convert.ToInt32(persianDate1[1]),
+                    Convert.ToInt32(persianDate1[2]), hourA, minuteA, 0, 0);
+
+                PersianCalendar date2 = new PersianCalendar();
+                DateTime dateTimeB = date2.ToDateTime(Convert.ToInt32(persianDate2[0]),
+                    Convert.ToInt32(persianDate2[1]),
+                    Convert.ToInt32(persianDate2[2]), hourB, minuteB, 0, 0);
+
+                double different = (dateTimeB - dateTimeA).TotalSeconds;
+                return different;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
     }
 }

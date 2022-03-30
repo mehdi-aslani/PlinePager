@@ -1,0 +1,179 @@
+@model IEnumerable<PlinePager.Models.TblAzan>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnableA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HourA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinuteA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SecondA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoundsBeforeA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoundsA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoundsAfterA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AreasA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnableB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HourB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinuteB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SecondB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoundsBeforeB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoundsB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoundsAfterB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AreasB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnableC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HourC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinuteC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SecondC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoundsBeforeC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoundsC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoundsAfterC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AreasC)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnableA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HourA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinuteA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoundsBeforeA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoundsA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoundsAfterA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AreasA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnableB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HourB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinuteB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoundsBeforeB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoundsB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoundsAfterB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AreasB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnableC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HourC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinuteC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoundsBeforeC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoundsC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoundsAfterC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AreasC)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
