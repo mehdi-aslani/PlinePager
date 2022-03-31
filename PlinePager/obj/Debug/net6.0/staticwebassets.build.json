@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "PX2+5KujVBy7bugfGVHR4ILSYidQcVsBd1/6IhTxYQY=",
+  "Hash": "YAgNu5f/N65DYGqXnh8dhpEyEjofleJZwTrpc65x7KE=",
   "Source": "PlinePager",
   "BasePath": "_content/PlinePager",
   "Mode": "Default",
@@ -26586,40 +26586,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/lib/select2/js/select2.min.js"
-    },
-    {
-      "Identity": "/home/aslani/Project/PlinePager/PlinePager/wwwroot/sounds/upload-files/0521c0ad350744f8a75138ff9e6ef12b.wav",
-      "SourceId": "PlinePager",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/aslani/Project/PlinePager/PlinePager/wwwroot/",
-      "BasePath": "_content/PlinePager",
-      "RelativePath": "sounds/upload-files/0521c0ad350744f8a75138ff9e6ef12b.wav",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/sounds/upload-files/0521c0ad350744f8a75138ff9e6ef12b.wav"
-    },
-    {
-      "Identity": "/home/aslani/Project/PlinePager/PlinePager/wwwroot/sounds/upload-files/79f04d14311b491b9dd8d7d85f60fc3a.wav",
-      "SourceId": "PlinePager",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/aslani/Project/PlinePager/PlinePager/wwwroot/",
-      "BasePath": "_content/PlinePager",
-      "RelativePath": "sounds/upload-files/79f04d14311b491b9dd8d7d85f60fc3a.wav",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/sounds/upload-files/79f04d14311b491b9dd8d7d85f60fc3a.wav"
     }
   ]
 }

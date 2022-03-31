@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using PlinePager.Data;
 using PlinePager.Models;
 
@@ -18,6 +19,10 @@ namespace PlinePager.Controllers
         {
             _context = context;
         }
+        
+        private IEnumerable<TblArea> AreasList => _context.TblAreas.ToList();
+        private IEnumerable<TblSound> SoundsList => _context.TblSounds.Where(t => t.Enable == true).ToList();
+
 
         // GET: Azans
         public async Task<IActionResult> Index()
@@ -46,6 +51,8 @@ namespace PlinePager.Controllers
         // GET: Azans/Create
         public IActionResult Create()
         {
+            ViewBag.Areas = AreasList;
+            ViewBag.Sounds = SoundsList;
             return View();
         }
 
@@ -54,7 +61,12 @@ namespace PlinePager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Date,EnableA,HourA,MinuteA,SecondA,SoundsBeforeA,SoundsA,SoundsAfterA,AreasA,EnableB,HourB,MinuteB,SecondB,SoundsBeforeB,SoundsB,SoundsAfterB,AreasB,EnableC,HourC,MinuteC,SecondC,SoundsBeforeC,SoundsC,SoundsAfterC,AreasC")] TblAzan tblAzan)
+        public async Task<IActionResult> Create(
+            [Bind(
+                "Id,Date,EnableA,HourA,MinuteA,SecondA,SoundsBeforeA,SoundsA,SoundsAfterA,AreasA,EnableB," +
+                "HourB,MinuteB,SecondB,SoundsBeforeB,SoundsB,SoundsAfterB,AreasB,EnableC,HourC,MinuteC,SecondC,SoundsBeforeC," +
+                "SoundsC,SoundsAfterC,AreasC,VolumeA,VolumeB,VolumeC")]
+            TblAzan tblAzan)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +74,8 @@ namespace PlinePager.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.Areas = AreasList;
+            ViewBag.Sounds = SoundsList;
             return View(tblAzan);
         }
 
@@ -78,6 +92,8 @@ namespace PlinePager.Controllers
             {
                 return NotFound();
             }
+            ViewBag.Areas = AreasList;
+            ViewBag.Sounds = SoundsList;
             return View(tblAzan);
         }
 
@@ -86,7 +102,12 @@ namespace PlinePager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,Date,EnableA,HourA,MinuteA,SecondA,SoundsBeforeA,SoundsA,SoundsAfterA,AreasA,EnableB,HourB,MinuteB,SecondB,SoundsBeforeB,SoundsB,SoundsAfterB,AreasB,EnableC,HourC,MinuteC,SecondC,SoundsBeforeC,SoundsC,SoundsAfterC,AreasC")] TblAzan tblAzan)
+        public async Task<IActionResult> Edit(long id,
+            [Bind("Id,Date,EnableA,HourA,MinuteA,SecondA,SoundsBeforeA" +
+                  ",SoundsA,SoundsAfterA,AreasA,EnableB,HourB,MinuteB,SecondB,SoundsBeforeB," +
+                  "SoundsB,SoundsAfterB,AreasB,EnableC,HourC,MinuteC,SecondC,SoundsBeforeC,SoundsC," +
+                  "SoundsAfterC,AreasC,VolumeA,VolumeB,VolumeC")]
+            TblAzan tblAzan)
         {
             if (id != tblAzan.Id)
             {
@@ -111,8 +132,11 @@ namespace PlinePager.Controllers
                         throw;
                     }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.Areas = AreasList;
+            ViewBag.Sounds = SoundsList;
             return View(tblAzan);
         }
 

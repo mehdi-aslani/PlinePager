@@ -301,6 +301,15 @@ namespace PlinePager.Migrations
                     b.Property<string>("SoundsC")
                         .HasColumnType("text");
 
+                    b.Property<int>("VolumeA")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("VolumeB")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("VolumeC")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Date")

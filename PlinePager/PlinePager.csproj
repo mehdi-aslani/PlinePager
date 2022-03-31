@@ -25,4 +25,12 @@
         <Folder Include="Db\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Azans\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Azans\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Azans\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Azans\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Azans\Index.cshtml" />
+    </ItemGroup>
+
 </Project>

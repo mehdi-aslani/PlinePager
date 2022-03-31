@@ -12,8 +12,8 @@ using PlinePager.Data;
 namespace PlinePager.Migrations
 {
     [DbContext(typeof(PlinePagerContext))]
-    [Migration("20220330110427_mig2")]
-    partial class mig2
+    [Migration("20220331070355_mig1")]
+    partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -302,6 +302,15 @@ namespace PlinePager.Migrations
 
                     b.Property<string>("SoundsC")
                         .HasColumnType("text");
+
+                    b.Property<int>("VolumeA")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("VolumeB")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("VolumeC")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 

@@ -87,6 +87,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.AreasC)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VolumeA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VolumeB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VolumeC)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -167,6 +176,15 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.AreasC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VolumeA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VolumeB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VolumeC)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
