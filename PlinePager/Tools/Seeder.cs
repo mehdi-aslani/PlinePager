@@ -86,11 +86,6 @@ namespace PlinePager.Tools
             var la = 0;
             var azansSound = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
             azansSound.ForEach(i => { la += i.Length; });
-            if (azansSound.Count == 0)
-            {
-                Random rnd = new Random();
-                azan.SoundsA = azanDir[rnd.Next(azanDir.Length - 1)];
-            }
 
             DateTime dt = new DateTime(cur.Year, cur.Month, cur.Day, azan.HourA, azan.MinuteA, azan.SecondA);
             dt = dt.AddSeconds(-1 * la);
@@ -102,11 +97,6 @@ namespace PlinePager.Tools
             la = 0;
             azansSound = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
             azansSound.ForEach(i => { la += i.Length; });
-            if (azansSound.Count == 0)
-            {
-                Random rnd = new Random();
-                azan.SoundsB = azanDir[rnd.Next(azanDir.Length - 1)];
-            }
 
             dt = new DateTime(cur.Year, cur.Month, cur.Day, azan.HourB, azan.MinuteB, azan.SecondB);
             dt = dt.AddSeconds(-1 * la);
@@ -118,11 +108,6 @@ namespace PlinePager.Tools
             la = 0;
             azansSound = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
             azansSound.ForEach(i => { la += i.Length; });
-            if (azansSound.Count == 0)
-            {
-                Random rnd = new Random();
-                azan.SoundsC = azanDir[rnd.Next(azanDir.Length - 1)];
-            }
 
             dt = new DateTime(cur.Year, cur.Month, cur.Day, azan.HourC, azan.MinuteC, azan.SecondC);
             dt = dt.AddSeconds(-1 * la);
@@ -148,7 +133,19 @@ namespace PlinePager.Tools
             {
                 Globals.ForceReloadAzan = false;
                 _azanUpdate = date;
-                _tblAzan = _context.TblAzans.FirstOrDefault(m => m.Date == date);
+
+                var query = $"SELECT t.* FROM \"tblAzans\" t  WHERE t.\"Date\"='{date}'";
+                var connection = new NpgsqlConnection(_configuration.GetConnectionString("psql"));
+                connection.Open();
+                using (var cmd = new NpgsqlDataAdapter(query, connection))
+                {
+                    var data = new DataTable();
+                    cmd.Fill(data);
+                    var lstAzan= Globals.ConvertToList<TblAzan>(data);
+                    _tblAzan = lstAzan.FirstOrDefault();
+                }
+                connection.Close();
+
                 if (_tblAzan == null)
                 {
                     _timerAzan.Start();
@@ -167,14 +164,26 @@ namespace PlinePager.Tools
             if (_tblAzan.EnableA && _tblAzan.HourA == hour && _tblAzan.MinuteA == minute &&
                 second - 1 <= _tblAzan.SecondA && _tblAzan.SecondA <= second + 1)
             {
+                _tblAzan.EnableA = false;
+                _context.Update(_tblAzan);
+                _context.SaveChanges();
+                CallFileAzanOnArea(_tblAzan, 0);
             }
             else if (_tblAzan.EnableB && _tblAzan.HourB == hour && _tblAzan.MinuteB == minute &&
                      second - 1 <= _tblAzan.SecondB && _tblAzan.SecondB <= second + 1)
             {
+                _tblAzan.EnableB = false;
+                _context.Update(_tblAzan);
+                _context.SaveChanges();
+                CallFileAzanOnArea(_tblAzan, 1);
             }
             else if (_tblAzan.EnableC && _tblAzan.HourC == hour && _tblAzan.MinuteC == minute &&
                      second - 1 <= _tblAzan.SecondC && _tblAzan.SecondC <= second + 1)
             {
+                _tblAzan.EnableC = false;
+                _context.Update(_tblAzan);
+                _context.SaveChanges();
+                CallFileAzanOnArea(_tblAzan, 2);
             }
 
             _timerAzan.Start();
@@ -397,151 +406,331 @@ namespace PlinePager.Tools
 
         private string CallFileAzanOnArea(TblAzan azan, int time)
         {
-            var sounds = string.Empty;
-            var areas = string.Empty;
-            var beforeAzanDir = Directory.GetFiles(Path.Combine("wwwroot", "before-azans"));
-            var azanDir = Directory.GetFiles(Path.Combine("wwwroot", "azans"));
-            var afterAzanDir = Directory.GetFiles(Path.Combine("wwwroot", "after-azans"));
-            Random rnd = new Random(DateTime.Now.Millisecond);
-
-            switch (time)
+            try
             {
-                case 0:
+                var sounds = string.Empty;
+                var areas = string.Empty;
+                var beforeAzanDir = Directory.GetFiles(Path.Combine("wwwroot", "before-azans"));
+                var azanDir = Directory.GetFiles(Path.Combine("wwwroot", "azans"));
+                var afterAzanDir = Directory.GetFiles(Path.Combine("wwwroot", "after-azans"));
+                Random rnd = new Random(DateTime.Now.Millisecond);
+                var volume = 0;
+
+                switch (time)
                 {
-                    var localSounds = string.Empty;
-                    /*****************************/
-                    var bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsBeforeA);
-                    var listSounds = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
-
-                    listSounds.ForEach(i =>
+                    case 0:
                     {
-                        var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
-                        if (sound.ToLower().EndsWith(".wav"))
+                        var bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsBeforeA);
+                        var listSounds = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
+
+                        listSounds.ForEach(i =>
                         {
-                            sounds += $"{sound[..^4]}&";
-                        }
-                    });
-                    if (sounds == string.Empty)
-                    {
-                        rnd = new Random(DateTime.Now.Millisecond);
-                        sounds = azanDir[rnd.Next(azanDir.Length - 1)];
-                    }
-                    else
-                    {
-                        sounds = sounds[..^1];
-                    }
-
-                    /*******************************************************/
-                    bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsA);
-                    listSounds = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
-
-                    listSounds.ForEach(i =>
-                    {
-                        var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
-                        if (sound.ToLower().EndsWith(".wav"))
+                            var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
+                            if (sound.ToLower().EndsWith(".wav"))
+                            {
+                                sounds += $"{sound[..^4]}&";
+                            }
+                        });
+                        if (sounds == string.Empty)
                         {
-                            sounds += $"{sound[..^4]}&";
+                            if (beforeAzanDir.Length > 0)
+                            {
+                                sounds = Path.Combine(Directory.GetCurrentDirectory(),
+                                    beforeAzanDir[rnd.Next(beforeAzanDir.Length - 1)]);
+                                sounds = sounds[..^4];
+                            }
                         }
-                    });
-                    if (sounds == string.Empty)
-                    {
-                        rnd = new Random(DateTime.Now.Millisecond);
-                        sounds = azanDir[rnd.Next(azanDir.Length - 1)];
-                    }
-                    else
-                    {
-                        sounds = sounds[..^1];
-                    }
-
-                    /*******************************************************/
-                    bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsAfterA);
-                    listSounds = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
-
-                    listSounds.ForEach(i =>
-                    {
-                        var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
-                        if (sound.ToLower().EndsWith(".wav"))
+                        else
                         {
-                            sounds += $"{sound[..^4]}&";
+                            sounds = sounds[..^1];
                         }
-                    });
-                    if (sounds == string.Empty)
-                    {
-                        sounds = azanDir[rnd.Next(azanDir.Length - 1)];
-                    }
-                    else
-                    {
-                        sounds = sounds[..^1];
-                    }
-                }
-                    break;
 
-                case 1:
-                {
-                }
-                    break;
+                        /*******************************************************/
+                        bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsA);
+                        listSounds = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
 
-                case 2:
-                {
+                        listSounds.ForEach(i =>
+                        {
+                            var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
+                            if (sound.ToLower().EndsWith(".wav"))
+                            {
+                                sounds += $"{sound[..^4]}&";
+                            }
+                        });
+                        if (sounds == string.Empty)
+                        {
+                            if (azanDir.Length > 0)
+                            {
+                                sounds = Path.Combine(Directory.GetCurrentDirectory(),
+                                    azanDir[rnd.Next(azanDir.Length - 1)]);
+                                sounds = sounds[..^4];
+                            }
+                        }
+                        else
+                        {
+                            sounds = sounds[..^1];
+                        }
+
+                        /*******************************************************/
+                        bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsAfterA);
+                        listSounds = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
+
+                        listSounds.ForEach(i =>
+                        {
+                            var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
+                            if (sound.ToLower().EndsWith(".wav"))
+                            {
+                                sounds += $"{sound[..^4]}&";
+                            }
+                        });
+                        if (sounds == string.Empty)
+                        {
+                            if (afterAzanDir.Length > 0)
+                            {
+                                sounds = Path.Combine(Directory.GetCurrentDirectory(),
+                                    afterAzanDir[rnd.Next(afterAzanDir.Length - 1)]);
+                                sounds = sounds[..^4];
+                            }
+                        }
+                        else
+                        {
+                            sounds = sounds[..^1];
+                        }
+
+                        var area = JsonConvert.DeserializeObject<long[]>(_tblAzan.AreasA);
+                        var lstAgents = area is {Length: > 0}
+                            ? _context.TblAgents.Where(m => area.Contains(m.AreaId)).ToList()
+                            : _context.TblAgents.ToList();
+
+                        lstAgents.ForEach(item =>
+                        {
+                            areas += item.Agent == Globals.AgentType.Sip
+                                ? $"SIP/{item.Username}&"
+                                : $"CONSOLE/{item.Username}&";
+                        });
+                        if (areas != string.Empty)
+                        {
+                            areas = areas[..^1];
+                        }
+
+                        volume = azan.VolumeA;
+                    }
+                        break;
+
+                    case 1:
+                    {
+                        var bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsBeforeB);
+                        var listSounds = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
+
+                        listSounds.ForEach(i =>
+                        {
+                            var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
+                            if (sound.ToLower().EndsWith(".wav"))
+                            {
+                                sounds += $"{sound[..^4]}&";
+                            }
+                        });
+                        if (sounds == string.Empty)
+                        {
+                            if (beforeAzanDir.Length > 0)
+                            {
+                                sounds = Path.Combine(Directory.GetCurrentDirectory(),
+                                    beforeAzanDir[rnd.Next(beforeAzanDir.Length - 1)]);
+                                sounds = sounds[..^4];
+                            }
+                        }
+                        else
+                        {
+                            sounds = sounds[..^1];
+                        }
+
+                        /*******************************************************/
+                        bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsB);
+                        listSounds = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
+
+                        listSounds.ForEach(i =>
+                        {
+                            var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
+                            if (sound.ToLower().EndsWith(".wav"))
+                            {
+                                sounds += $"{sound[..^4]}&";
+                            }
+                        });
+                        if (sounds == string.Empty)
+                        {
+                            if (azanDir.Length > 0)
+                            {
+                                sounds = Path.Combine(Directory.GetCurrentDirectory(),
+                                    azanDir[rnd.Next(azanDir.Length - 1)]);
+                                sounds = sounds[..^4];
+                            }
+                        }
+                        else
+                        {
+                            sounds = sounds[..^1];
+                        }
+
+                        /*******************************************************/
+                        bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsAfterB);
+                        listSounds = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
+
+                        listSounds.ForEach(i =>
+                        {
+                            var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
+                            if (sound.ToLower().EndsWith(".wav"))
+                            {
+                                sounds += $"{sound[..^4]}&";
+                            }
+                        });
+                        if (sounds == string.Empty)
+                        {
+                            if (afterAzanDir.Length > 0)
+                            {
+                                sounds = Path.Combine(Directory.GetCurrentDirectory(),
+                                    afterAzanDir[rnd.Next(afterAzanDir.Length - 1)]);
+                                sounds = sounds[..^4];
+                            }
+                        }
+                        else
+                        {
+                            sounds = sounds[..^1];
+                        }
+
+                        var area = JsonConvert.DeserializeObject<long[]>(_tblAzan.AreasB);
+                        var lstAgents = area is {Length: > 0}
+                            ? _context.TblAgents.Where(m => area.Contains(m.AreaId)).ToList()
+                            : _context.TblAgents.ToList();
+
+                        lstAgents.ForEach(item =>
+                        {
+                            areas += item.Agent == Globals.AgentType.Sip
+                                ? $"SIP/{item.Username}&"
+                                : $"CONSOLE/{item.Username}&";
+                        });
+                        if (areas != string.Empty)
+                        {
+                            areas = areas[..^1];
+                        }
+
+                        volume = azan.VolumeB;
+                    }
+                        break;
+
+                    case 2:
+                    {
+                        var bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsBeforeC);
+                        var listSounds = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
+
+                        listSounds.ForEach(i =>
+                        {
+                            var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
+                            if (sound.ToLower().EndsWith(".wav"))
+                            {
+                                sounds += $"{sound[..^4]}&";
+                            }
+                        });
+                        if (sounds == string.Empty)
+                        {
+                            if (beforeAzanDir.Length > 0)
+                            {
+                                sounds = Path.Combine(Directory.GetCurrentDirectory(),
+                                    beforeAzanDir[rnd.Next(beforeAzanDir.Length - 1)]);
+                                sounds = sounds[..^4];
+                            }
+                        }
+                        else
+                        {
+                            sounds = sounds[..^1];
+                        }
+
+                        /*******************************************************/
+                        bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsC);
+                        listSounds = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
+
+                        listSounds.ForEach(i =>
+                        {
+                            var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
+                            if (sound.ToLower().EndsWith(".wav"))
+                            {
+                                sounds += $"{sound[..^4]}&";
+                            }
+                        });
+                        if (sounds == string.Empty)
+                        {
+                            if (azanDir.Length > 0)
+                            {
+                                sounds = Path.Combine(Directory.GetCurrentDirectory(),
+                                    azanDir[rnd.Next(azanDir.Length - 1)]);
+                                sounds = sounds[..^4];
+                            }
+                        }
+                        else
+                        {
+                            sounds = sounds[..^1];
+                        }
+
+                        /*******************************************************/
+                        bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsAfterC);
+                        listSounds = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
+
+                        listSounds.ForEach(i =>
+                        {
+                            var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
+                            if (sound.ToLower().EndsWith(".wav"))
+                            {
+                                sounds += $"{sound[..^4]}&";
+                            }
+                        });
+                        if (sounds == string.Empty)
+                        {
+                            if (afterAzanDir.Length > 0)
+                            {
+                                sounds = Path.Combine(Directory.GetCurrentDirectory(),
+                                    afterAzanDir[rnd.Next(afterAzanDir.Length - 1)]);
+                                sounds = sounds[..^4];
+                            }
+                        }
+                        else
+                        {
+                            sounds = sounds[..^1];
+                        }
+
+                        var area = JsonConvert.DeserializeObject<long[]>(_tblAzan.AreasC);
+                        var lstAgents = area is {Length: > 0}
+                            ? _context.TblAgents.Where(m => area.Contains(m.AreaId)).ToList()
+                            : _context.TblAgents.ToList();
+
+                        lstAgents.ForEach(item =>
+                        {
+                            areas += item.Agent == Globals.AgentType.Sip
+                                ? $"SIP/{item.Username}&"
+                                : $"CONSOLE/{item.Username}&";
+                        });
+                        if (areas != string.Empty)
+                        {
+                            areas = areas[..^1];
+                        }
+
+                        volume = azan.VolumeC;
+                    }
+                        break;
                 }
-                    break;
+
+                var strCall = "Channel: Local/*0000@pline-page\n" +
+                              $"Setvar: users={areas}\n" +
+                              $"Setvar: vol={volume}\n" +
+                              "CallerID: \"00000000\"<pline-page>\n" +
+                              "Application: Playback\n" +
+                              $"Data: {sounds}\n";
+                var path = $"/var/spool/asterisk/outgoing/{Globals.GenerateId()}.call";
+                File.WriteAllText(path, strCall, Encoding.ASCII);
+                Globals.RunCmd("/usr/bin/chmod", "0777 " + path);
+                return string.Empty;
             }
-
-            //
-            // try
-            // {
-            //     var sounds = JsonConvert.DeserializeObject<long[]>(schedule.Sounds);
-            //     var tblSounds = _context.TblSounds.Where(t => sounds.Contains(t.Id)).ToList();
-            //     var soundsPath = string.Empty;
-            //     tblSounds.ForEach(sound =>
-            //     {
-            //         if (sound.FileName.ToLower().EndsWith(".wav"))
-            //         {
-            //             //sound.FileName = sound.FileName.Substring(0, sound.FileName.Length - 4);
-            //             soundsPath += Path.Combine(Directory.GetCurrentDirectory(), "wwwroot",
-            //                 $"{sound.FileName[..^4]}&");
-            //         }
-            //         else
-            //         {
-            //             soundsPath += $"{sound.FileName}&";
-            //         }
-            //     });
-            //     if (soundsPath != string.Empty)
-            //     {
-            //         soundsPath = soundsPath[..^1];
-            //     }
-            //
-            //     var areas = JsonConvert.DeserializeObject<long[]>(schedule.Areas);
-            //     var tblAgents = _context.TblAgents.Where(t => areas.Contains(t.AreaId)).ToList();
-            //     var agentsList = string.Empty;
-            //     tblAgents.ForEach(agent =>
-            //     {
-            //         Globals.Hangup(agent.Username);
-            //         agentsList += agent.Agent == Globals.AgentType.Sip
-            //             ? $"SIP/{agent.Username}&"
-            //             : $"CONSOLE/{agent.Username}&";
-            //     });
-            //     if (agentsList != string.Empty)
-            //     {
-            //         agentsList = agentsList[..^1];
-            //     }
-            //
-            //     var strCall = "Channel: Local/*0000@pline-page\n" +
-            //                   $"Setvar: users={agentsList}\n" +
-            //                   $"Setvar: vol={schedule.Volume}\n" +
-            //                   "CallerID: \"00000000\"<pline-page>\n" +
-            //                   "Application: Playback\n" +
-            //                   $"Data: {soundsPath}\n";
-            //     var path = $"/var/spool/asterisk/outgoing/{Globals.GenerateId()}.call";
-            //     File.WriteAllText(path, strCall, Encoding.ASCII);
-            //     Globals.RunCmd("/usr/bin/chmod", "0777 " + path);
-            //     return string.Empty;
-            // }
-            // catch (Exception ex)
-            // {
-            //     return ex.ToString();
-            // }
-            return "";
+            catch (Exception ex)
+            {
+                return ex.ToString();
+            }
         }
     }
 }
