@@ -1,5 +1,5 @@
 {
-  "FilePath": "/home/aslani/Project/PlinePager/PlinePager/PlinePager.csproj",
+  "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/PlinePager.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "6.0",
@@ -16332,183 +16332,208 @@
   "RootNamespace": "PlinePager",
   "Documents": [
     {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Schedules/Details.cshtml",
-      "TargetPath": "Views\\Schedules\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/User/Create.cshtml",
-      "TargetPath": "Views\\User\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Sounds/_Index.cshtml",
-      "TargetPath": "Views\\Sounds\\_Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Sounds/IndexTest.cshtml",
-      "TargetPath": "Views\\Sounds\\IndexTest.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Schedules/Index.cshtml",
-      "TargetPath": "Views\\Schedules\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Sounds/SoundTest.cshtml",
-      "TargetPath": "Views\\Sounds\\SoundTest.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Areas/Create.cshtml",
-      "TargetPath": "Views\\Areas\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Agents/Create.cshtml",
-      "TargetPath": "Views\\Agents\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Shared/_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Schedules/Create.cshtml",
-      "TargetPath": "Views\\Schedules\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Shared/_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Shared/_LayoutLogin.cshtml",
-      "TargetPath": "Views\\Shared\\_LayoutLogin.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Sounds/Create.cshtml",
-      "TargetPath": "Views\\Sounds\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Home/Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Areas/_Index.cshtml",
-      "TargetPath": "Views\\Areas\\_Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/User/_Index.cshtml",
-      "TargetPath": "Views\\User\\_Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Schedules/Edit.cshtml",
-      "TargetPath": "Views\\Schedules\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Home/Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Areas/Edit.cshtml",
-      "TargetPath": "Views\\Areas\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Shared/MvcGrid/_Pager.cshtml",
-      "TargetPath": "Views\\Shared\\MvcGrid\\_Pager.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/User/Edit.cshtml",
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/User/Edit.cshtml",
       "TargetPath": "Views\\User\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Areas/Index.cshtml",
-      "TargetPath": "Views\\Areas\\Index.cshtml",
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/User/Create.cshtml",
+      "TargetPath": "Views\\User\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Agents/Index.cshtml",
-      "TargetPath": "Views\\Agents\\Index.cshtml",
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Shared/_LayoutLogin.cshtml",
+      "TargetPath": "Views\\Shared\\_LayoutLogin.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Agents/Edit.cshtml",
-      "TargetPath": "Views\\Agents\\Edit.cshtml",
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Home/Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/User/Index.cshtml",
-      "TargetPath": "Views\\User\\Index.cshtml",
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Schedules/Edit.cshtml",
+      "TargetPath": "Views\\Schedules\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Shared/MvcGrid/_Grid.cshtml",
-      "TargetPath": "Views\\Shared\\MvcGrid\\_Grid.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Sounds/Index.cshtml",
-      "TargetPath": "Views\\Sounds\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Sounds/_IndexTest.cshtml",
-      "TargetPath": "Views\\Sounds\\_IndexTest.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/User/Login.cshtml",
-      "TargetPath": "Views\\User\\Login.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Shared/Error.cshtml",
-      "TargetPath": "Views\\Shared\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/User/ChangePassword.cshtml",
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/User/ChangePassword.cshtml",
       "TargetPath": "Views\\User\\ChangePassword.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Schedules/_Index.cshtml",
-      "TargetPath": "Views\\Schedules\\_Index.cshtml",
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/User/_Index.cshtml",
+      "TargetPath": "Views\\User\\_Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Sounds/Edit.cshtml",
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Areas/Edit.cshtml",
+      "TargetPath": "Views\\Areas\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Schedules/Details.cshtml",
+      "TargetPath": "Views\\Schedules\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Sounds/Edit.cshtml",
       "TargetPath": "Views\\Sounds\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/aslani/Project/PlinePager/PlinePager/Views/Agents/_Index.cshtml",
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Sounds/Create.cshtml",
+      "TargetPath": "Views\\Sounds\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Sounds/IndexTest.cshtml",
+      "TargetPath": "Views\\Sounds\\IndexTest.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Agents/Create.cshtml",
+      "TargetPath": "Views\\Agents\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Sounds/SoundTest.cshtml",
+      "TargetPath": "Views\\Sounds\\SoundTest.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Shared/MvcGrid/_Pager.cshtml",
+      "TargetPath": "Views\\Shared\\MvcGrid\\_Pager.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Sounds/_IndexTest.cshtml",
+      "TargetPath": "Views\\Sounds\\_IndexTest.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Azans/Details.cshtml",
+      "TargetPath": "Views\\Azans\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Azans/Create.cshtml",
+      "TargetPath": "Views\\Azans\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Shared/_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Agents/_Index.cshtml",
       "TargetPath": "Views\\Agents\\_Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Shared/_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Schedules/Index.cshtml",
+      "TargetPath": "Views\\Schedules\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Areas/Create.cshtml",
+      "TargetPath": "Views\\Areas\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Shared/Error.cshtml",
+      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Home/Privacy.cshtml",
+      "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Areas/_Index.cshtml",
+      "TargetPath": "Views\\Areas\\_Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Areas/Index.cshtml",
+      "TargetPath": "Views\\Areas\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/User/Login.cshtml",
+      "TargetPath": "Views\\User\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Sounds/_Index.cshtml",
+      "TargetPath": "Views\\Sounds\\_Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/User/Index.cshtml",
+      "TargetPath": "Views\\User\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Shared/MvcGrid/_Grid.cshtml",
+      "TargetPath": "Views\\Shared\\MvcGrid\\_Grid.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Agents/Index.cshtml",
+      "TargetPath": "Views\\Agents\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Schedules/Create.cshtml",
+      "TargetPath": "Views\\Schedules\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Schedules/_Index.cshtml",
+      "TargetPath": "Views\\Schedules\\_Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Azans/Edit.cshtml",
+      "TargetPath": "Views\\Azans\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Agents/Edit.cshtml",
+      "TargetPath": "Views\\Agents\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Azans/Index.cshtml",
+      "TargetPath": "Views\\Azans\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Azans/_Index.cshtml",
+      "TargetPath": "Views\\Azans\\_Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/aslani/Desktop/PlinePager/PlinePager/Views/Sounds/Index.cshtml",
+      "TargetPath": "Views\\Sounds\\Index.cshtml",
       "FileKind": "mvc"
     }
   ],

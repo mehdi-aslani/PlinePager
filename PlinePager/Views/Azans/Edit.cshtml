@@ -1,166 +1,225 @@
 @model PlinePager.Models.TblAzan
 
 @{
-    ViewData["Title"] = "Edit";
+    var minuteAndSec = new List<SelectListItem>();
+    for (int i = 0; i < 60; i++)
+    {
+        minuteAndSec.Add(new SelectListItem()
+        {
+            Text = i.ToString("00"),
+            Value = i.ToString()
+        });
+    }
+
+    var hour = new List<SelectListItem>();
+    for (int i = 0; i < 24; i++)
+    {
+        hour.Add(new SelectListItem()
+        {
+            Text = i.ToString("00"),
+            Value = i.ToString()
+        });
+    }
+
+    var volume = new List<SelectListItem>();
+    for (int i = -10; i < 11; i++)
+    {
+        volume.Add(new SelectListItem()
+        {
+            Text = i.ToString(),
+            Value = i.ToString()
+        });
+    }
+
+    IEnumerable<TblArea> areas = ViewBag.Areas;
+    IEnumerable<TblSound> sounds = ViewBag.Sounds;
 }
 
-<h1>Edit</h1>
-
-<h4>TblAzan</h4>
-<hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-4 offset-4">
+        <h3>ویرایش زمان اذان</h3>
+        <hr/>
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" />
+                <input readonly="readonly" style="width: 150px;text-align: center;" id="date" asp-for="Date" class="form-control"/>
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
+            @* ********A*********  *@
+            <div class="mb-3" style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
+                <span style="font-size: 20px; background-color: #ffffff; padding: 0 1px;">
+                    اذان صبح
+                </span>
+            </div>
+            <div class="form-group form-check mb-3">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="EnableA" /> @Html.DisplayNameFor(model => model.EnableA)
+                    <input class="form-check-input" asp-for="EnableA"/> @Html.DisplayNameFor(model => model.EnableA)
                 </label>
             </div>
-            <div class="form-group">
-                <label asp-for="HourA" class="control-label"></label>
-                <input asp-for="HourA" class="form-control" />
+            <div class="form-group mb-3">
+                <label asp-for="HourA" class="control-label"></label>:
+                <select asp-for="HourA" class="" asp-items="@hour"></select>:
+                <select asp-for="MinuteA" class="" asp-items="@minuteAndSec"></select>:
+                <select asp-for="SecondA" class="" asp-items="@minuteAndSec"></select>
                 <span asp-validation-for="HourA" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MinuteA" class="control-label"></label>
-                <input asp-for="MinuteA" class="form-control" />
                 <span asp-validation-for="MinuteA" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SecondA" class="control-label"></label>
-                <input asp-for="SecondA" class="form-control" />
                 <span asp-validation-for="SecondA" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="SoundsBeforeA" class="control-label"></label>
-                <input asp-for="SoundsBeforeA" class="form-control" />
+                <select asp-for="SoundsBeforeA" class="form-select" asp-items="@(new SelectList(sounds, "Id", "Name"))"></select>
                 <span asp-validation-for="SoundsBeforeA" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="SoundsA" class="control-label"></label>
-                <input asp-for="SoundsA" class="form-control" />
+                <select asp-for="SoundsA" class="form-select" asp-items="@(new SelectList(sounds, "Id", "Name"))"></select>
                 <span asp-validation-for="SoundsA" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="SoundsAfterA" class="control-label"></label>
-                <input asp-for="SoundsAfterA" class="form-control" />
+                <select asp-for="SoundsAfterA" class="form-select" asp-items="@(new SelectList(sounds, "Id", "Name"))"></select>
                 <span asp-validation-for="SoundsAfterA" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="AreasA" class="control-label"></label>
-                <input asp-for="AreasA" class="form-control" />
+                <select asp-for="AreasA" class="form-select" asp-items="@(new SelectList(areas, "Id", "Name"))"></select>
                 <span asp-validation-for="AreasA" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="EnableB" /> @Html.DisplayNameFor(model => model.EnableB)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="HourB" class="control-label"></label>
-                <input asp-for="HourB" class="form-control" />
-                <span asp-validation-for="HourB" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MinuteB" class="control-label"></label>
-                <input asp-for="MinuteB" class="form-control" />
-                <span asp-validation-for="MinuteB" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SecondB" class="control-label"></label>
-                <input asp-for="SecondB" class="form-control" />
-                <span asp-validation-for="SecondB" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SoundsBeforeB" class="control-label"></label>
-                <input asp-for="SoundsBeforeB" class="form-control" />
-                <span asp-validation-for="SoundsBeforeB" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SoundsB" class="control-label"></label>
-                <input asp-for="SoundsB" class="form-control" />
-                <span asp-validation-for="SoundsB" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SoundsAfterB" class="control-label"></label>
-                <input asp-for="SoundsAfterB" class="form-control" />
-                <span asp-validation-for="SoundsAfterB" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AreasB" class="control-label"></label>
-                <input asp-for="AreasB" class="form-control" />
-                <span asp-validation-for="AreasB" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="EnableC" /> @Html.DisplayNameFor(model => model.EnableC)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="HourC" class="control-label"></label>
-                <input asp-for="HourC" class="form-control" />
-                <span asp-validation-for="HourC" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MinuteC" class="control-label"></label>
-                <input asp-for="MinuteC" class="form-control" />
-                <span asp-validation-for="MinuteC" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SecondC" class="control-label"></label>
-                <input asp-for="SecondC" class="form-control" />
-                <span asp-validation-for="SecondC" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SoundsBeforeC" class="control-label"></label>
-                <input asp-for="SoundsBeforeC" class="form-control" />
-                <span asp-validation-for="SoundsBeforeC" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SoundsC" class="control-label"></label>
-                <input asp-for="SoundsC" class="form-control" />
-                <span asp-validation-for="SoundsC" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SoundsAfterC" class="control-label"></label>
-                <input asp-for="SoundsAfterC" class="form-control" />
-                <span asp-validation-for="SoundsAfterC" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AreasC" class="control-label"></label>
-                <input asp-for="AreasC" class="form-control" />
-                <span asp-validation-for="AreasC" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="VolumeA" class="control-label"></label>
-                <input asp-for="VolumeA" class="form-control" />
+                <select asp-for="VolumeA" class="form-select-" asp-items="@volume"></select>
                 <span asp-validation-for="VolumeA" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @* ********B*********  *@
+            <div class="mb-3" style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
+                <span style="font-size: 20px; background-color: #ffffff; padding: 0 1px;">
+                    اذان ظهر
+                </span>
+            </div>
+            <div class="form-group form-check mb-3">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="EnableB"/> @Html.DisplayNameFor(model => model.EnableB)
+                </label>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="HourB" class="control-label"></label>:
+                <select asp-for="HourB" class="" asp-items="@hour"></select>:
+                <select asp-for="MinuteB" class="" asp-items="@minuteAndSec"></select>:
+                <select asp-for="SecondB" class="" asp-items="@minuteAndSec"></select>
+                <span asp-validation-for="HourB" class="text-danger"></span>
+                <span asp-validation-for="MinuteB" class="text-danger"></span>
+                <span asp-validation-for="SecondB" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="SoundsBeforeB" class="control-label"></label>
+                <select asp-for="SoundsBeforeB" class="form-select" asp-items="@(new SelectList(sounds, "Id", "Name"))"></select>
+                <span asp-validation-for="SoundsBeforeB" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="SoundsB" class="control-label"></label>
+                <select asp-for="SoundsB" class="form-select" asp-items="@(new SelectList(sounds, "Id", "Name"))"></select>
+                <span asp-validation-for="SoundsB" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="SoundsAfterB" class="control-label"></label>
+                <select asp-for="SoundsAfterB" class="form-select" asp-items="@(new SelectList(sounds, "Id", "Name"))"></select>
+                <span asp-validation-for="SoundsAfterB" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="AreasB" class="control-label"></label>
+                <select asp-for="AreasB" class="form-select" asp-items="@(new SelectList(areas, "Id", "Name"))"></select>
+                <span asp-validation-for="AreasB" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
                 <label asp-for="VolumeB" class="control-label"></label>
-                <input asp-for="VolumeB" class="form-control" />
+                <select asp-for="VolumeB" class="form-select-" asp-items="@volume"></select>
                 <span asp-validation-for="VolumeB" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @* ********C*********  *@
+            <div class="mb-3" style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
+                <span style="font-size: 20px; background-color: #ffffff; padding: 0 1px;">
+                    اذان مغرب
+                </span>
+            </div>
+            <div class="form-group form-check mb-3">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="EnableC"/> @Html.DisplayNameFor(model => model.EnableC)
+                </label>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="HourC" class="control-label"></label>:
+                <select asp-for="HourC" class="" asp-items="@hour"></select>:
+                <select asp-for="MinuteC" class="" asp-items="@minuteAndSec"></select>:
+                <select asp-for="SecondC" class="" asp-items="@minuteAndSec"></select>
+                <span asp-validation-for="HourC" class="text-danger"></span>
+                <span asp-validation-for="MinuteC" class="text-danger"></span>
+                <span asp-validation-for="SecondC" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="SoundsBeforeC" class="control-label"></label>
+                <select asp-for="SoundsBeforeC" class="form-select" asp-items="@(new SelectList(sounds, "Id", "Name"))"></select>
+                <span asp-validation-for="SoundsBeforeC" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="SoundsC" class="control-label"></label>
+                <select asp-for="SoundsC" class="form-select" asp-items="@(new SelectList(sounds, "Id", "Name"))"></select>
+                <span asp-validation-for="SoundsC" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="SoundsAfterC" class="control-label"></label>
+                <select asp-for="SoundsAfterC" class="form-select" asp-items="@(new SelectList(sounds, "Id", "Name"))"></select>
+                <span asp-validation-for="SoundsAfterC" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="AreasC" class="control-label"></label>
+                <select asp-for="AreasC" class="form-select" asp-items="@(new SelectList(areas, "Id", "Name"))"></select>
+                <span asp-validation-for="AreasC" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
                 <label asp-for="VolumeC" class="control-label"></label>
-                <input asp-for="VolumeC" class="form-control" />
+                <select asp-for="VolumeC" class="form-select-" asp-items="@volume"></select>
                 <span asp-validation-for="VolumeC" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+
+            <div class="form-group mb-3">
+                <input type="submit" value="ذخیره" class="btn btn-primary"/>
+                <a asp-action="Index" class="btn btn-danger">انصراف</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script type="text/javascript">
+    $(function(){
+        $(".form-select").select2({
+            dir: "rtl",
+            multiple: true,
+            placeholder: 'گزینه ای را انتخاب کنید...',
+            allowClear: true
+        });
+        $('#date').datepicker({
+            isRTL: true,
+            dateFormat: "yy/mm/dd"
+        });
+        $("#SoundsBeforeA").val(JSON.parse('@Html.Raw(Model.SoundsBeforeA)')).trigger('change');
+        $("#SoundsA").val(JSON.parse('@Html.Raw(Model.SoundsA)')).trigger('change');
+        $("#SoundsBeforeA").val(JSON.parse('@Html.Raw(Model.SoundsBeforeA)')).trigger('change');
+        $("#AreasA").val(JSON.parse('@Html.Raw(Model.AreasA)')).trigger('change');
+        
+        $("#SoundsBeforeB").val(JSON.parse('@Html.Raw(Model.SoundsBeforeB)')).trigger('change');
+        $("#SoundsB").val(JSON.parse('@Html.Raw(Model.SoundsBeforeB)')).trigger('change');
+        $("#SoundsBeforeB").val(JSON.parse('@Html.Raw(Model.SoundsBeforeB)')).trigger('change');
+        $("#AreasB").val(JSON.parse('@Html.Raw(Model.AreasB)')).trigger('change');
+                
+        $("#SoundsBeforeC").val(JSON.parse('@Html.Raw(Model.SoundsBeforeC)')).trigger('change');
+        $("#SoundsC").val(JSON.parse('@Html.Raw(Model.SoundsC)')).trigger('change');
+        $("#SoundsBeforeC").val(JSON.parse('@Html.Raw(Model.SoundsBeforeC)')).trigger('change');
+        $("#AreasC").val(JSON.parse('@Html.Raw(Model.AreasC)')).trigger('change');
+    });
+    </script>
+}

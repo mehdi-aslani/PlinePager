@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using Newtonsoft.Json;
@@ -26,6 +27,7 @@ namespace PlinePager.Tools
         }
 
         public static bool ForceReload { get; set; } = true;
+        public static bool ForceReloadAzan { get; set; } = true;
 
         public static void CreateAgents(IEnumerable<TblAgent> agents)
         {
@@ -150,7 +152,7 @@ namespace PlinePager.Tools
                 return ex.ToString();
             }
         }
-        
+
         public static bool Hangup(string agent)
         {
             bool r = false;
@@ -210,7 +212,7 @@ namespace PlinePager.Tools
             var newDate = dta.AddSeconds(seconds);
             return newDate;
         }
-        
+
         public static double PersianDateDiffToSeconds(string persianDateA, int hourA, int minuteA, string persianDateB,
             int hourB,
             int minuteB)
@@ -232,6 +234,20 @@ namespace PlinePager.Tools
 
                 double different = (dateTimeB - dateTimeA).TotalSeconds;
                 return different;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public static int GetWavSoundLength(string fileName)
+        {
+            try
+            {
+                string result = RunCmd("/usr/bin/soxi", "-D " + fileName);
+                var f= float.Parse(result.Trim().Replace("\n", ""));
+                return (int) f;
             }
             catch
             {

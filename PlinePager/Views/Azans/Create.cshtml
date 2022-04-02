@@ -21,6 +21,16 @@
         });
     }
 
+    var volume = new List<SelectListItem>();
+    for (int i = -10; i < 11; i++)
+    {
+        volume.Add(new SelectListItem()
+        {
+            Text = i.ToString(),
+            Value = i.ToString()
+        });
+    }
+
     IEnumerable<TblArea> areas = ViewBag.Areas;
     IEnumerable<TblSound> sounds = ViewBag.Sounds;
 }
@@ -33,7 +43,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group mb-3">
                 <label asp-for="Date" class="control-label"></label>
-                <input style="width: 150px;text-align: center;" id="date" asp-for="Date" class="form-control"/>
+                <input readonly="readonly" style="width: 150px;text-align: center;" id="date" asp-for="Date" class="form-control"/>
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
             @* ********A*********  *@
@@ -76,6 +86,11 @@
                 <select asp-for="AreasA" class="form-select" asp-items="@(new SelectList(areas, "Id", "Name"))"></select>
                 <span asp-validation-for="AreasA" class="text-danger"></span>
             </div>
+            <div class="form-group mb-3">
+                <label asp-for="VolumeA" class="control-label"></label>
+                <select asp-for="VolumeA" class="form-select-" asp-items="@volume"></select>
+                <span asp-validation-for="VolumeA" class="text-danger"></span>
+            </div>
             @* ********B*********  *@
             <div class="mb-3" style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
                 <span style="font-size: 20px; background-color: #ffffff; padding: 0 1px;">
@@ -115,6 +130,11 @@
                 <label asp-for="AreasB" class="control-label"></label>
                 <select asp-for="AreasB" class="form-select" asp-items="@(new SelectList(areas, "Id", "Name"))"></select>
                 <span asp-validation-for="AreasB" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="VolumeB" class="control-label"></label>
+                <select asp-for="VolumeB" class="form-select-" asp-items="@volume"></select>
+                <span asp-validation-for="VolumeB" class="text-danger"></span>
             </div>
             @* ********C*********  *@
             <div class="mb-3" style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
@@ -156,9 +176,15 @@
                 <select asp-for="AreasC" class="form-select" asp-items="@(new SelectList(areas, "Id", "Name"))"></select>
                 <span asp-validation-for="AreasC" class="text-danger"></span>
             </div>
+            <div class="form-group mb-3">
+                <label asp-for="VolumeC" class="control-label"></label>
+                <select asp-for="VolumeC" class="form-select-" asp-items="@volume"></select>
+                <span asp-validation-for="VolumeC" class="text-danger"></span>
+            </div>
 
             <div class="form-group mb-3">
-                <input type="submit" value="Create" class="btn btn-primary"/>
+                <input type="submit" value="ذخیره" class="btn btn-primary"/>
+                <a asp-action="Index" class="btn btn-danger">انصراف</a>
             </div>
         </form>
     </div>
@@ -180,6 +206,7 @@
             isRTL: true,
             dateFormat: "yy/mm/dd"
         });
+        $(".form-select").val(null).trigger('change');
     });
     </script>
 }

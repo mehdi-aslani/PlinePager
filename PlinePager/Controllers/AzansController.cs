@@ -2,15 +2,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using PlinePager.Data;
 using PlinePager.Models;
+using PlinePager.Tools;
 
 namespace PlinePager.Controllers
 {
+    [Authorize]
     public class AzansController : Controller
     {
         private readonly PlinePagerContext _context;
@@ -19,7 +22,7 @@ namespace PlinePager.Controllers
         {
             _context = context;
         }
-        
+
         private IEnumerable<TblArea> AreasList => _context.TblAreas.ToList();
         private IEnumerable<TblSound> SoundsList => _context.TblSounds.Where(t => t.Enable == true).ToList();
 
@@ -27,7 +30,9 @@ namespace PlinePager.Controllers
         // GET: Azans
         public async Task<IActionResult> Index()
         {
-            return View(await _context.TblAzans.ToListAsync());
+            if (HttpContext.Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+                return PartialView("_Index", _context.Set<TblAzan>());
+            return View();
         }
 
         // GET: Azans/Details/5
@@ -53,7 +58,15 @@ namespace PlinePager.Controllers
         {
             ViewBag.Areas = AreasList;
             ViewBag.Sounds = SoundsList;
-            return View();
+            return View(new TblAzan()
+            {
+                VolumeA = 0,
+                VolumeB = 0,
+                VolumeC = 0,
+                EnableA = true,
+                EnableB = true,
+                EnableC = true,
+            });
         }
 
         // POST: Azans/Create
@@ -62,6 +75,18 @@ namespace PlinePager.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
+            long[] SoundsBeforeA,
+            long[] SoundsA,
+            long[] SoundsAfterA,
+            long[] AreasA,
+            long[] SoundsBeforeB,
+            long[] SoundsB,
+            long[] SoundsAfterB,
+            long[] AreasB,
+            long[] SoundsBeforeC,
+            long[] SoundsC,
+            long[] SoundsAfterC,
+            long[] AreasC,
             [Bind(
                 "Id,Date,EnableA,HourA,MinuteA,SecondA,SoundsBeforeA,SoundsA,SoundsAfterA,AreasA,EnableB," +
                 "HourB,MinuteB,SecondB,SoundsBeforeB,SoundsB,SoundsAfterB,AreasB,EnableC,HourC,MinuteC,SecondC,SoundsBeforeC," +
@@ -70,10 +95,34 @@ namespace PlinePager.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(tblAzan);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (await _context.TblAzans.AnyAsync(m => m.Date == tblAzan.Date))
+                {
+                    ModelState.AddModelError("Date", "تاریخ وارد شده تکراری می باشد");
+                }
+                else
+                {
+                    tblAzan.SoundsBeforeA = JsonConvert.SerializeObject(SoundsBeforeA);
+                    tblAzan.SoundsA = JsonConvert.SerializeObject(SoundsA);
+                    tblAzan.SoundsAfterA = JsonConvert.SerializeObject(SoundsAfterA);
+                    tblAzan.AreasA = JsonConvert.SerializeObject(AreasA);
+
+                    tblAzan.SoundsBeforeB = JsonConvert.SerializeObject(SoundsBeforeB);
+                    tblAzan.SoundsB = JsonConvert.SerializeObject(SoundsB);
+                    tblAzan.SoundsAfterB = JsonConvert.SerializeObject(SoundsAfterB);
+                    tblAzan.AreasB = JsonConvert.SerializeObject(AreasB);
+
+                    tblAzan.SoundsBeforeC = JsonConvert.SerializeObject(SoundsBeforeC);
+                    tblAzan.SoundsC = JsonConvert.SerializeObject(SoundsC);
+                    tblAzan.SoundsAfterC = JsonConvert.SerializeObject(SoundsAfterC);
+                    tblAzan.AreasC = JsonConvert.SerializeObject(AreasC);
+
+                    _context.Add(tblAzan);
+                    await _context.SaveChangesAsync();
+                    Globals.ForceReloadAzan = true;
+                    return RedirectToAction(nameof(Index));
+                }
             }
+
             ViewBag.Areas = AreasList;
             ViewBag.Sounds = SoundsList;
             return View(tblAzan);
@@ -92,6 +141,7 @@ namespace PlinePager.Controllers
             {
                 return NotFound();
             }
+
             ViewBag.Areas = AreasList;
             ViewBag.Sounds = SoundsList;
             return View(tblAzan);
@@ -103,6 +153,18 @@ namespace PlinePager.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(long id,
+            long[] SoundsBeforeA,
+            long[] SoundsA,
+            long[] SoundsAfterA,
+            long[] AreasA,
+            long[] SoundsBeforeB,
+            long[] SoundsB,
+            long[] SoundsAfterB,
+            long[] AreasB,
+            long[] SoundsBeforeC,
+            long[] SoundsC,
+            long[] SoundsAfterC,
+            long[] AreasC,
             [Bind("Id,Date,EnableA,HourA,MinuteA,SecondA,SoundsBeforeA" +
                   ",SoundsA,SoundsAfterA,AreasA,EnableB,HourB,MinuteB,SecondB,SoundsBeforeB," +
                   "SoundsB,SoundsAfterB,AreasB,EnableC,HourC,MinuteC,SecondC,SoundsBeforeC,SoundsC," +
@@ -118,43 +180,40 @@ namespace PlinePager.Controllers
             {
                 try
                 {
-                    _context.Update(tblAzan);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!TblAzanExists(tblAzan.Id))
+                    if (await _context.TblAzans.AnyAsync(m => m.Date == tblAzan.Date && m.Id != tblAzan.Id))
                     {
-                        return NotFound();
+                        ModelState.AddModelError("Date", "تاریخ وارد شده تکراری می باشد");
                     }
                     else
                     {
-                        throw;
+                        tblAzan.SoundsBeforeA = JsonConvert.SerializeObject(SoundsBeforeA);
+                        tblAzan.SoundsA = JsonConvert.SerializeObject(SoundsA);
+                        tblAzan.SoundsAfterA = JsonConvert.SerializeObject(SoundsAfterA);
+                        tblAzan.AreasA = JsonConvert.SerializeObject(AreasA);
+
+                        tblAzan.SoundsBeforeB = JsonConvert.SerializeObject(SoundsBeforeB);
+                        tblAzan.SoundsB = JsonConvert.SerializeObject(SoundsB);
+                        tblAzan.SoundsAfterB = JsonConvert.SerializeObject(SoundsAfterB);
+                        tblAzan.AreasB = JsonConvert.SerializeObject(AreasB);
+
+                        tblAzan.SoundsBeforeC = JsonConvert.SerializeObject(SoundsBeforeC);
+                        tblAzan.SoundsC = JsonConvert.SerializeObject(SoundsC);
+                        tblAzan.SoundsAfterC = JsonConvert.SerializeObject(SoundsAfterC);
+                        tblAzan.AreasC = JsonConvert.SerializeObject(AreasC);
+                        _context.Update(tblAzan);
+                        await _context.SaveChangesAsync();
+                        Globals.ForceReloadAzan = true;
+                        return RedirectToAction(nameof(Index));
                     }
                 }
-
-                return RedirectToAction(nameof(Index));
+                catch (DbUpdateConcurrencyException)
+                {
+                    ModelState.AddModelError("", "خطا در ذحیره اطلاعات. لطفا دوباره سعی کنید");
+                }
             }
+
             ViewBag.Areas = AreasList;
             ViewBag.Sounds = SoundsList;
-            return View(tblAzan);
-        }
-
-        // GET: Azans/Delete/5
-        public async Task<IActionResult> Delete(long? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tblAzan = await _context.TblAzans
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (tblAzan == null)
-            {
-                return NotFound();
-            }
-
             return View(tblAzan);
         }
 
@@ -163,10 +222,34 @@ namespace PlinePager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long id)
         {
-            var tblAzan = await _context.TblAzans.FindAsync(id);
-            _context.TblAzans.Remove(tblAzan);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                var tblAzan = await _context.TblAzans.FindAsync(id);
+                _context.TblAzans.Remove(tblAzan);
+                int result = await _context.SaveChangesAsync();
+                if (result > 0)
+                {
+                    Globals.ForceReloadAzan = true;
+                    return Json(new
+                    {
+                        error = ""
+                    });
+                }
+                else
+                {
+                    return Json(new
+                    {
+                        error = "خطا در حذف اذان. لطفا با راهبر سیستم تماس بگیرید."
+                    });
+                }
+            }
+            catch
+            {
+                return Json(new
+                {
+                    error = "خطا در حذف اذان. لطفا با راهبر سیستم تماس بگیرید."
+                });
+            }
         }
 
         private bool TblAzanExists(long id)

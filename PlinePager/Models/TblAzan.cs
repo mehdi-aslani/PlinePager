@@ -55,8 +55,13 @@ namespace PlinePager.Models
         [Range(0, 59, ErrorMessage = "بازه انتخاب شده {0} باید بین {1} تا {2} باشد")]
         public int SecondB { get; set; }
 
+        [Display(Name = "صوت قبل از اذان" )]
         public string SoundsBeforeB { get; set; }
+        
+        [Display(Name = "صوت اذان" )]
         public string SoundsB { get; set; }
+        
+        [Display(Name = "صوت بعد از اذان" )]
         public string SoundsAfterB { get; set; }
         
         [Display(Name = "ناحیه های جهت پخش اذان ظهر" )]
@@ -66,6 +71,7 @@ namespace PlinePager.Models
         [Required(ErrorMessage = "{0} نمی تواند خالی باشد")]
         public bool EnableC { get; set; }
 
+        [Display(Name = "ساعت" )]
         [Range(0, 23, ErrorMessage = "بازه انتخاب شده {0} باید بین {1} تا {2} باشد")]
         public int HourC { get; set; }
 
@@ -75,22 +81,29 @@ namespace PlinePager.Models
         [Range(0, 59, ErrorMessage = "بازه انتخاب شده {0} باید بین {1} تا {2} باشد")]
         public int SecondC { get; set; }
 
+        [Display(Name = "صوت قبل از اذان" )]
         public string SoundsBeforeC { get; set; }
+        
+        [Display(Name = "صوت اذان" )]
         public string SoundsC { get; set; }
+        
+        [Display(Name = "صوت قبل از اذان" )]
         public string SoundsAfterC { get; set; }
         
         [Display(Name = "ناحیه های جهت پخش اذان مغرب" )]
         public string AreasC { get; set; }
         
         
-
         [Range(-10, 10, ErrorMessage = "بازه انتخاب شده {0} باید بین {1} تا {2} باشد")]
+        [Display(Name = "حجم صدای صبح")]
         public int VolumeA { get; set; } = 0;
 
         [Range(-10, 10, ErrorMessage = "بازه انتخاب شده {0} باید بین {1} تا {2} باشد")]
+        [Display(Name = "حجم صدای ظهر")]
         public int VolumeB { get; set; } = 0;
 
         [Range(-10, 10, ErrorMessage = "بازه انتخاب شده {0} باید بین {1} تا {2} باشد")]
+        [Display(Name = "حجم صدای مغرب")]
         public int VolumeC { get; set; } = 0;
 
         internal static void OnModelCreating(ModelBuilder builder)

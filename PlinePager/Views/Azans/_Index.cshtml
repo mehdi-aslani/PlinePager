@@ -1,0 +1,71 @@
+@using PlinePager.Tools
+@model IEnumerable<PlinePager.Models.TblAzan>
+
+
+@(Html
+    .Grid(Model)
+    .Build(columns =>
+    {
+        columns.Add(model => model.Date).Titled("تاریخ اذان");
+        columns.Add(model => model.EnableA).Titled("صبح فعال/غیرفعال").UsingFilterOptions(new[]
+        {
+            new SelectListItem(),
+            new SelectListItem {Value = "true", Text = "فعال"},
+            new SelectListItem {Value = "false", Text = "غیرفعال"}
+        }).Encoded(false).RenderedAs(model =>
+            model.EnableA ? "فعال" : "غیر فعال"
+            );
+        columns.Add().Titled("ساعت اذان صبح").RenderedAs(m =>
+            $"{m.HourA:00}:{m.MinuteA:00}:{m.SecondA:00}"
+            );
+        columns.Add(model => model.EnableB).Titled("ظهر فعال/غیرفعال").UsingFilterOptions(new[]
+        {
+            new SelectListItem(),
+            new SelectListItem {Value = "true", Text = "فعال"},
+            new SelectListItem {Value = "false", Text = "غیرفعال"}
+        }).Encoded(false).RenderedAs(model =>
+            model.EnableB ? "فعال" : "غیر فعال"
+            );
+        columns.Add().Titled("ساعت اذان ظهر").RenderedAs(m =>
+            $"{m.HourB:00}:{m.MinuteB:00}:{m.SecondB:00}"
+            );
+        columns.Add(model => model.EnableC).Titled("مغرب فعال/غیرفعال").UsingFilterOptions(new[]
+        {
+            new SelectListItem(),
+            new SelectListItem {Value = "true", Text = "فعال"},
+            new SelectListItem {Value = "false", Text = "غیرفعال"}
+        }).Encoded(false).RenderedAs(model =>
+            model.EnableC ? "فعال" : "غیر فعال"
+            );
+        columns.Add().Titled("ساعت اذان مغرب").RenderedAs(m =>
+            $"{m.HourC:00}:{m.MinuteC:00}:{m.SecondC:00}"
+            );
+
+        columns.Add().Titled("جزییات").Encoded(false).RenderedAs(model =>
+            Html.ActionLink("جزییات", "Details", "Azans", new {id = model.Id},
+                new {@class = "btn btn-success btn-sm"})
+            );
+        columns.Add().Titled("ویرایش").Encoded(false).RenderedAs(model =>
+            Html.ActionLink("ویرایش", "Edit", "Azans", new {id = model.Id},
+                new {@class = "btn btn-warning btn-sm"})
+            );
+
+        columns.Add().Titled("حذف").Encoded(false).RenderedAs(model =>
+            PlineHelper.ActiveLinkAjax(
+                $"javascript:DeleteItem('{model.Id}');", "حذف", "btn btn-danger btn-sm")
+            );
+    })
+    .Empty("هیچ ایتمی وجود ندارد")
+    .Sortable()
+    .Filterable()
+    .Using(GridFilterMode.Row)
+    .Pageable(pager =>
+    {
+        pager.PageSizes = new Dictionary<Int32, String> {{10, "10"}, {20, "20"}, {50, "50"}, {0, "همه"}};
+        pager.ShowPageSizes = true;
+        pager.PagesToDisplay = 5;
+        pager.CurrentPage = 1;
+        pager.RowsPerPage = 10;
+    })
+    .Css("table table-secondary table-striped gCol")
+    )

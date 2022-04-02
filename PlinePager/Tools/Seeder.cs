@@ -18,7 +18,9 @@ namespace PlinePager.Tools
     public class Seeder
     {
         private Timer _timerSchedule;
+        private Timer _timerAzan;
         private const int TimeSchedule = 10;
+        private const int TimeAzan = 1;
         private Timer _timerUpdate;
         private const int TimeUpdate = 1;
         private List<TblSchedule> _lstSchedule;
@@ -34,6 +36,21 @@ namespace PlinePager.Tools
 
         public async void DatabaseInit()
         {
+            if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "before-azans")) == false)
+            {
+                Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "before-azans"));
+            }
+
+            if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "azans")) == false)
+            {
+                Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "azans"));
+            }
+
+            if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "after-azans")) == false)
+            {
+                Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "after-azans"));
+            }
+
             if (_context.TblAreas.LongCount() == 0)
             {
                 _context.TblAreas.Add(new PlinePager.Models.TblArea()
@@ -50,9 +67,117 @@ namespace PlinePager.Tools
             _timerSchedule = new Timer() {Interval = TimeSchedule * 1000, Enabled = true};
             _timerSchedule.Elapsed += TimerOnElapsed;
 
+            _timerAzan = new Timer() {Interval = TimeAzan * 1000, Enabled = true};
+            _timerAzan.Elapsed += TimerAzanOnElapsed;
+
             _timerUpdate = new() {Interval = TimeUpdate * 1000, Enabled = true};
             _timerUpdate.Elapsed += TimerOnElapsedUpdate;
             _timerUpdate.Start();
+        }
+
+        private void CalcTime(TblAzan azan)
+        {
+            var beforeAzanDir = Directory.GetFiles(Path.Combine("wwwroot", "before-azans"));
+            var azanDir = Directory.GetFiles(Path.Combine("wwwroot", "azans"));
+            var afterAzanDir = Directory.GetFiles(Path.Combine("wwwroot", "after-azans"));
+
+            DateTime cur = DateTime.Now;
+            var bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsBeforeA);
+            var la = 0;
+            var azansSound = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
+            azansSound.ForEach(i => { la += i.Length; });
+            if (azansSound.Count == 0)
+            {
+                Random rnd = new Random();
+                azan.SoundsA = azanDir[rnd.Next(azanDir.Length - 1)];
+            }
+
+            DateTime dt = new DateTime(cur.Year, cur.Month, cur.Day, azan.HourA, azan.MinuteA, azan.SecondA);
+            dt = dt.AddSeconds(-1 * la);
+            azan.HourA = dt.Hour;
+            azan.MinuteA = dt.Minute;
+            azan.SecondA = dt.Second;
+
+            bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsBeforeB);
+            la = 0;
+            azansSound = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
+            azansSound.ForEach(i => { la += i.Length; });
+            if (azansSound.Count == 0)
+            {
+                Random rnd = new Random();
+                azan.SoundsB = azanDir[rnd.Next(azanDir.Length - 1)];
+            }
+
+            dt = new DateTime(cur.Year, cur.Month, cur.Day, azan.HourB, azan.MinuteB, azan.SecondB);
+            dt = dt.AddSeconds(-1 * la);
+            azan.HourB = dt.Hour;
+            azan.MinuteB = dt.Minute;
+            azan.SecondB = dt.Second;
+
+            bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsBeforeC);
+            la = 0;
+            azansSound = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
+            azansSound.ForEach(i => { la += i.Length; });
+            if (azansSound.Count == 0)
+            {
+                Random rnd = new Random();
+                azan.SoundsC = azanDir[rnd.Next(azanDir.Length - 1)];
+            }
+
+            dt = new DateTime(cur.Year, cur.Month, cur.Day, azan.HourC, azan.MinuteC, azan.SecondC);
+            dt = dt.AddSeconds(-1 * la);
+            azan.HourC = dt.Hour;
+            azan.MinuteC = dt.Minute;
+            azan.SecondC = dt.Second;
+        }
+
+        private string _azanUpdate = "";
+        private TblAzan _tblAzan;
+
+        private void TimerAzanOnElapsed(object sender, ElapsedEventArgs e)
+        {
+            _timerAzan.Stop();
+            var dt = DateTime.Now;
+            var hour = dt.Hour;
+            var minute = dt.Minute;
+            var second = dt.Second;
+            var p = new PersianCalendar();
+            var date = $"{p.GetYear(dt):0000}/{p.GetMonth(dt):00}/{p.GetDayOfMonth(dt):00}";
+
+            if (Globals.ForceReloadAzan || string.Compare(_azanUpdate, date, StringComparison.Ordinal) < 0)
+            {
+                Globals.ForceReloadAzan = false;
+                _azanUpdate = date;
+                _tblAzan = _context.TblAzans.FirstOrDefault(m => m.Date == date);
+                if (_tblAzan == null)
+                {
+                    _timerAzan.Start();
+                    return;
+                }
+
+                CalcTime(_tblAzan);
+            }
+
+            if (_tblAzan == null)
+            {
+                _timerAzan.Start();
+                return;
+            }
+
+            if (_tblAzan.EnableA && _tblAzan.HourA == hour && _tblAzan.MinuteA == minute &&
+                second - 1 <= _tblAzan.SecondA && _tblAzan.SecondA <= second + 1)
+            {
+            }
+            else if (_tblAzan.EnableB && _tblAzan.HourB == hour && _tblAzan.MinuteB == minute &&
+                     second - 1 <= _tblAzan.SecondB && _tblAzan.SecondB <= second + 1)
+            {
+            }
+            else if (_tblAzan.EnableC && _tblAzan.HourC == hour && _tblAzan.MinuteC == minute &&
+                     second - 1 <= _tblAzan.SecondC && _tblAzan.SecondC <= second + 1)
+            {
+            }
+
+            _timerAzan.Start();
         }
 
         private void TimerOnElapsedUpdate(object sender, ElapsedEventArgs e)
@@ -179,7 +304,7 @@ namespace PlinePager.Tools
                 }
 
                 Console.WriteLine(item.Name);
-                CallFileOnArea(item);
+                CallFileOnScheduleArea(item);
 
                 if (item.IntervalEnable)
                 {
@@ -213,7 +338,7 @@ namespace PlinePager.Tools
             _timerSchedule.Start();
         }
 
-        public string CallFileOnArea(TblSchedule schedule)
+        private string CallFileOnScheduleArea(TblSchedule schedule)
         {
             try
             {
@@ -268,6 +393,155 @@ namespace PlinePager.Tools
             {
                 return ex.ToString();
             }
+        }
+
+        private string CallFileAzanOnArea(TblAzan azan, int time)
+        {
+            var sounds = string.Empty;
+            var areas = string.Empty;
+            var beforeAzanDir = Directory.GetFiles(Path.Combine("wwwroot", "before-azans"));
+            var azanDir = Directory.GetFiles(Path.Combine("wwwroot", "azans"));
+            var afterAzanDir = Directory.GetFiles(Path.Combine("wwwroot", "after-azans"));
+            Random rnd = new Random(DateTime.Now.Millisecond);
+
+            switch (time)
+            {
+                case 0:
+                {
+                    var localSounds = string.Empty;
+                    /*****************************/
+                    var bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsBeforeA);
+                    var listSounds = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
+
+                    listSounds.ForEach(i =>
+                    {
+                        var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
+                        if (sound.ToLower().EndsWith(".wav"))
+                        {
+                            sounds += $"{sound[..^4]}&";
+                        }
+                    });
+                    if (sounds == string.Empty)
+                    {
+                        rnd = new Random(DateTime.Now.Millisecond);
+                        sounds = azanDir[rnd.Next(azanDir.Length - 1)];
+                    }
+                    else
+                    {
+                        sounds = sounds[..^1];
+                    }
+
+                    /*******************************************************/
+                    bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsA);
+                    listSounds = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
+
+                    listSounds.ForEach(i =>
+                    {
+                        var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
+                        if (sound.ToLower().EndsWith(".wav"))
+                        {
+                            sounds += $"{sound[..^4]}&";
+                        }
+                    });
+                    if (sounds == string.Empty)
+                    {
+                        rnd = new Random(DateTime.Now.Millisecond);
+                        sounds = azanDir[rnd.Next(azanDir.Length - 1)];
+                    }
+                    else
+                    {
+                        sounds = sounds[..^1];
+                    }
+
+                    /*******************************************************/
+                    bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsAfterA);
+                    listSounds = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
+
+                    listSounds.ForEach(i =>
+                    {
+                        var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
+                        if (sound.ToLower().EndsWith(".wav"))
+                        {
+                            sounds += $"{sound[..^4]}&";
+                        }
+                    });
+                    if (sounds == string.Empty)
+                    {
+                        sounds = azanDir[rnd.Next(azanDir.Length - 1)];
+                    }
+                    else
+                    {
+                        sounds = sounds[..^1];
+                    }
+                }
+                    break;
+
+                case 1:
+                {
+                }
+                    break;
+
+                case 2:
+                {
+                }
+                    break;
+            }
+
+            //
+            // try
+            // {
+            //     var sounds = JsonConvert.DeserializeObject<long[]>(schedule.Sounds);
+            //     var tblSounds = _context.TblSounds.Where(t => sounds.Contains(t.Id)).ToList();
+            //     var soundsPath = string.Empty;
+            //     tblSounds.ForEach(sound =>
+            //     {
+            //         if (sound.FileName.ToLower().EndsWith(".wav"))
+            //         {
+            //             //sound.FileName = sound.FileName.Substring(0, sound.FileName.Length - 4);
+            //             soundsPath += Path.Combine(Directory.GetCurrentDirectory(), "wwwroot",
+            //                 $"{sound.FileName[..^4]}&");
+            //         }
+            //         else
+            //         {
+            //             soundsPath += $"{sound.FileName}&";
+            //         }
+            //     });
+            //     if (soundsPath != string.Empty)
+            //     {
+            //         soundsPath = soundsPath[..^1];
+            //     }
+            //
+            //     var areas = JsonConvert.DeserializeObject<long[]>(schedule.Areas);
+            //     var tblAgents = _context.TblAgents.Where(t => areas.Contains(t.AreaId)).ToList();
+            //     var agentsList = string.Empty;
+            //     tblAgents.ForEach(agent =>
+            //     {
+            //         Globals.Hangup(agent.Username);
+            //         agentsList += agent.Agent == Globals.AgentType.Sip
+            //             ? $"SIP/{agent.Username}&"
+            //             : $"CONSOLE/{agent.Username}&";
+            //     });
+            //     if (agentsList != string.Empty)
+            //     {
+            //         agentsList = agentsList[..^1];
+            //     }
+            //
+            //     var strCall = "Channel: Local/*0000@pline-page\n" +
+            //                   $"Setvar: users={agentsList}\n" +
+            //                   $"Setvar: vol={schedule.Volume}\n" +
+            //                   "CallerID: \"00000000\"<pline-page>\n" +
+            //                   "Application: Playback\n" +
+            //                   $"Data: {soundsPath}\n";
+            //     var path = $"/var/spool/asterisk/outgoing/{Globals.GenerateId()}.call";
+            //     File.WriteAllText(path, strCall, Encoding.ASCII);
+            //     Globals.RunCmd("/usr/bin/chmod", "0777 " + path);
+            //     return string.Empty;
+            // }
+            // catch (Exception ex)
+            // {
+            //     return ex.ToString();
+            // }
+            return "";
         }
     }
 }

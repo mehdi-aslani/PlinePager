@@ -27,6 +27,8 @@ namespace PlinePager.Models
         [Display(Name = "فعال/غیرفعال")]
         public bool Enable { get; set; } = true;
         
+        public int Length { get; set; }
+        
         public static void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<TblSound>().HasIndex(t => t.Name).IsUnique(true);

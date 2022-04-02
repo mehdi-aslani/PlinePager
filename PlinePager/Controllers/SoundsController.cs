@@ -96,6 +96,7 @@ namespace PlinePager.Controllers
                 }
 
                 tblSound.FileName = Path.Combine(datePath, uniqueName + ".wav");
+                tblSound.Length = Globals.GetWavSoundLength(Path.Combine(path, uniqueName + ".wav"));
                 _context.Add(tblSound);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -144,6 +145,8 @@ namespace PlinePager.Controllers
 
                 try
                 {
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", tblSound.FileName);
+                    tblSound.Length = Globals.GetWavSoundLength(Path.Combine(path));
                     _context.Update(tblSound);
                     await _context.SaveChangesAsync();
                 }
