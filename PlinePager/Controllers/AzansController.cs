@@ -28,7 +28,7 @@ namespace PlinePager.Controllers
 
 
         // GET: Azans
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             if (HttpContext.Request.Headers["X-Requested-With"] == "XMLHttpRequest")
                 return PartialView("_Index", _context.Set<TblAzan>());
