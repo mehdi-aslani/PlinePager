@@ -51,7 +51,7 @@ namespace PlinePager.Tools
                 Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "after-azans"));
             }
 
-            if (_context.TblAreas.LongCount() == 0)
+            if (!_context.TblAreas.Any())
             {
                 _context.TblAreas.Add(new PlinePager.Models.TblArea()
                 {
@@ -77,6 +77,7 @@ namespace PlinePager.Tools
 
         private void CalcTime(TblAzan azan)
         {
+            Random rnd = new Random();
             var beforeAzanDir = Directory.GetFiles(Path.Combine("wwwroot", "before-azans"));
             var azanDir = Directory.GetFiles(Path.Combine("wwwroot", "azans"));
             var afterAzanDir = Directory.GetFiles(Path.Combine("wwwroot", "after-azans"));
@@ -85,7 +86,20 @@ namespace PlinePager.Tools
             var bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsBeforeA);
             var la = 0;
             var azansSound = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
-            azansSound.ForEach(i => { la += i.Length; });
+            if (azansSound.Count == 0)
+            {
+                if (beforeAzanDir.Length > 0)
+                {
+                    var sound = Path.Combine(Directory.GetCurrentDirectory(),
+                        beforeAzanDir[rnd.Next(beforeAzanDir.Length - 1)]);
+                    la = Globals.GetWavSoundLength(sound);
+                    _tblAzan.SoundsBeforeA = $"f:{sound[..^4]}";
+                }
+            }
+            else
+            {
+                azansSound.ForEach(i => { la += i.Length; });
+            }
 
             DateTime dt = new DateTime(cur.Year, cur.Month, cur.Day, azan.HourA, azan.MinuteA, azan.SecondA);
             dt = dt.AddSeconds(-1 * la);
@@ -96,7 +110,20 @@ namespace PlinePager.Tools
             bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsBeforeB);
             la = 0;
             azansSound = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
-            azansSound.ForEach(i => { la += i.Length; });
+            if (azansSound.Count == 0)
+            {
+                if (beforeAzanDir.Length > 0)
+                {
+                    var sound = Path.Combine(Directory.GetCurrentDirectory(),
+                        beforeAzanDir[rnd.Next(beforeAzanDir.Length - 1)]);
+                    la = Globals.GetWavSoundLength(sound);
+                    _tblAzan.SoundsBeforeB = $"{sound[..^4]}";
+                }
+            }
+            else
+            {
+                azansSound.ForEach(i => { la += i.Length; });
+            }
 
             dt = new DateTime(cur.Year, cur.Month, cur.Day, azan.HourB, azan.MinuteB, azan.SecondB);
             dt = dt.AddSeconds(-1 * la);
@@ -107,7 +134,20 @@ namespace PlinePager.Tools
             bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsBeforeC);
             la = 0;
             azansSound = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
-            azansSound.ForEach(i => { la += i.Length; });
+            if (azansSound.Count == 0)
+            {
+                if (beforeAzanDir.Length > 0)
+                {
+                    var sound = Path.Combine(Directory.GetCurrentDirectory(),
+                        beforeAzanDir[rnd.Next(beforeAzanDir.Length - 1)]);
+                    la = Globals.GetWavSoundLength(sound);
+                    _tblAzan.SoundsBeforeC = $"{sound[..^4]}";
+                }
+            }
+            else
+            {
+                azansSound.ForEach(i => { la += i.Length; });
+            }
 
             dt = new DateTime(cur.Year, cur.Month, cur.Day, azan.HourC, azan.MinuteC, azan.SecondC);
             dt = dt.AddSeconds(-1 * la);
@@ -134,16 +174,17 @@ namespace PlinePager.Tools
                 Globals.ForceReloadAzan = false;
                 _azanUpdate = date;
 
-                var query = $"SELECT t.* FROM \"tblAzans\" t  WHERE t.\"Date\"='{date}'";
+                var query = $"SELECT t.* FROM \"tblAzans\" t WHERE t.\"Date\"='{date}'";
                 var connection = new NpgsqlConnection(_configuration.GetConnectionString("psql"));
                 connection.Open();
                 using (var cmd = new NpgsqlDataAdapter(query, connection))
                 {
                     var data = new DataTable();
                     cmd.Fill(data);
-                    var lstAzan= Globals.ConvertToList<TblAzan>(data);
+                    var lstAzan = Globals.ConvertToList<TblAzan>(data);
                     _tblAzan = lstAzan.FirstOrDefault();
                 }
+
                 connection.Close();
 
                 if (_tblAzan == null)
@@ -165,24 +206,18 @@ namespace PlinePager.Tools
                 second - 1 <= _tblAzan.SecondA && _tblAzan.SecondA <= second + 1)
             {
                 _tblAzan.EnableA = false;
-                _context.Update(_tblAzan);
-                _context.SaveChanges();
                 CallFileAzanOnArea(_tblAzan, 0);
             }
             else if (_tblAzan.EnableB && _tblAzan.HourB == hour && _tblAzan.MinuteB == minute &&
                      second - 1 <= _tblAzan.SecondB && _tblAzan.SecondB <= second + 1)
             {
                 _tblAzan.EnableB = false;
-                _context.Update(_tblAzan);
-                _context.SaveChanges();
                 CallFileAzanOnArea(_tblAzan, 1);
             }
             else if (_tblAzan.EnableC && _tblAzan.HourC == hour && _tblAzan.MinuteC == minute &&
                      second - 1 <= _tblAzan.SecondC && _tblAzan.SecondC <= second + 1)
             {
                 _tblAzan.EnableC = false;
-                _context.Update(_tblAzan);
-                _context.SaveChanges();
                 CallFileAzanOnArea(_tblAzan, 2);
             }
 
@@ -408,8 +443,8 @@ namespace PlinePager.Tools
         {
             try
             {
-                var sounds = string.Empty;
-                var areas = string.Empty;
+                var finalSounds = string.Empty;
+                var finalAreas = string.Empty;
                 var beforeAzanDir = Directory.GetFiles(Path.Combine("wwwroot", "before-azans"));
                 var azanDir = Directory.GetFiles(Path.Combine("wwwroot", "azans"));
                 var afterAzanDir = Directory.GetFiles(Path.Combine("wwwroot", "after-azans"));
@@ -420,30 +455,30 @@ namespace PlinePager.Tools
                 {
                     case 0:
                     {
-                        var bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsBeforeA);
-                        var listSounds = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
-
-                        listSounds.ForEach(i =>
+                        long[] bef;
+                        List<TblSound> listSounds;
+                        if (_tblAzan.SoundsBeforeA.StartsWith("f:"))
                         {
-                            var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
-                            if (sound.ToLower().EndsWith(".wav"))
-                            {
-                                sounds += $"{sound[..^4]}&";
-                            }
-                        });
-                        if (sounds == string.Empty)
-                        {
-                            if (beforeAzanDir.Length > 0)
-                            {
-                                sounds = Path.Combine(Directory.GetCurrentDirectory(),
-                                    beforeAzanDir[rnd.Next(beforeAzanDir.Length - 1)]);
-                                sounds = sounds[..^4];
-                            }
+                            finalSounds += $"{_tblAzan.SoundsBeforeA[2..]}&";
                         }
                         else
                         {
-                            sounds = sounds[..^1];
+                            bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsBeforeA);
+                            listSounds = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
+
+                            listSounds.ForEach(i =>
+                            {
+                                var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds",
+                                    i.FileName);
+                                if (sound.ToLower().EndsWith(".wav"))
+                                {
+                                    sound = $"{sound[..^4]}";
+                                }
+
+                                finalSounds += $"{sound}&";
+                            });
                         }
+
 
                         /*******************************************************/
                         bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsA);
@@ -454,21 +489,19 @@ namespace PlinePager.Tools
                             var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
                             if (sound.ToLower().EndsWith(".wav"))
                             {
-                                sounds += $"{sound[..^4]}&";
+                                sound = $"{sound[..^4]}";
                             }
+
+                            finalSounds += $"{sound}&";
                         });
-                        if (sounds == string.Empty)
+                        if (listSounds.Count == 0)
                         {
                             if (azanDir.Length > 0)
                             {
-                                sounds = Path.Combine(Directory.GetCurrentDirectory(),
+                                var sound = Path.Combine(Directory.GetCurrentDirectory(),
                                     azanDir[rnd.Next(azanDir.Length - 1)]);
-                                sounds = sounds[..^4];
+                                finalSounds += $"{sound[..^4]}&";
                             }
-                        }
-                        else
-                        {
-                            sounds = sounds[..^1];
                         }
 
                         /*******************************************************/
@@ -480,21 +513,19 @@ namespace PlinePager.Tools
                             var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
                             if (sound.ToLower().EndsWith(".wav"))
                             {
-                                sounds += $"{sound[..^4]}&";
+                                sound = $"{sound[..^4]}";
                             }
+
+                            finalSounds += $"{sound}&";
                         });
-                        if (sounds == string.Empty)
+                        if (listSounds.Count == 0)
                         {
                             if (afterAzanDir.Length > 0)
                             {
-                                sounds = Path.Combine(Directory.GetCurrentDirectory(),
+                                var sound = Path.Combine(Directory.GetCurrentDirectory(),
                                     afterAzanDir[rnd.Next(afterAzanDir.Length - 1)]);
-                                sounds = sounds[..^4];
+                                finalSounds += $"{sound[..^4]}&";
                             }
-                        }
-                        else
-                        {
-                            sounds = sounds[..^1];
                         }
 
                         var area = JsonConvert.DeserializeObject<long[]>(_tblAzan.AreasA);
@@ -504,44 +535,38 @@ namespace PlinePager.Tools
 
                         lstAgents.ForEach(item =>
                         {
-                            areas += item.Agent == Globals.AgentType.Sip
+                            finalAreas += item.Agent == Globals.AgentType.Sip
                                 ? $"SIP/{item.Username}&"
                                 : $"CONSOLE/{item.Username}&";
                         });
-                        if (areas != string.Empty)
-                        {
-                            areas = areas[..^1];
-                        }
-
                         volume = azan.VolumeA;
                     }
                         break;
 
                     case 1:
                     {
-                        var bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsBeforeB);
-                        var listSounds = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
-
-                        listSounds.ForEach(i =>
+                        long[] bef;
+                        List<TblSound> listSounds;
+                        if (_tblAzan.SoundsBeforeB.StartsWith("f:"))
                         {
-                            var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
-                            if (sound.ToLower().EndsWith(".wav"))
-                            {
-                                sounds += $"{sound[..^4]}&";
-                            }
-                        });
-                        if (sounds == string.Empty)
-                        {
-                            if (beforeAzanDir.Length > 0)
-                            {
-                                sounds = Path.Combine(Directory.GetCurrentDirectory(),
-                                    beforeAzanDir[rnd.Next(beforeAzanDir.Length - 1)]);
-                                sounds = sounds[..^4];
-                            }
+                            finalSounds += $"{_tblAzan.SoundsBeforeB[2..]}&";
                         }
                         else
                         {
-                            sounds = sounds[..^1];
+                            bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsBeforeB);
+                            listSounds = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
+
+                            listSounds.ForEach(i =>
+                            {
+                                var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds",
+                                    i.FileName);
+                                if (sound.ToLower().EndsWith(".wav"))
+                                {
+                                    sound = $"{sound[..^4]}";
+                                }
+
+                                finalSounds += $"{sound}&";
+                            });
                         }
 
                         /*******************************************************/
@@ -553,21 +578,19 @@ namespace PlinePager.Tools
                             var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
                             if (sound.ToLower().EndsWith(".wav"))
                             {
-                                sounds += $"{sound[..^4]}&";
+                                sound = $"{sound[..^4]}";
                             }
+
+                            finalSounds += $"{sound}&";
                         });
-                        if (sounds == string.Empty)
+                        if (listSounds.Count == 0)
                         {
                             if (azanDir.Length > 0)
                             {
-                                sounds = Path.Combine(Directory.GetCurrentDirectory(),
+                                var sound = Path.Combine(Directory.GetCurrentDirectory(),
                                     azanDir[rnd.Next(azanDir.Length - 1)]);
-                                sounds = sounds[..^4];
+                                finalSounds += $"{sound[..^4]}&";
                             }
-                        }
-                        else
-                        {
-                            sounds = sounds[..^1];
                         }
 
                         /*******************************************************/
@@ -579,21 +602,19 @@ namespace PlinePager.Tools
                             var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
                             if (sound.ToLower().EndsWith(".wav"))
                             {
-                                sounds += $"{sound[..^4]}&";
+                                sound = $"{sound[..^4]}";
                             }
+
+                            finalSounds += $"{sound}&";
                         });
-                        if (sounds == string.Empty)
+                        if (listSounds.Count == 0)
                         {
                             if (afterAzanDir.Length > 0)
                             {
-                                sounds = Path.Combine(Directory.GetCurrentDirectory(),
+                                var sound = Path.Combine(Directory.GetCurrentDirectory(),
                                     afterAzanDir[rnd.Next(afterAzanDir.Length - 1)]);
-                                sounds = sounds[..^4];
+                                finalSounds += $"{sound[..^4]}&";
                             }
-                        }
-                        else
-                        {
-                            sounds = sounds[..^1];
                         }
 
                         var area = JsonConvert.DeserializeObject<long[]>(_tblAzan.AreasB);
@@ -603,44 +624,38 @@ namespace PlinePager.Tools
 
                         lstAgents.ForEach(item =>
                         {
-                            areas += item.Agent == Globals.AgentType.Sip
+                            finalAreas += item.Agent == Globals.AgentType.Sip
                                 ? $"SIP/{item.Username}&"
                                 : $"CONSOLE/{item.Username}&";
                         });
-                        if (areas != string.Empty)
-                        {
-                            areas = areas[..^1];
-                        }
-
                         volume = azan.VolumeB;
                     }
                         break;
 
                     case 2:
                     {
-                        var bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsBeforeC);
-                        var listSounds = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
-
-                        listSounds.ForEach(i =>
+                        long[] bef;
+                        List<TblSound> listSounds;
+                        if (_tblAzan.SoundsBeforeC.StartsWith("f:"))
                         {
-                            var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
-                            if (sound.ToLower().EndsWith(".wav"))
-                            {
-                                sounds += $"{sound[..^4]}&";
-                            }
-                        });
-                        if (sounds == string.Empty)
-                        {
-                            if (beforeAzanDir.Length > 0)
-                            {
-                                sounds = Path.Combine(Directory.GetCurrentDirectory(),
-                                    beforeAzanDir[rnd.Next(beforeAzanDir.Length - 1)]);
-                                sounds = sounds[..^4];
-                            }
+                            finalSounds += $"{_tblAzan.SoundsBeforeC[2..]}&";
                         }
                         else
                         {
-                            sounds = sounds[..^1];
+                            bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsBeforeC);
+                            listSounds = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
+
+                            listSounds.ForEach(i =>
+                            {
+                                var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds",
+                                    i.FileName);
+                                if (sound.ToLower().EndsWith(".wav"))
+                                {
+                                    sound = $"{sound[..^4]}";
+                                }
+
+                                finalSounds += $"{sound}&";
+                            });
                         }
 
                         /*******************************************************/
@@ -652,21 +667,19 @@ namespace PlinePager.Tools
                             var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
                             if (sound.ToLower().EndsWith(".wav"))
                             {
-                                sounds += $"{sound[..^4]}&";
+                                sound = $"{sound[..^4]}";
                             }
+
+                            finalSounds += $"{sound}&";
                         });
-                        if (sounds == string.Empty)
+                        if (listSounds.Count == 0)
                         {
                             if (azanDir.Length > 0)
                             {
-                                sounds = Path.Combine(Directory.GetCurrentDirectory(),
+                                var sound = Path.Combine(Directory.GetCurrentDirectory(),
                                     azanDir[rnd.Next(azanDir.Length - 1)]);
-                                sounds = sounds[..^4];
+                                finalSounds += $"{sound[..^4]}&";
                             }
-                        }
-                        else
-                        {
-                            sounds = sounds[..^1];
                         }
 
                         /*******************************************************/
@@ -678,21 +691,19 @@ namespace PlinePager.Tools
                             var sound = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "sounds", i.FileName);
                             if (sound.ToLower().EndsWith(".wav"))
                             {
-                                sounds += $"{sound[..^4]}&";
+                                sound = $"{sound[..^4]}";
                             }
+
+                            finalSounds += $"{sound}&";
                         });
-                        if (sounds == string.Empty)
+                        if (listSounds.Count == 0)
                         {
                             if (afterAzanDir.Length > 0)
                             {
-                                sounds = Path.Combine(Directory.GetCurrentDirectory(),
+                                var sound = Path.Combine(Directory.GetCurrentDirectory(),
                                     afterAzanDir[rnd.Next(afterAzanDir.Length - 1)]);
-                                sounds = sounds[..^4];
+                                finalSounds += $"{sound[..^4]}&";
                             }
-                        }
-                        else
-                        {
-                            sounds = sounds[..^1];
                         }
 
                         var area = JsonConvert.DeserializeObject<long[]>(_tblAzan.AreasC);
@@ -702,26 +713,31 @@ namespace PlinePager.Tools
 
                         lstAgents.ForEach(item =>
                         {
-                            areas += item.Agent == Globals.AgentType.Sip
+                            finalAreas += item.Agent == Globals.AgentType.Sip
                                 ? $"SIP/{item.Username}&"
                                 : $"CONSOLE/{item.Username}&";
                         });
-                        if (areas != string.Empty)
-                        {
-                            areas = areas[..^1];
-                        }
-
                         volume = azan.VolumeC;
                     }
                         break;
                 }
 
+                if (finalSounds.EndsWith("&"))
+                {
+                    finalSounds = finalSounds[..^1];
+                }
+
+                if (finalAreas.EndsWith("&"))
+                {
+                    finalAreas = finalAreas[..^1];
+                }
+
                 var strCall = "Channel: Local/*0000@pline-page\n" +
-                              $"Setvar: users={areas}\n" +
+                              $"Setvar: users={finalAreas}\n" +
                               $"Setvar: vol={volume}\n" +
                               "CallerID: \"00000000\"<pline-page>\n" +
                               "Application: Playback\n" +
-                              $"Data: {sounds}\n";
+                              $"Data: {finalSounds}\n";
                 var path = $"/var/spool/asterisk/outgoing/{Globals.GenerateId()}.call";
                 File.WriteAllText(path, strCall, Encoding.ASCII);
                 Globals.RunCmd("/usr/bin/chmod", "0777 " + path);

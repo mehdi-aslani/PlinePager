@@ -245,8 +245,8 @@ namespace PlinePager.Tools
         {
             try
             {
-                string result = RunCmd("/usr/bin/soxi", "-D " + fileName);
-                var f= float.Parse(result.Trim().Replace("\n", ""));
+                string result = RunCmd("/usr/bin/soxi", $"-D \"{fileName}\"");
+                var f = float.Parse(result.Trim().Replace("\n", ""));
                 return (int) f;
             }
             catch
