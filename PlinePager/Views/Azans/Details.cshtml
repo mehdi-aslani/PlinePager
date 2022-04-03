@@ -1,186 +1,315 @@
+@using Newtonsoft.Json
+@using PlinePager.Data
 @model PlinePager.Models.TblAzan
+@inject PlinePagerContext _context;
 
-@{
-    ViewData["Title"] = "Details";
-}
+<div class="row">
+<div class="col-6 offset-3">
+<h4>جزییات برنامه بخش</h4>
+<hr/>
+<dl class="row">
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.Date)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.Date)
+</dd>
+<hr/>
+<dt class="col-sm-2">
+    @Html.DisplayFor(model => model.EnableA)
+    @Html.DisplayNameFor(model => model.EnableA)
+</dt>
+<dd class="col-sm-10">
+    @Html.Raw(Model.SecondA.ToString("00")):
+    @Html.Raw(Model.MinuteA.ToString("00")):
+    @Html.Raw(Model.HourA.ToString("00"))
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.SoundsBeforeA)
+</dt>
+<dd class="col-sm-10">
+    @{
+        var data = JsonConvert.DeserializeObject<long[]>(Model.SoundsBeforeA);
+        var items = _context.TblSounds.Where(t => data.Contains(t.Id)).ToArray();
+    }
+    <ul>
+        @foreach (TblSound item in items)
+        {
+            <li>
+                <p>@item.Name</p>
+                <audio controls>
+                    <source src="/@item.FileName" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+        }
+    </ul>
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.SoundsA)
+</dt>
+<dd class="col-sm-10">
+    @{
+        data = JsonConvert.DeserializeObject<long[]>(Model.SoundsA);
+        items = _context.TblSounds.Where(t => data.Contains(t.Id)).ToArray();
+    }
+    <ul>
+        @foreach (TblSound item in items)
+        {
+            <li>
+                <p>@item.Name</p>
+                <audio controls>
+                    <source src="/@item.FileName" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+        }
+    </ul>
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.SoundsAfterA)
+</dt>
+<dd class="col-sm-10">
+    @{
+        data = JsonConvert.DeserializeObject<long[]>(Model.SoundsAfterA);
+        items = _context.TblSounds.Where(t => data.Contains(t.Id)).ToArray();
+    }
+    <ul>
+        @foreach (TblSound item in items)
+        {
+            <li>
+                <p>@item.Name</p>
+                <audio controls>
+                    <source src="/@item.FileName" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+        }
+    </ul>
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.AreasA)
+</dt>
+<dd class="col-sm-10">
+    @{
+        data = JsonConvert.DeserializeObject<long[]>(Model.AreasA);
+        var areasItem = _context.TblAreas.Where(t => data.Contains(t.Id)).ToArray();
+    }
+    <ul>
+        @foreach (var item in areasItem)
+        {
+            <li>
+                @Html.Raw(item.Name)
+            </li>
+        }
+    </ul>
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.VolumeA)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.VolumeA)
+</dd>
+<hr/>
 
-<h1>Details</h1>
 
-<div>
-    <h4>TblAzan</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EnableA)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EnableA)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HourA)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HourA)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MinuteA)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MinuteA)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SecondA)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SecondA)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SoundsBeforeA)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SoundsBeforeA)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SoundsA)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SoundsA)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SoundsAfterA)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SoundsAfterA)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AreasA)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AreasA)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EnableB)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EnableB)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HourB)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HourB)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MinuteB)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MinuteB)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SecondB)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SecondB)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SoundsBeforeB)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SoundsBeforeB)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SoundsB)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SoundsB)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SoundsAfterB)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SoundsAfterB)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AreasB)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AreasB)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EnableC)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EnableC)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HourC)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HourC)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MinuteC)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MinuteC)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SecondC)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SecondC)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SoundsBeforeC)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SoundsBeforeC)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SoundsC)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SoundsC)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SoundsAfterC)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SoundsAfterC)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AreasC)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AreasC)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.VolumeA)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.VolumeA)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.VolumeB)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.VolumeB)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.VolumeC)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.VolumeC)
-        </dd>
-    </dl>
+<dt class="col-sm-2">
+    @Html.DisplayFor(model => model.EnableB)
+    @Html.DisplayNameFor(model => model.EnableB)
+</dt>
+<dd class="col-sm-10">
+    @Html.Raw(Model.SecondB.ToString("00")):
+    @Html.Raw(Model.MinuteB.ToString("00")):
+    @Html.Raw(Model.HourB.ToString("00"))
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.SoundsBeforeB)
+</dt>
+<dd class="col-sm-10">
+    @{
+        data = JsonConvert.DeserializeObject<long[]>(Model.SoundsBeforeB);
+        items = _context.TblSounds.Where(t => data.Contains(t.Id)).ToArray();
+    }
+    <ul>
+        @foreach (TblSound item in items)
+        {
+            <li>
+                <p>@item.Name</p>
+                <audio controls>
+                    <source src="/@item.FileName" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+        }
+    </ul>
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.SoundsB)
+</dt>
+<dd class="col-sm-10">
+    @{
+        data = JsonConvert.DeserializeObject<long[]>(Model.SoundsB);
+        items = _context.TblSounds.Where(t => data.Contains(t.Id)).ToArray();
+    }
+    <ul>
+        @foreach (TblSound item in items)
+        {
+            <li>
+                <p>@item.Name</p>
+                <audio controls>
+                    <source src="/@item.FileName" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+        }
+    </ul>
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.SoundsAfterB)
+</dt>
+<dd class="col-sm-10">
+    @{
+        data = JsonConvert.DeserializeObject<long[]>(Model.SoundsAfterB);
+        items = _context.TblSounds.Where(t => data.Contains(t.Id)).ToArray();
+    }
+    <ul>
+        @foreach (TblSound item in items)
+        {
+            <li>
+                <p>@item.Name</p>
+                <audio controls>
+                    <source src="/@item.FileName" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+        }
+    </ul>
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.AreasB)
+</dt>
+<dd class="col-sm-10">
+    @{
+        data = JsonConvert.DeserializeObject<long[]>(Model.AreasB);
+        areasItem = _context.TblAreas.Where(t => data.Contains(t.Id)).ToArray();
+    }
+    <ul>
+        @foreach (var item in areasItem)
+        {
+            <li>
+                @Html.Raw(item.Name)
+            </li>
+        }
+    </ul>
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.VolumeB)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.VolumeB)
+</dd>
+<hr/>
+
+
+<dt class="col-sm-2">
+    @Html.DisplayFor(model => model.EnableC)
+    @Html.DisplayNameFor(model => model.EnableC)
+</dt>
+<dd class="col-sm-10">
+    @Html.Raw(Model.SecondC.ToString("00")):
+    @Html.Raw(Model.MinuteC.ToString("00")):
+    @Html.Raw(Model.HourC.ToString("00"))
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.SoundsBeforeC)
+</dt>
+<dd class="col-sm-10">
+    @{
+        data = JsonConvert.DeserializeObject<long[]>(Model.SoundsBeforeC);
+        items = _context.TblSounds.Where(t => data.Contains(t.Id)).ToArray();
+    }
+    <ul>
+        @foreach (TblSound item in items)
+        {
+            <li>
+                <p>@item.Name</p>
+                <audio controls>
+                    <source src="/@item.FileName" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+        }
+    </ul>
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.SoundsC)
+</dt>
+<dd class="col-sm-10">
+    @{
+        data = JsonConvert.DeserializeObject<long[]>(Model.SoundsC);
+        items = _context.TblSounds.Where(t => data.Contains(t.Id)).ToArray();
+    }
+    <ul>
+        @foreach (TblSound item in items)
+        {
+            <li>
+                <p>@item.Name</p>
+                <audio controls>
+                    <source src="/@item.FileName" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+        }
+    </ul>
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.SoundsAfterC)
+</dt>
+<dd class="col-sm-10">
+    @{
+        data = JsonConvert.DeserializeObject<long[]>(Model.SoundsAfterC);
+        items = _context.TblSounds.Where(t => data.Contains(t.Id)).ToArray();
+    }
+    <ul>
+        @foreach (TblSound item in items)
+        {
+            <li>
+                <p>@item.Name</p>
+                <audio controls>
+                    <source src="/@item.FileName" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+        }
+    </ul>
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.AreasC)
+</dt>
+<dd class="col-sm-10">
+    @{
+        data = JsonConvert.DeserializeObject<long[]>(Model.AreasC);
+        areasItem = _context.TblAreas.Where(t => data.Contains(t.Id)).ToArray();
+    }
+    <ul>
+        @foreach (var item in areasItem)
+        {
+            <li>
+                @Html.Raw(item.Name)
+            </li>
+        }
+    </ul>
+</dd>
+<dt class="col-sm-2">
+    @Html.DisplayNameFor(model => model.VolumeC)
+</dt>
+<dd class="col-sm-10">
+    @Html.DisplayFor(model => model.VolumeC)
+</dd>
+<hr/>
+</dl>
+<div class="mb-3">
+    <a class="btn btn-danger" asp-action="Index">بازگشت</a>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+</div>
 </div>

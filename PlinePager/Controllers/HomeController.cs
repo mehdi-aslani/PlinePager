@@ -6,6 +6,7 @@ using PlinePager.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,19 +24,24 @@ namespace PlinePager.Controllers
 
         public IActionResult Index()
         {
-
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult GetDateTime()
         {
-            return View();
+            PersianCalendar p = new PersianCalendar();
+            DateTime dt = DateTime.Now;
+            return Json(new
+            {
+                date = $"{(p.GetYear(dt)):0000}/{(p.GetMonth(dt)):00}/{(p.GetDayOfMonth(dt)):00}",
+                time = dt.ToString("HH:mm:ss")
+            });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
     }
 }

@@ -87,7 +87,7 @@ namespace PlinePager.Models
         [Display(Name = "صوت اذان" )]
         public string SoundsC { get; set; }
         
-        [Display(Name = "صوت قبل از اذان" )]
+        [Display(Name = "صوت بعد از اذان" )]
         public string SoundsAfterC { get; set; }
         
         [Display(Name = "ناحیه های جهت پخش اذان مغرب" )]

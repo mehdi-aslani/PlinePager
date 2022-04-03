@@ -39,11 +39,14 @@ namespace PlinePager.Models
         [Required(ErrorMessage = "{0} نمی تواند خالی باشد")]
         public bool EnableC { get; set; }
 
-        [Display(Name = "صوت قبل از اذان")] public string SoundsBeforeC { get; set; }
+        [Display(Name = "صوت قبل از اذان")] 
+        public string SoundsBeforeC { get; set; }
 
-        [Display(Name = "صوت اذان")] public string SoundsC { get; set; }
+        [Display(Name = "صوت اذان")] 
+        public string SoundsC { get; set; }
 
-        [Display(Name = "صوت قبل از اذان")] public string SoundsAfterC { get; set; }
+        [Display(Name = "صوت بعد از اذان")] 
+        public string SoundsAfterC { get; set; }
 
         [Display(Name = "ناحیه های جهت پخش اذان مغرب")]
         public string AreasC { get; set; }

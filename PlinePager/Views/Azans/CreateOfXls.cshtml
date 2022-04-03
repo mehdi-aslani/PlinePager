@@ -48,7 +48,7 @@
             </div>
             <div class="form-group form-check mb-3">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="DeleteOld"/> @Html.DisplayNameFor(model => model.DeleteOld)
+                    <input onchange="deleteAlert(this);" class="form-check-input" asp-for="DeleteOld"/> @Html.DisplayNameFor(model => model.DeleteOld)
                 </label>
             </div>
             @* ********A*********  *@
@@ -182,5 +182,10 @@
         });
         $(".form-select").val(null).trigger('change');
     });
+    function deleteAlert(e){
+        if (e.checked){
+            e.checked = confirm("با فعال کردن این گزینه تمامی ساعت های اذان های گذشته حذف میگردد. مطمئن هستید؟");
+        }
+    }
     </script>
 }

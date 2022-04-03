@@ -33,6 +33,11 @@ namespace PlinePager.Controllers
             return View();
         }
 
+        public IActionResult StopAll()
+        {
+            Globals.HangupAll();
+            return RedirectToAction("Index", "Home");
+        }
 
         // GET: Sounds/Create
         public IActionResult Create()

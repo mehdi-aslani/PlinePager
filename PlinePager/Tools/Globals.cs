@@ -177,6 +177,11 @@ namespace PlinePager.Tools
             return r;
         }
 
+        public static void HangupAll()
+        {
+            RunCmd("/usr/sbin/asterisk", $"-x \"hangup request all\"");
+        }
+
         public static List<T> ConvertToList<T>(DataTable dt)
         {
             var columnNames = dt.Columns.Cast<DataColumn>().Select(c => c.ColumnName.ToLower()).ToList();

@@ -1,8 +1,35 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@using System.Globalization
+
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">خوش آمدید</h1>
+    <hr/>
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="alert alert-info">
+                <p>امروز: <span id="date"></span></p>
+                <p>ساعت: <span id="time"></span></p>
+            </div>
+        </div>
+    </div>
+
+
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script type="text/javascript">
+        $(function() {
+          getDateTime();
+          setInterval(getDateTime,1000);  
+        });
+        function getDateTime (){
+            $.get('@Url.Action("GetDateTime")',null,function (data){
+              $("#date").html(data.date);
+              $("#time").html(data.time);
+            },'JSON');              
+        }
+    </script>
+}

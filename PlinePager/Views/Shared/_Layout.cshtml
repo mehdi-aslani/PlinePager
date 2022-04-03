@@ -90,10 +90,23 @@
                                     اذان و مناجات
                                 </a>
                             </li>
+                            @* <li> *@
+                            @*     <a class="nav-link text-dark" asp-area="" asp-controller="Sounds" asp-action="IndexTest" *@
+                            @*        asp-route-id=""> *@
+                            @*         مناسبت ها *@
+                            @*     </a> *@
+                            @* </li> *@
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="Tools" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            ابزار ها
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="Tools">
                             <li>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Sounds" asp-action="IndexTest"
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Sounds" asp-action="StopAll"
                                    asp-route-id="">
-                                    مناسبت ها
+                                    قطع تمامی صدا ها
                                 </a>
                             </li>
                         </ul>
@@ -146,7 +159,7 @@
 
 <footer class="border-top footer text-muted">
     <div class="container">
-        &copy; 2022 - PlinePager - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        &copy; 2022 - PlinePager - <a target="_blank" href="http://www.peeco.ir/">P-Line</a>
     </div>
 </footer>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>

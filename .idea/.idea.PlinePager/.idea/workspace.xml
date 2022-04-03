@@ -5,38 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37e56588-1397-418f-8bb2-263a81bfb6e1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/PlinePager/Models/AzanXls.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/Views/Azans/CreateOfXls.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PlinePager/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PlinePager/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PlinePager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PlinePager/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/Controllers/AzansController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Controllers/AzansController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Controllers/SchedulesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Controllers/SchedulesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Controllers/SoundsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Controllers/SoundsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Models/AzanXls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Models/AzanXls.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Models/TblAzan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Models/TblAzan.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/PlinePager.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/PlinePager.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Tools/Seeder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Tools/Seeder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Views/Azans/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Views/Azans/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Tools/Globals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Tools/Globals.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Views/Azans/CreateOfXls.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Views/Azans/CreateOfXls.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Views/Azans/Details.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Views/Azans/Details.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Views/Azans/Edit.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Views/Azans/Edit.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Views/Azans/_Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Views/Azans/_Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Views/Home/Privacy.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Views/Shared/_Layout.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/ref/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/ref/PlinePager.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/refint/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/refint/PlinePager.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/staticwebassets.build.json" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/staticwebassets.build.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/staticwebassets.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/staticwebassets.development.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/PlinePager.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/PlinePager.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/PlinePager.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/PlinePager.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/PlinePager.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/PlinePager.csproj.nuget.g.targets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ref/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ref/PlinePager.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/refint/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/refint/PlinePager.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/staticwebassets.build.json" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/staticwebassets.build.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/staticwebassets.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/staticwebassets.development.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/project.packagespec.json" afterDir="false" />
@@ -60,34 +57,21 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/PlinePager/Controllers/AgentsController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/PlinePager/Views/Schedules/Create.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/PlinePager/Views/Schedules/_Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/PlinePager/Views/Schedules/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2F9416BA-F6DB-43D9-B971-AE38F78771EF/0a/f621c3fc/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PlinePager/Views/Agents/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PlinePager/Tools/Globals.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2F9416BA-F6DB-43D9-B971-AE38F78771EF/66/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PlinePager/Views/Areas/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PlinePager/Views/Schedules/_Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/718554BC-441A-4D71-AE65-20AA693710CB/a2/d1ca2ab7/GridColumnExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PlinePager/Views/Sounds/SoundTest.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PlinePager/Views/Schedules/Create.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PlinePager/Views/Schedules/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PlinePager/Controllers/AgentsController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PlinePager/Views/Sounds/Create.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PlinePager/Views/Sounds/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PlinePager/Data/PlinePagerContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C1740647-27BB-4921-9277-D621E9B5221D/250/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/228F14BB-DC68-4D50-B46A-990EC25D9787/4/GenericWebHostBuilder.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/30097FD1-FE3F-486A-A91E-07894FD130C3/E/Timer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/30097FD1-FE3F-486A-A91E-07894FD130C3/d3/eec46db4/Timer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6B2E01DD-B516-4C67-B011-970CB002DE33/46/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C1740647-27BB-4921-9277-D621E9B5221D/2DC/AsyncMethodBuilderCore.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PlinePager/Models/TblSchedule.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C1740647-27BB-4921-9277-D621E9B5221D/144/PersianCalendar.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BDD6787E-F9D8-4182-85A1-BBA141319B97/21/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/PlinePager/Views/Areas/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2F9416BA-F6DB-43D9-B971-AE38F78771EF/118/ConcurrencyDetector.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/PlinePager/Views/Sounds/Create.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/CBBC4833-57A7-432D-BCB8-DE5018F80BBB/13D/FromSqlQueryingEnumerable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/CBBC4833-57A7-432D-BCB8-DE5018F80BBB/1F0/RelationalCommand.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C1740647-27BB-4921-9277-D621E9B5221D/7A/DateTime.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/PlinePager/Views/Sounds/SoundTest.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2F9416BA-F6DB-43D9-B971-AE38F78771EF/DC/EntityFrameworkServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/PlinePager/Views/Sounds/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PlinePager/Views/Agents/Create.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/PlinePager/Views/Agents/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -111,20 +95,25 @@
       <option value="$PROJECT_DIR$/PlinePager/PlinePager.csproj" />
       <option value="$PROJECT_DIR$/PlinePager/Controllers/AgentsController.cs" />
       <option value="$PROJECT_DIR$/PlinePager/Controllers/AreasController.cs" />
-      <option value="$PROJECT_DIR$/PlinePager/Controllers/SoundsController.cs" />
       <option value="$PROJECT_DIR$/PlinePager/Data/PlinePagerContext.cs" />
-      <option value="$PROJECT_DIR$/PlinePager/Views/Shared/_Layout.cshtml" />
-      <option value="$PROJECT_DIR$/PlinePager/Models/TblAzan.cs" />
       <option value="$PROJECT_DIR$/PlinePager/Views/Azans/Create.cshtml" />
-      <option value="$PROJECT_DIR$/PlinePager/Tools/Globals.cs" />
       <option value="$PROJECT_DIR$/PlinePager/Tools/Seeder.cs" />
       <option value="$PROJECT_DIR$/PlinePager/Views/Schedules/CreateOfFile.cshtml" />
       <option value="$PROJECT_DIR$/PlinePager/Controllers/SchedulesController.cs" />
       <option value="$PROJECT_DIR$/PlinePager/Views/Azans/CreateXls.cshtml" />
       <option value="$PROJECT_DIR$/PlinePager/Views/Azans/Index.cshtml" />
-      <option value="$PROJECT_DIR$/PlinePager/Views/Azans/CreateOfXls.cshtml" />
-      <option value="$PROJECT_DIR$/PlinePager/Controllers/AzansController.cs" />
       <option value="$PROJECT_DIR$/PlinePager/Models/AzanXls.cs" />
+      <option value="$PROJECT_DIR$/PlinePager/Models/TblAzan.cs" />
+      <option value="$PROJECT_DIR$/PlinePager/Views/Azans/CreateOfXls.cshtml" />
+      <option value="$PROJECT_DIR$/PlinePager/Views/Azans/Edit.cshtml" />
+      <option value="$PROJECT_DIR$/PlinePager/Controllers/AzansController.cs" />
+      <option value="$PROJECT_DIR$/PlinePager/Views/Azans/Details.cshtml" />
+      <option value="$PROJECT_DIR$/PlinePager/Views/Azans/_Index.cshtml" />
+      <option value="$PROJECT_DIR$/PlinePager/Tools/Globals.cs" />
+      <option value="$PROJECT_DIR$/PlinePager/Controllers/SoundsController.cs" />
+      <option value="$PROJECT_DIR$/PlinePager/Controllers/HomeController.cs" />
+      <option value="$PROJECT_DIR$/PlinePager/Views/Home/Index.cshtml" />
+      <option value="$PROJECT_DIR$/PlinePager/Views/Shared/_Layout.cshtml" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="26c5Wo03BJlPcqZaGi6jkGMo15M" />
@@ -134,7 +123,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34997287" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34975636" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -220,6 +209,7 @@
       <workItem from="1648914105051" duration="4651000" />
       <workItem from="1648921808918" duration="6272000" />
       <workItem from="1648968957664" duration="9347000" />
+      <workItem from="1649007188098" duration="14134000" />
     </task>
     <servers />
   </component>
@@ -247,56 +237,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/PlinePager/Tools/Seeder.cs</url>
-          <line>223</line>
-          <properties documentPath="$PROJECT_DIR$/PlinePager/Tools/Seeder.cs" initialLine="185" containingFunctionPresentation="method 'TimerAzanOnElapsed'">
-            <startOffsets>
-              <option value="8626" />
-            </startOffsets>
-            <endOffsets>
-              <option value="8658" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/PlinePager/Tools/Seeder.cs</url>
-          <line>215</line>
-          <properties documentPath="$PROJECT_DIR$/PlinePager/Tools/Seeder.cs" initialLine="177" containingFunctionPresentation="method 'TimerAzanOnElapsed'">
-            <startOffsets>
-              <option value="8185" />
-            </startOffsets>
-            <endOffsets>
-              <option value="8217" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/PlinePager/Controllers/AzansController.cs</url>
-          <line>108</line>
-          <properties documentPath="$PROJECT_DIR$/PlinePager/Controllers/AzansController.cs" initialLine="108" containingFunctionPresentation="method 'ImportXls'">
+          <line>349</line>
+          <properties documentPath="$PROJECT_DIR$/PlinePager/Controllers/AzansController.cs" initialLine="349" containingFunctionPresentation="method 'Edit'">
             <startOffsets>
-              <option value="3178" />
+              <option value="13804" />
             </startOffsets>
             <endOffsets>
-              <option value="3243" />
+              <option value="13825" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/PlinePager/Controllers/AzansController.cs</url>
-          <line>106</line>
-          <properties documentPath="$PROJECT_DIR$/PlinePager/Controllers/AzansController.cs" initialLine="106" containingFunctionPresentation="method 'ImportXls'">
-            <startOffsets>
-              <option value="3124" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3147" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="20" />
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

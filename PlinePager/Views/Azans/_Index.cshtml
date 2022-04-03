@@ -6,7 +6,7 @@
     .Grid(Model)
     .Build(columns =>
     {
-        columns.Add(model => model.Date).Titled("تاریخ اذان");
+        columns.Add(model => model.Date).Sortable(GridSortOrder.Asc).Titled("تاریخ اذان");
         columns.Add(model => model.EnableA).Titled("صبح فعال/غیرفعال").UsingFilterOptions(new[]
         {
             new SelectListItem(),
