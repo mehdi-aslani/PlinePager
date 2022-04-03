@@ -19,6 +19,7 @@
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2" />
         <PackageReference Include="NonFactors.Grid.Mvc6" Version="7.0.0" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.3" />
+        <PackageReference Include="T1.ExtraLinqToExcel" Version="1.10.12.27" />
     </ItemGroup>
 
     <ItemGroup>

@@ -51,8 +51,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXphbnMvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Project/PlinePager/PlinePager/Views/Azans/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXphbnMvRGVsZXRlLmNzaHRtbA==
+[/home/aslani/Project/PlinePager/PlinePager/Views/Azans/CreateOfXls.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXphbnMvQ3JlYXRlT2ZYbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/aslani/Project/PlinePager/PlinePager/Views/Azans/Details.cshtml]
@@ -65,6 +65,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/home/aslani/Project/PlinePager/PlinePager/Views/Azans/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXphbnMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/aslani/Project/PlinePager/PlinePager/Views/Azans/_Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXphbnMvX0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/aslani/Project/PlinePager/PlinePager/Views/Home/Index.cshtml]

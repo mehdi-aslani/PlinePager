@@ -8,173 +8,173 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = PlinePager
 build_property.RootNamespace = PlinePager
-build_property.ProjectDir = /home/aslani/Desktop/PlinePager/PlinePager/
+build_property.ProjectDir = /home/aslani/Project/PlinePager/PlinePager/
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /home/aslani/Desktop/PlinePager/PlinePager
+build_property.MSBuildProjectDirectory = /home/aslani/Project/PlinePager/PlinePager
 build_property._RazorSourceGeneratorDebug = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Agents/Create.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Agents/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWdlbnRzL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Agents/Edit.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Agents/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWdlbnRzL0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Agents/Index.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Agents/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWdlbnRzL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Agents/_Index.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Agents/_Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWdlbnRzL19JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Areas/Create.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Areas/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXJlYXMvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Areas/Edit.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Areas/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXJlYXMvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Areas/Index.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Areas/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXJlYXMvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Areas/_Index.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Areas/_Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXJlYXMvX0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Azans/Create.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Azans/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXphbnMvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Azans/Details.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Azans/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXphbnMvRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Azans/Edit.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Azans/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXphbnMvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Azans/Index.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Azans/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXphbnMvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Azans/_Index.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Azans/_Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXphbnMvX0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Home/Index.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Home/Privacy.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Schedules/Create.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Schedules/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2NoZWR1bGVzL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Schedules/Details.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Schedules/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2NoZWR1bGVzL0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Schedules/Edit.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Schedules/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2NoZWR1bGVzL0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Schedules/Index.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Schedules/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2NoZWR1bGVzL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Schedules/_Index.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Schedules/_Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2NoZWR1bGVzL19JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Shared/Error.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Shared/MvcGrid/_Grid.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Shared/MvcGrid/_Grid.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL012Y0dyaWQvX0dyaWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Shared/MvcGrid/_Pager.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Shared/MvcGrid/_Pager.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL012Y0dyaWQvX1BhZ2VyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Shared/_Layout.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Shared/_LayoutLogin.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Shared/_LayoutLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXRMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Shared/_ValidationScriptsPartial.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Sounds/Create.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Sounds/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU291bmRzL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Sounds/Edit.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Sounds/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU291bmRzL0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Sounds/Index.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Sounds/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU291bmRzL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Sounds/IndexTest.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Sounds/IndexTest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU291bmRzL0luZGV4VGVzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Sounds/SoundTest.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Sounds/SoundTest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU291bmRzL1NvdW5kVGVzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Sounds/_Index.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Sounds/_Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU291bmRzL19JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/Sounds/_IndexTest.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/Sounds/_IndexTest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU291bmRzL19JbmRleFRlc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/User/ChangePassword.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/User/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9DaGFuZ2VQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/User/Create.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/User/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/User/Edit.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/User/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/User/Index.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/User/Login.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/User/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9Mb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/User/_Index.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/User/_Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9fSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/_ViewImports.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/aslani/Desktop/PlinePager/PlinePager/Views/_ViewStart.cshtml]
+[/home/aslani/Project/PlinePager/PlinePager/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

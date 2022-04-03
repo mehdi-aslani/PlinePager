@@ -25,10 +25,28 @@
           "buildMultiTargeting/AspNetCoreHero.ToastNotification.props": {}
         }
       },
+      "Autofac/3.5.2": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Autofac.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Autofac.dll": {}
+        }
+      },
       "bootstrap/3.3.1": {
         "type": "package",
         "dependencies": {
           "jQuery": "1.9.0"
+        }
+      },
+      "Castle.Core/3.3.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Castle.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Castle.Core.dll": {}
         }
       },
       "EPPlus/5.8.8": {
@@ -48,6 +66,15 @@
           "lib/net5.0/EPPlus.dll": {}
         }
       },
+      "fastJSON/2.1.10": {
+        "type": "package",
+        "compile": {
+          "lib/net40/fastjson.dll": {}
+        },
+        "runtime": {
+          "lib/net40/fastjson.dll": {}
+        }
+      },
       "Humanizer.Core/2.8.26": {
         "type": "package",
         "compile": {
@@ -59,6 +86,33 @@
       },
       "jQuery/1.9.0": {
         "type": "package"
+      },
+      "LinqToExcel/1.10.1": {
+        "type": "package",
+        "dependencies": {
+          "log4net": "(, )"
+        },
+        "compile": {
+          "lib/LinqToExcel.dll": {},
+          "lib/Remotion.Data.Linq.dll": {},
+          "lib/Remotion.Interfaces.dll": {},
+          "lib/Remotion.dll": {}
+        },
+        "runtime": {
+          "lib/LinqToExcel.dll": {},
+          "lib/Remotion.Data.Linq.dll": {},
+          "lib/Remotion.Interfaces.dll": {},
+          "lib/Remotion.dll": {}
+        }
+      },
+      "log4net/2.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net40-full/log4net.dll": {}
+        },
+        "runtime": {
+          "lib/net40-full/log4net.dll": {}
+        }
       },
       "MD.BootstrapPersianDateTimePicker/2.3.0": {
         "type": "package",
@@ -3481,6 +3535,34 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "T1.ClientProfile/1.10.12.27": {
+        "type": "package",
+        "dependencies": {
+          "Autofac": "3.5.2",
+          "Castle.Core": "3.3.3",
+          "fastJSON": "2.1.10"
+        },
+        "compile": {
+          "lib/net451/T1.ClientProfile.dll": {}
+        },
+        "runtime": {
+          "lib/net451/T1.ClientProfile.dll": {}
+        }
+      },
+      "T1.ExtraLinqToExcel/1.10.12.27": {
+        "type": "package",
+        "dependencies": {
+          "LinqToExcel": "1.10.1",
+          "T1.ClientProfile": "1.10.12.27",
+          "log4net": "2.0.3"
+        },
+        "compile": {
+          "lib/net451/T1.ExtraLinqToExcel.dll": {}
+        },
+        "runtime": {
+          "lib/net451/T1.ExtraLinqToExcel.dll": {}
+        }
       }
     }
   },
@@ -3509,6 +3591,21 @@
         "staticwebassets/toastify.js"
       ]
     },
+    "Autofac/3.5.2": {
+      "sha512": "pGR5LjY8T/16x6SkJNd7u6EjQnE4C7JS0BZJ7Yl7pt313gIUZ/2ZnPSOIM5eaIA7ArxaudlyyLvAT4ayX5UJ/A==",
+      "type": "package",
+      "path": "autofac/3.5.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "autofac.3.5.2.nupkg.sha512",
+        "autofac.nuspec",
+        "lib/net40/Autofac.dll",
+        "lib/net40/Autofac.xml",
+        "lib/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/Autofac.dll",
+        "lib/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/Autofac.xml"
+      ]
+    },
     "bootstrap/3.3.1": {
       "sha512": "+OganGYT1i1uIwZPa+AQUT3F3XxWUgFpFoYj+ujM4U5ZJYywW+nEl3v+A5BElLZNbk0FkFFZV4JixIfL6Q4xfg==",
       "type": "package",
@@ -3531,6 +3628,32 @@
         "content/fonts/glyphicons-halflings-regular.svg",
         "content/fonts/glyphicons-halflings-regular.ttf",
         "content/fonts/glyphicons-halflings-regular.woff"
+      ]
+    },
+    "Castle.Core/3.3.3": {
+      "sha512": "tvVrLbHhtAGubUUDbEkH9JlivdlJOTI25u3hlyHpPxuJdTVi/yVQKWCYvGpafGPm7G1ibdWj4brqhtSQkAmN+g==",
+      "type": "package",
+      "path": "castle.core/3.3.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ASL - Apache Software Foundation License.txt",
+        "BreakingChanges.txt",
+        "Changes.txt",
+        "License.txt",
+        "castle.core.3.3.3.nupkg.sha512",
+        "castle.core.nuspec",
+        "lib/net35/Castle.Core.dll",
+        "lib/net35/Castle.Core.xml",
+        "lib/net40-client/Castle.Core.dll",
+        "lib/net40-client/Castle.Core.xml",
+        "lib/net45/Castle.Core.dll",
+        "lib/net45/Castle.Core.xml",
+        "lib/sl4/Castle.Core.dll",
+        "lib/sl4/Castle.Core.xml",
+        "lib/sl5/Castle.Core.dll",
+        "lib/sl5/Castle.Core.xml",
+        "readme.txt"
       ]
     },
     "EPPlus/5.8.8": {
@@ -3557,6 +3680,22 @@
         "lib/netstandard2.1/EPPlus.xml",
         "license.md",
         "readme.txt"
+      ]
+    },
+    "fastJSON/2.1.10": {
+      "sha512": "SX0MJ/2iIwJWZZCzQFCZwjkP21h15tqhPzZ4hoeTDDfYML0s2YOVLBB/9oTCqJnuv0hyLpjkoTP8WtdOPUrmMQ==",
+      "type": "package",
+      "path": "fastjson/2.1.10",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fastjson.2.1.10.nupkg.sha512",
+        "fastjson.nuspec",
+        "lib/history.txt",
+        "lib/net20/fastjson.dll",
+        "lib/net35/fastjson.dll",
+        "lib/net40/fastjson.dll",
+        "lib/readme.md"
       ]
     },
     "Humanizer.Core/2.8.26": {
@@ -3593,6 +3732,47 @@
         "Tools/uninstall.ps1",
         "jquery.1.9.0.nupkg.sha512",
         "jquery.nuspec"
+      ]
+    },
+    "LinqToExcel/1.10.1": {
+      "sha512": "I2QA0JTjwgrSge/hHry5+XVjclqlX7T0GZESJrhDZ6O2gnzIJLf3KceI6o0pG9IFNpa25xyA64cfggg91gk+hQ==",
+      "type": "package",
+      "path": "linqtoexcel/1.10.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/LinqToExcel.dll",
+        "lib/LinqToExcel.xml",
+        "lib/Remotion.Data.Linq.dll",
+        "lib/Remotion.Interfaces.dll",
+        "lib/Remotion.dll",
+        "linqtoexcel.1.10.1.nupkg.sha512",
+        "linqtoexcel.nuspec"
+      ]
+    },
+    "log4net/2.0.3": {
+      "sha512": "rxMHzK5efGPo5XtRnuUGO4tfW5l74Aji6kVmtMAt2SgcB5PHBNtNY7yj2LCI2VtKrLPO7kCKR6kH6lIZggq3Gg==",
+      "type": "package",
+      "path": "log4net/2.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net10-full/log4net.dll",
+        "lib/net10-full/log4net.xml",
+        "lib/net11-full/log4net.dll",
+        "lib/net11-full/log4net.xml",
+        "lib/net20-full/log4net.dll",
+        "lib/net20-full/log4net.xml",
+        "lib/net35-client/log4net.dll",
+        "lib/net35-client/log4net.xml",
+        "lib/net35-full/log4net.dll",
+        "lib/net35-full/log4net.xml",
+        "lib/net40-client/log4net.dll",
+        "lib/net40-client/log4net.xml",
+        "lib/net40-full/log4net.dll",
+        "lib/net40-full/log4net.xml",
+        "log4net.2.0.3.nupkg.sha512",
+        "log4net.nuspec"
       ]
     },
     "MD.BootstrapPersianDateTimePicker/2.3.0": {
@@ -10603,6 +10783,34 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "T1.ClientProfile/1.10.12.27": {
+      "sha512": "F2BKceGBiZGCDsOBZl8EStxpqaFbYhUUvR4vkD7Trdipem+iUD4cMWSo3slcc32KhDvz/MHjUEvzf5JWGl+j/Q==",
+      "type": "package",
+      "path": "t1.clientprofile/1.10.12.27",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/T1.ClientProfile.dll",
+        "lib/net45/T1.ClientProfile.dll",
+        "lib/net451/T1.ClientProfile.dll",
+        "t1.clientprofile.1.10.12.27.nupkg.sha512",
+        "t1.clientprofile.nuspec"
+      ]
+    },
+    "T1.ExtraLinqToExcel/1.10.12.27": {
+      "sha512": "DuICYiO4z3C7hkWUJCNcvyISTE/5av1GDHUrWXdl4pAMStUzvBd02G2+Bngx8C5lkIVHV/rFNs1QXTlBf/lFYQ==",
+      "type": "package",
+      "path": "t1.extralinqtoexcel/1.10.12.27",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/T1.ExtraLinqToExcel.dll",
+        "lib/net45/T1.ExtraLinqToExcel.dll",
+        "lib/net451/T1.ExtraLinqToExcel.dll",
+        "t1.extralinqtoexcel.1.10.12.27.nupkg.sha512",
+        "t1.extralinqtoexcel.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -10617,7 +10825,8 @@
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.2",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.2",
       "NonFactors.Grid.Mvc6 >= 7.0.0",
-      "Npgsql.EntityFrameworkCore.PostgreSQL >= 6.0.3"
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 6.0.3",
+      "T1.ExtraLinqToExcel >= 1.10.12.27"
     ]
   },
   "packageFolders": {
@@ -10626,11 +10835,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/aslani/Desktop/PlinePager/PlinePager/PlinePager.csproj",
+      "projectUniqueName": "/home/aslani/Project/PlinePager/PlinePager/PlinePager.csproj",
       "projectName": "PlinePager",
-      "projectPath": "/home/aslani/Desktop/PlinePager/PlinePager/PlinePager.csproj",
+      "projectPath": "/home/aslani/Project/PlinePager/PlinePager/PlinePager.csproj",
       "packagesPath": "/home/aslani/.nuget/packages/",
-      "outputPath": "/home/aslani/Desktop/PlinePager/PlinePager/obj/",
+      "outputPath": "/home/aslani/Project/PlinePager/PlinePager/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/aslani/.nuget/NuGet/NuGet.Config"
@@ -10702,6 +10911,10 @@
           "Npgsql.EntityFrameworkCore.PostgreSQL": {
             "target": "Package",
             "version": "[6.0.3, )"
+          },
+          "T1.ExtraLinqToExcel": {
+            "target": "Package",
+            "version": "[1.10.12.27, )"
           }
         },
         "imports": [
@@ -10725,5 +10938,77 @@
         "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.201/RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Autofac 3.5.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Autofac",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Castle.Core 3.3.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Castle.Core",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'fastJSON 2.1.10' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "fastJSON",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'LinqToExcel 1.10.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "LinqToExcel",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'log4net 2.0.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "log4net",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'T1.ClientProfile 1.10.12.27' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "T1.ClientProfile",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'T1.ExtraLinqToExcel 1.10.12.27' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "T1.ExtraLinqToExcel",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

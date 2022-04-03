@@ -79,10 +79,8 @@ namespace PlinePager.Tools
         {
             Random rnd = new Random();
             var beforeAzanDir = Directory.GetFiles(Path.Combine("wwwroot", "before-azans"));
-            var azanDir = Directory.GetFiles(Path.Combine("wwwroot", "azans"));
-            var afterAzanDir = Directory.GetFiles(Path.Combine("wwwroot", "after-azans"));
 
-            DateTime cur = DateTime.Now;
+            var cur = DateTime.Now;
             var bef = JsonConvert.DeserializeObject<long[]>(_tblAzan.SoundsBeforeA);
             var la = 0;
             var azansSound = _context.TblSounds.Where(m => bef.Contains(m.Id)).ToList();
@@ -163,11 +161,9 @@ namespace PlinePager.Tools
         {
             _timerAzan.Stop();
             var dt = DateTime.Now;
-            var hour = dt.Hour;
-            var minute = dt.Minute;
-            var second = dt.Second;
             var p = new PersianCalendar();
             var date = $"{p.GetYear(dt):0000}/{p.GetMonth(dt):00}/{p.GetDayOfMonth(dt):00}";
+           
 
             if (Globals.ForceReloadAzan || string.Compare(_azanUpdate, date, StringComparison.Ordinal) < 0)
             {
@@ -201,21 +197,28 @@ namespace PlinePager.Tools
                 _timerAzan.Start();
                 return;
             }
+            var dtTolerance = dt.AddSeconds(3);
 
-            if (_tblAzan.EnableA && _tblAzan.HourA == hour && _tblAzan.MinuteA == minute &&
-                second - 1 <= _tblAzan.SecondA && _tblAzan.SecondA <= second + 1)
+            if (_tblAzan.EnableA && 
+                _tblAzan.HourA >= dt.Hour && _tblAzan.HourA <= dtTolerance.Hour && 
+                _tblAzan.MinuteA >= dt.Minute && _tblAzan.MinuteA <= dtTolerance.Minute && 
+                _tblAzan.SecondA >= dt.Second && _tblAzan.SecondA <= dtTolerance.Second)
             {
                 _tblAzan.EnableA = false;
                 CallFileAzanOnArea(_tblAzan, 0);
             }
-            else if (_tblAzan.EnableB && _tblAzan.HourB == hour && _tblAzan.MinuteB == minute &&
-                     second - 1 <= _tblAzan.SecondB && _tblAzan.SecondB <= second + 1)
+            else if (_tblAzan.EnableB && 
+                     _tblAzan.HourB >= dt.Hour && _tblAzan.HourB <= dtTolerance.Hour && 
+                     _tblAzan.MinuteB >= dt.Minute && _tblAzan.MinuteB <= dtTolerance.Minute && 
+                     _tblAzan.SecondB >= dt.Second && _tblAzan.SecondB <= dtTolerance.Second)
             {
                 _tblAzan.EnableB = false;
                 CallFileAzanOnArea(_tblAzan, 1);
             }
-            else if (_tblAzan.EnableC && _tblAzan.HourC == hour && _tblAzan.MinuteC == minute &&
-                     second - 1 <= _tblAzan.SecondC && _tblAzan.SecondC <= second + 1)
+            else if (_tblAzan.EnableC && 
+                     _tblAzan.HourC >= dt.Hour && _tblAzan.HourC <= dtTolerance.Hour && 
+                     _tblAzan.MinuteC >= dt.Minute && _tblAzan.MinuteC <= dtTolerance.Minute && 
+                     _tblAzan.SecondC >= dt.Second && _tblAzan.SecondC <= dtTolerance.Second)
             {
                 _tblAzan.EnableC = false;
                 CallFileAzanOnArea(_tblAzan, 2);

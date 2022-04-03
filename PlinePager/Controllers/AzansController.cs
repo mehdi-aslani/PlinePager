@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -67,6 +69,88 @@ namespace PlinePager.Controllers
                 EnableB = true,
                 EnableC = true,
             });
+        }
+
+        public IActionResult CreateOfXls()
+        {
+            ViewBag.Areas = AreasList;
+            ViewBag.Sounds = SoundsList;
+            return View(new AzanXls()
+            {
+                EnableA = true,
+                EnableB = true,
+                EnableC = true,
+            });
+        }
+
+        public async Task<IActionResult> ImportXls(IFormFile XlsFile,
+            long[] SoundsBeforeA,
+            long[] SoundsA,
+            long[] SoundsAfterA,
+            long[] AreasA,
+            long[] SoundsBeforeB,
+            long[] SoundsB,
+            long[] SoundsAfterB,
+            long[] AreasB,
+            long[] SoundsBeforeC,
+            long[] SoundsC,
+            long[] SoundsAfterC,
+            long[] AreasC,
+            [Bind(
+                "XlsFile,EnableA,SoundsBeforeA,SoundsA,SoundsAfterA,AreasA,EnableB," +
+                "SoundsBeforeB,SoundsB,SoundsAfterB,AreasB,EnableC,SoundsBeforeC," +
+                "SoundsC,SoundsAfterC,AreasC,VolumeA,VolumeB,VolumeC,DeleteOld")]
+            AzanXls azanXls)
+        {
+            ViewBag.Areas = AreasList;
+            ViewBag.Sounds = SoundsList;
+            if (ModelState.IsValid)
+            {
+                string extension = System.IO.Path.GetExtension(XlsFile.FileName);
+                if (!(extension.ToLower() == ".xls" || extension.ToLower() == ".xlsx"))
+                {
+                    ModelState.AddModelError("FileName", "فایل انتخاب شده باید فرمت xls یا xlsx باشد");
+                    return View("CreateOfXls");
+                }
+
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "tmp");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                path = Path.Combine(path, Globals.GenerateId() + extension);
+                await using (var file =
+                    new FileStream(path, FileMode.Create))
+                {
+                    await XlsFile.CopyToAsync(file);
+                }
+
+                //var excelFile = new LinqToExcel.ExcelQueryFactory(@"C:\File\Classes.xlsx");
+                for (int i = 0; i < 10; i++)
+                {
+                    TblAzan tblAzan = new TblAzan();
+                    tblAzan.SoundsBeforeA = JsonConvert.SerializeObject(SoundsBeforeA);
+                    tblAzan.SoundsA = JsonConvert.SerializeObject(SoundsA);
+                    tblAzan.SoundsAfterA = JsonConvert.SerializeObject(SoundsAfterA);
+                    tblAzan.AreasA = JsonConvert.SerializeObject(AreasA);
+
+                    tblAzan.SoundsBeforeB = JsonConvert.SerializeObject(SoundsBeforeB);
+                    tblAzan.SoundsB = JsonConvert.SerializeObject(SoundsB);
+                    tblAzan.SoundsAfterB = JsonConvert.SerializeObject(SoundsAfterB);
+                    tblAzan.AreasB = JsonConvert.SerializeObject(AreasB);
+
+                    tblAzan.SoundsBeforeC = JsonConvert.SerializeObject(SoundsBeforeC);
+                    tblAzan.SoundsC = JsonConvert.SerializeObject(SoundsC);
+                    tblAzan.SoundsAfterC = JsonConvert.SerializeObject(SoundsAfterC);
+                    tblAzan.AreasC = JsonConvert.SerializeObject(AreasC);
+                }
+
+                return RedirectToAction("Index", "Azans");
+            }
+
+            return View("CreateOfXls");
+            //var excelFile = new LinqToExcel.ExcelQueryFactory(@"C:\File\Classes.xlsx");
         }
 
         // POST: Azans/Create

@@ -291,3 +291,15 @@
 /home/aslani/Project/PlinePager/PlinePager/obj/Release/net6.0/PlinePager.pdb
 /home/aslani/Project/PlinePager/PlinePager/obj/Release/net6.0/PlinePager.genruntimeconfig.cache
 /home/aslani/Project/PlinePager/PlinePager/obj/Release/net6.0/ref/PlinePager.dll
+/home/aslani/Project/PlinePager/PlinePager/bin/Release/net6.0/EPPlus.dll
+/home/aslani/Project/PlinePager/PlinePager/bin/Release/net6.0/Microsoft.IO.RecyclableMemoryStream.dll
+/home/aslani/Project/PlinePager/PlinePager/bin/Release/net6.0/Autofac.dll
+/home/aslani/Project/PlinePager/PlinePager/bin/Release/net6.0/Castle.Core.dll
+/home/aslani/Project/PlinePager/PlinePager/bin/Release/net6.0/fastjson.dll
+/home/aslani/Project/PlinePager/PlinePager/bin/Release/net6.0/LinqToExcel.dll
+/home/aslani/Project/PlinePager/PlinePager/bin/Release/net6.0/Remotion.Data.Linq.dll
+/home/aslani/Project/PlinePager/PlinePager/bin/Release/net6.0/Remotion.Interfaces.dll
+/home/aslani/Project/PlinePager/PlinePager/bin/Release/net6.0/Remotion.dll
+/home/aslani/Project/PlinePager/PlinePager/bin/Release/net6.0/log4net.dll
+/home/aslani/Project/PlinePager/PlinePager/bin/Release/net6.0/T1.ClientProfile.dll
+/home/aslani/Project/PlinePager/PlinePager/bin/Release/net6.0/T1.ExtraLinqToExcel.dll

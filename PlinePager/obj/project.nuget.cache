@@ -1,14 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "X8h+IaKbPKEZyirzV+TyfogGMgrid3HBEj7VVluG5CkbG5Ck2prsIsx2qN2xjr+4u+6ni7oP+ZNoZsABE+hIfw==",
+  "dgSpecHash": "hWjaEzVX3Q7RXklaBK57jNmCt7tBXp7mpdnVCmXsaTpeTl+iFSkMUsv7Em8c6mo4l3TtM8/E0IIWRL5XQVVrMw==",
   "success": true,
-  "projectFilePath": "/home/aslani/Desktop/PlinePager/PlinePager/PlinePager.csproj",
+  "projectFilePath": "/home/aslani/Project/PlinePager/PlinePager/PlinePager.csproj",
   "expectedPackageFiles": [
     "/home/aslani/.nuget/packages/aspnetcorehero.toastnotification/1.1.0/aspnetcorehero.toastnotification.1.1.0.nupkg.sha512",
+    "/home/aslani/.nuget/packages/autofac/3.5.2/autofac.3.5.2.nupkg.sha512",
     "/home/aslani/.nuget/packages/bootstrap/3.3.1/bootstrap.3.3.1.nupkg.sha512",
+    "/home/aslani/.nuget/packages/castle.core/3.3.3/castle.core.3.3.3.nupkg.sha512",
     "/home/aslani/.nuget/packages/epplus/5.8.8/epplus.5.8.8.nupkg.sha512",
+    "/home/aslani/.nuget/packages/fastjson/2.1.10/fastjson.2.1.10.nupkg.sha512",
     "/home/aslani/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/home/aslani/.nuget/packages/jquery/1.9.0/jquery.1.9.0.nupkg.sha512",
+    "/home/aslani/.nuget/packages/linqtoexcel/1.10.1/linqtoexcel.1.10.1.nupkg.sha512",
+    "/home/aslani/.nuget/packages/log4net/2.0.3/log4net.2.0.3.nupkg.sha512",
     "/home/aslani/.nuget/packages/md.bootstrappersiandatetimepicker/2.3.0/md.bootstrappersiandatetimepicker.2.3.0.nupkg.sha512",
     "/home/aslani/.nuget/packages/messagepack/2.1.152/messagepack.2.1.152.nupkg.sha512",
     "/home/aslani/.nuget/packages/messagepack.annotations/2.1.152/messagepack.annotations.2.1.152.nupkg.sha512",
@@ -205,7 +210,80 @@
     "/home/aslani/.nuget/packages/system.threading.timer/4.3.0/system.threading.timer.4.3.0.nupkg.sha512",
     "/home/aslani/.nuget/packages/system.windows.extensions/4.7.0/system.windows.extensions.4.7.0.nupkg.sha512",
     "/home/aslani/.nuget/packages/system.xml.readerwriter/4.3.0/system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "/home/aslani/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512"
+    "/home/aslani/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512",
+    "/home/aslani/.nuget/packages/t1.clientprofile/1.10.12.27/t1.clientprofile.1.10.12.27.nupkg.sha512",
+    "/home/aslani/.nuget/packages/t1.extralinqtoexcel/1.10.12.27/t1.extralinqtoexcel.1.10.12.27.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Autofac 3.5.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Autofac",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Castle.Core 3.3.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Castle.Core",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'fastJSON 2.1.10' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "fastJSON",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'LinqToExcel 1.10.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "LinqToExcel",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'log4net 2.0.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "log4net",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'T1.ClientProfile 1.10.12.27' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "T1.ClientProfile",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'T1.ExtraLinqToExcel 1.10.12.27' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "T1.ExtraLinqToExcel",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }
