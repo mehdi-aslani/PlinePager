@@ -9,11 +9,12 @@ using PlinePager.Models.Users;
 
 namespace PlinePager.Data
 {
-    public class PlinePagerContext : IdentityDbContext<TblUser>
+    public sealed class PlinePagerContext : IdentityDbContext<TblUser>
     {
         public PlinePagerContext(DbContextOptions<PlinePagerContext> options)
             : base(options)
         {
+            Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
