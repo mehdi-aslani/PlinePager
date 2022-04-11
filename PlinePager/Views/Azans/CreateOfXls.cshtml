@@ -37,10 +37,15 @@
 
 <div class="row">
     <div class="col-4 offset-4">
-        <h3>ایجاد زمان اذان از فایل اکسل</h3>
+        <h3>ایجاد زمان اذان از فایل csv</h3>
         <hr/>
         <form enctype="multipart/form-data" method="post" asp-action="ImportXls">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="alert alert-info">
+                <label class="control-label">در نظر داشته باشید که ردیف اول فایل بارگذاری شده به عنوان نام ستون در نظر گرفته می شود و از آن صرفه نظر می شود.</label>
+            </div>
+
             <div class="form-group mb-3">
                 <label asp-for="XlsFile" class="control-label"></label>
                 <input type="file" id="date" asp-for="XlsFile" class="form-control"/>
@@ -159,7 +164,7 @@
                 <select asp-for="VolumeC" class="form-select-" asp-items="@volume"></select>
                 <span asp-validation-for="VolumeC" class="text-danger"></span>
             </div>
-
+            <hr/>
             <div class="form-group mb-3">
                 <input type="submit" value="ذخیره" class="btn btn-primary"/>
                 <a asp-action="Index" class="btn btn-danger">انصراف</a>

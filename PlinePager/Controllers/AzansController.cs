@@ -4,11 +4,11 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using IronXL;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic.FileIO;
 using Newtonsoft.Json;
 using PlinePager.Data;
 using PlinePager.Models;
@@ -110,14 +110,14 @@ namespace PlinePager.Controllers
             {
                 if (XlsFile == null || XlsFile.Length == 0)
                 {
-                    ModelState.AddModelError("XlsFile", "فایل اکسل را انتخاب کنید");
+                    ModelState.AddModelError("XlsFile", "فایل csv را انتخاب کنید");
                     return View("CreateOfXls");
                 }
 
-                string extension = System.IO.Path.GetExtension(XlsFile.FileName);
-                if (!(extension.ToLower() == ".xls" || extension.ToLower() == ".xlsx"))
+                string extension = Path.GetExtension(XlsFile.FileName);
+                if (extension.ToLower() != ".csv")
                 {
-                    ModelState.AddModelError("XlsFile", "فایل انتخاب شده باید فرمت xls یا xlsx باشد");
+                    ModelState.AddModelError("XlsFile", "فایل انتخاب شده باید فرمت csv باشد");
                     return View("CreateOfXls");
                 }
 
@@ -134,10 +134,29 @@ namespace PlinePager.Controllers
                     await XlsFile.CopyToAsync(file);
                 }
 
-                WorkBook workbook = WorkBook.Load(path);
-                var Sheet = workbook.WorkSheets[0].Name;
-                WorkSheet sheet = workbook.GetWorkSheet(Sheet);
-                DataTable dt = sheet.ToDataTable(true);
+                DataTable dt = new DataTable();
+                dt.Columns.Add("تاریخ");
+                dt.Columns.Add("اذان صبح");
+                dt.Columns.Add("اذان ظهر");
+                dt.Columns.Add("اذان مغرب");
+                bool firstRow = true;
+                using (TextFieldParser parser = new TextFieldParser(path))
+                {
+                    parser.TextFieldType = FieldType.Delimited;
+                    parser.SetDelimiters(",");
+                    while (!parser.EndOfData)
+                    {
+                        string[] fields = parser.ReadFields();
+                        if (firstRow)
+                        {
+                            firstRow = false;
+                            continue;
+                        }
+                        dt.Rows.Add(fields);
+                    }
+                }
+
+                System.IO.File.Delete(path);
 
                 if (azanXls.DeleteOld)
                     await _context.Database.ExecuteSqlRawAsync("DELETE FROM \"tblAzans\"");
@@ -147,7 +166,8 @@ namespace PlinePager.Controllers
                     try
                     {
                         string[] date = dt.Rows[i][0].ToString()?.Split("/");
-                        var strDate = $"{int.Parse(date[0]):0000}/{int.Parse(date[1]):00}/{int.Parse(date[2]):00}";
+                        var strDate =
+                            $"{int.Parse(date[0]):0000}/{int.Parse(date[1]):00}/{int.Parse(date[2]):00}";
                         if (await _context.TblAzans.AnyAsync(t => t.Date == strDate))
                         {
                             ModelState.AddModelError("", $"تاریخ ردیف {i + 1} تکراری می باشد");
@@ -156,56 +176,23 @@ namespace PlinePager.Controllers
 
                         TblAzan tblAzan = new TblAzan();
                         tblAzan.Date = strDate;
-                        string[] time = dt.Rows[i][1].ToString()?.Split(":");
-                        if (time != null)
-                        {
-                            tblAzan.HourA = int.Parse(time[0]);
-                            tblAzan.MinuteA = int.Parse(time[1]);
-                            tblAzan.SecondA = int.Parse(time[2]);
-                            tblAzan.EnableA = azanXls.EnableA;
-                        }
-                        else
-                        {
-                            tblAzan.HourA = 0;
-                            tblAzan.MinuteA = 0;
-                            tblAzan.SecondA = 0;
-                            tblAzan.EnableA = false;
-                            ModelState.AddModelError("", $"{i + 1}خطا در تبدیل ساعت صبح ردیف ");
-                        }
+                        DateTime time = DateTime.Parse(dt.Rows[i][1].ToString() ?? string.Empty);
+                        tblAzan.HourA = time.Hour;
+                        tblAzan.MinuteA = time.Minute;
+                        tblAzan.SecondA = time.Second;
+                        tblAzan.EnableA = azanXls.EnableA;
 
-                        time = dt.Rows[i][2].ToString()?.Split(":");
-                        if (time != null)
-                        {
-                            tblAzan.HourB = int.Parse(time[0]);
-                            tblAzan.MinuteB = int.Parse(time[1]);
-                            tblAzan.SecondB = int.Parse(time[2]);
-                            tblAzan.EnableB = azanXls.EnableB;
-                        }
-                        else
-                        {
-                            tblAzan.HourB = 0;
-                            tblAzan.MinuteB = 0;
-                            tblAzan.SecondB = 0;
-                            tblAzan.EnableB = false;
-                            ModelState.AddModelError("", $"{i + 1}خطا در تبدیل ساعت ظهر ردیف ");
-                        }
+                        time = DateTime.Parse(dt.Rows[i][2].ToString() ?? string.Empty);
+                        tblAzan.HourB = time.Hour;
+                        tblAzan.MinuteB = time.Minute;
+                        tblAzan.SecondB = time.Second;
+                        tblAzan.EnableB = azanXls.EnableB;
 
-                        time = dt.Rows[i][3].ToString()?.Split(":");
-                        if (time != null)
-                        {
-                            tblAzan.HourC = int.Parse(time[0]);
-                            tblAzan.MinuteC = int.Parse(time[1]);
-                            tblAzan.SecondC = int.Parse(time[2]);
-                            tblAzan.EnableC = azanXls.EnableC;
-                        }
-                        else
-                        {
-                            tblAzan.HourC = 0;
-                            tblAzan.MinuteC = 0;
-                            tblAzan.SecondC = 0;
-                            tblAzan.EnableC = false;
-                            ModelState.AddModelError("", $"{i + 1}خطا در تبدیل ساعت مغرب ردیف ");
-                        }
+                        time = DateTime.Parse(dt.Rows[i][3].ToString() ?? string.Empty);
+                        tblAzan.HourC = time.Hour;
+                        tblAzan.MinuteC = time.Minute;
+                        tblAzan.SecondC = time.Second;
+                        tblAzan.EnableC = azanXls.EnableC;
 
                         tblAzan.SoundsBeforeA = JsonConvert.SerializeObject(SoundsBeforeA);
                         tblAzan.SoundsA = JsonConvert.SerializeObject(SoundsA);

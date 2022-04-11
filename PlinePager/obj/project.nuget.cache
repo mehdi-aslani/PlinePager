@@ -1,13 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "JTCuldyhpP2r4fjpN75dkyNxUIpjGk7hS3VAKSdmU4QOFcvBZvnFEqllQd7XUSXTd9AvYmaWGnF5BIlokwlTkQ==",
+  "dgSpecHash": "/BERaIdF962oqst1tql8kXez4nvH5rfri0U3zHDe7YEttrkEeYZ5sF9MMeXQE9xe6tFyDQGRCVA1nHc7I3u9zw==",
   "success": true,
-  "projectFilePath": "/home/aslani/Desktop/PlinePager/PlinePager/PlinePager.csproj",
+  "projectFilePath": "/home/aslani/Project/PlinePager/PlinePager/PlinePager.csproj",
   "expectedPackageFiles": [
     "/home/aslani/.nuget/packages/aspnetcorehero.toastnotification/1.1.0/aspnetcorehero.toastnotification.1.1.0.nupkg.sha512",
     "/home/aslani/.nuget/packages/bootstrap/3.3.1/bootstrap.3.3.1.nupkg.sha512",
     "/home/aslani/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
-    "/home/aslani/.nuget/packages/ironxl.excel/2022.3.0/ironxl.excel.2022.3.0.nupkg.sha512",
     "/home/aslani/.nuget/packages/jquery/1.9.0/jquery.1.9.0.nupkg.sha512",
     "/home/aslani/.nuget/packages/md.bootstrappersiandatetimepicker/2.3.0/md.bootstrappersiandatetimepicker.2.3.0.nupkg.sha512",
     "/home/aslani/.nuget/packages/messagepack/2.1.152/messagepack.2.1.152.nupkg.sha512",

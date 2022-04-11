@@ -36,9 +36,11 @@ namespace PlinePager
             // );
 
             services.AddDbContext<PlinePagerContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("psql")).EnableSensitiveDataLogging()
+                    options.UseNpgsql(Configuration.GetConnectionString("psql"),
+                        opt => opt.SetPostgresVersion(new Version(9, 6)))
+                //.EnableSensitiveDataLogging()
             );
-            
+
             services.AddTransient<Seeder>();
 
             services.AddIdentity<TblUser, IdentityRole>(options =>

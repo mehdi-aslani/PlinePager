@@ -8,6 +8,7 @@ using System.Text;
 using System.Timers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Npgsql;
 using PlinePager.Data;
@@ -22,20 +23,23 @@ namespace PlinePager.Tools
         private const int TimeSchedule = 10;
         private const int TimeAzan = 1;
         private Timer _timerUpdate;
-        private const int TimeUpdate = 1;
+        private const int TimeUpdate = 2;
         private List<TblSchedule> _lstSchedule;
         private readonly PlinePagerContext _context;
         private readonly IConfiguration _configuration;
         private string _lastUpdateDate = "";
+        private readonly ILogger<Seeder> _logger;
 
-        public Seeder(PlinePagerContext context, IConfiguration configuration)
+        public Seeder(PlinePagerContext context, IConfiguration configuration, ILogger<Seeder> logger)
         {
             _context = context;
             _configuration = configuration;
+            _logger = logger;
         }
 
         public async void DatabaseInit()
         {
+            Globals.VoipCore = _configuration.GetSection("VoipCore").Value;
             if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "before-azans")) == false)
             {
                 Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "before-azans"));
@@ -77,6 +81,8 @@ namespace PlinePager.Tools
 
         private void CalcTime(TblAzan azan)
         {
+            _logger.Log(LogLevel.Information, "محاسبه زمان ساعت اذان ها");
+            _logger.Log(LogLevel.Information, "ناریخ اذان " + azan.Date);
             Random rnd = new Random();
             var beforeAzanDir = Directory.GetFiles(Path.Combine("wwwroot", "before-azans"));
 
@@ -101,6 +107,7 @@ namespace PlinePager.Tools
 
             DateTime dt = new DateTime(cur.Year, cur.Month, cur.Day, azan.HourA, azan.MinuteA, azan.SecondA);
             dt = dt.AddSeconds(-1 * la);
+            _logger.Log(LogLevel.Information, "اذان صبح" + dt.ToString("HH:mm:ss"));
             azan.HourA = dt.Hour;
             azan.MinuteA = dt.Minute;
             azan.SecondA = dt.Second;
@@ -115,7 +122,7 @@ namespace PlinePager.Tools
                     var sound = Path.Combine(Directory.GetCurrentDirectory(),
                         beforeAzanDir[rnd.Next(beforeAzanDir.Length - 1)]);
                     la = Globals.GetWavSoundLength(sound);
-                    _tblAzan.SoundsBeforeB = $"{sound[..^4]}";
+                    _tblAzan.SoundsBeforeB = $"f:{sound[..^4]}";
                 }
             }
             else
@@ -125,6 +132,7 @@ namespace PlinePager.Tools
 
             dt = new DateTime(cur.Year, cur.Month, cur.Day, azan.HourB, azan.MinuteB, azan.SecondB);
             dt = dt.AddSeconds(-1 * la);
+            _logger.Log(LogLevel.Information, "اذان ظهر" + dt.ToString("HH:mm:ss"));
             azan.HourB = dt.Hour;
             azan.MinuteB = dt.Minute;
             azan.SecondB = dt.Second;
@@ -139,7 +147,7 @@ namespace PlinePager.Tools
                     var sound = Path.Combine(Directory.GetCurrentDirectory(),
                         beforeAzanDir[rnd.Next(beforeAzanDir.Length - 1)]);
                     la = Globals.GetWavSoundLength(sound);
-                    _tblAzan.SoundsBeforeC = $"{sound[..^4]}";
+                    _tblAzan.SoundsBeforeC = $"f:{sound[..^4]}";
                 }
             }
             else
@@ -149,6 +157,7 @@ namespace PlinePager.Tools
 
             dt = new DateTime(cur.Year, cur.Month, cur.Day, azan.HourC, azan.MinuteC, azan.SecondC);
             dt = dt.AddSeconds(-1 * la);
+            _logger.Log(LogLevel.Information, "اذان مغرب" + dt.ToString("HH:mm:ss"));
             azan.HourC = dt.Hour;
             azan.MinuteC = dt.Minute;
             azan.SecondC = dt.Second;
@@ -160,12 +169,12 @@ namespace PlinePager.Tools
         private void TimerAzanOnElapsed(object sender, ElapsedEventArgs e)
         {
             _timerAzan.Stop();
-            var dt = DateTime.Now;
+            var curTime = DateTime.Now;
             var p = new PersianCalendar();
-            var date = $"{p.GetYear(dt):0000}/{p.GetMonth(dt):00}/{p.GetDayOfMonth(dt):00}";
-           
+            var date = $"{p.GetYear(curTime):0000}/{p.GetMonth(curTime):00}/{p.GetDayOfMonth(curTime):00}";
 
-            if (Globals.ForceReloadAzan || string.Compare(_azanUpdate, date, StringComparison.Ordinal) < 0)
+            if (Globals.ForceReloadAzan || string.Compare(_azanUpdate, date, StringComparison.Ordinal) < 0 ||
+                (curTime.Hour == 0 && curTime.Minute == 0))
             {
                 Globals.ForceReloadAzan = false;
                 _azanUpdate = date;
@@ -179,6 +188,7 @@ namespace PlinePager.Tools
                     cmd.Fill(data);
                     var lstAzan = Globals.ConvertToList<TblAzan>(data);
                     _tblAzan = lstAzan.FirstOrDefault();
+                    _logger.Log(LogLevel.Information, "به روز رسانی ساعت اذان ها");
                 }
 
                 connection.Close();
@@ -197,30 +207,34 @@ namespace PlinePager.Tools
                 _timerAzan.Start();
                 return;
             }
-            var dtTolerance = dt.AddSeconds(3);
 
-            if (_tblAzan.EnableA && 
-                _tblAzan.HourA >= dt.Hour && _tblAzan.HourA <= dtTolerance.Hour && 
-                _tblAzan.MinuteA >= dt.Minute && _tblAzan.MinuteA <= dtTolerance.Minute && 
-                _tblAzan.SecondA >= dt.Second && _tblAzan.SecondA <= dtTolerance.Second)
+            var dtTolerance = curTime.AddSeconds(3);
+
+            if (_tblAzan.EnableA &&
+                curTime.Hour <= _tblAzan.HourA && _tblAzan.HourA <= dtTolerance.Hour &&
+                curTime.Minute <= _tblAzan.MinuteA && _tblAzan.MinuteA <= dtTolerance.Minute &&
+                curTime.Second <= _tblAzan.SecondA && _tblAzan.SecondA <= dtTolerance.Second)
             {
                 _tblAzan.EnableA = false;
+                _logger.Log(LogLevel.Information, "پخش اذان ها صبح");
                 CallFileAzanOnArea(_tblAzan, 0);
             }
-            else if (_tblAzan.EnableB && 
-                     _tblAzan.HourB >= dt.Hour && _tblAzan.HourB <= dtTolerance.Hour && 
-                     _tblAzan.MinuteB >= dt.Minute && _tblAzan.MinuteB <= dtTolerance.Minute && 
-                     _tblAzan.SecondB >= dt.Second && _tblAzan.SecondB <= dtTolerance.Second)
+            else if (_tblAzan.EnableB &&
+                     curTime.Hour <= _tblAzan.HourB && _tblAzan.HourB <= dtTolerance.Hour &&
+                     curTime.Minute <= _tblAzan.MinuteB && _tblAzan.MinuteB <= dtTolerance.Minute &&
+                     curTime.Second <= _tblAzan.SecondB && _tblAzan.SecondB <= dtTolerance.Second)
             {
                 _tblAzan.EnableB = false;
+                _logger.Log(LogLevel.Information, "پخش اذان ها ظهر");
                 CallFileAzanOnArea(_tblAzan, 1);
             }
-            else if (_tblAzan.EnableC && 
-                     _tblAzan.HourC >= dt.Hour && _tblAzan.HourC <= dtTolerance.Hour && 
-                     _tblAzan.MinuteC >= dt.Minute && _tblAzan.MinuteC <= dtTolerance.Minute && 
-                     _tblAzan.SecondC >= dt.Second && _tblAzan.SecondC <= dtTolerance.Second)
+            else if (_tblAzan.EnableC &&
+                     curTime.Hour <= _tblAzan.HourC && _tblAzan.HourC <= dtTolerance.Hour &&
+                     curTime.Minute <= _tblAzan.MinuteC && _tblAzan.MinuteC <= dtTolerance.Minute &&
+                     curTime.Second <= _tblAzan.SecondC && _tblAzan.SecondC <= dtTolerance.Second)
             {
                 _tblAzan.EnableC = false;
+                _logger.Log(LogLevel.Information, "پخش اذان ها مغرب");
                 CallFileAzanOnArea(_tblAzan, 2);
             }
 
@@ -230,14 +244,15 @@ namespace PlinePager.Tools
         private void TimerOnElapsedUpdate(object sender, ElapsedEventArgs e)
         {
             _timerUpdate.Stop();
-            _timerSchedule.Stop();
+            //_timerSchedule.Stop();
+            //_logger.Log(LogLevel.Information,"شروع بررسی برای بروز رسانی اوقات پخش");
             var dt = DateTime.Now;
             var hour = dt.Hour;
             var minute = dt.Minute;
             var year = dt.Year;
             var p = new PersianCalendar();
             var date = $"{p.GetYear(dt):0000}/{p.GetMonth(dt):00}/{p.GetDayOfMonth(dt):00}";
-
+            Console.WriteLine(dt.ToString());
             try
             {
                 if (Globals.ForceReload ||
@@ -259,6 +274,7 @@ namespace PlinePager.Tools
                     {
                         var data = new DataTable();
                         cmd.Fill(data);
+                        _logger.Log(LogLevel.Information, "به روز رسانی ساعت اوقات پخش");
                         _lstSchedule = Globals.ConvertToList<TblSchedule>(data);
                     }
 
@@ -293,14 +309,15 @@ namespace PlinePager.Tools
                     _lastUpdateDate = date;
                 }
 
-                if (_lstSchedule is {Count: > 0} && _timerSchedule.Enabled == false)
-                    _timerSchedule.Start();
+                // if (_lstSchedule is {Count: > 0} && _timerSchedule.Enabled == false)
+                //     _timerSchedule.Start();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
 
+            //_logger.Log(LogLevel.Information,"اتمام بررسی برای بروز رسانی اوقات پخش");
             _timerUpdate.Start();
         }
 
@@ -350,8 +367,9 @@ namespace PlinePager.Tools
                     return;
                 }
 
-                Console.WriteLine(item.Name);
+                _logger.Log(LogLevel.Information, "پخش اوقات زمانبندی شده");
                 CallFileOnScheduleArea(item);
+
 
                 if (item.IntervalEnable)
                 {
@@ -387,6 +405,7 @@ namespace PlinePager.Tools
 
         private string CallFileOnScheduleArea(TblSchedule schedule)
         {
+            _logger.Log(LogLevel.Information, "پخش زمانبندی پخش");
             try
             {
                 var sounds = JsonConvert.DeserializeObject<long[]>(schedule.Sounds);
@@ -431,19 +450,21 @@ namespace PlinePager.Tools
                               "CallerID: \"00000000\"<pline-page>\n" +
                               "Application: Playback\n" +
                               $"Data: {soundsPath}\n";
-                var path = $"/var/spool/asterisk/outgoing/{Globals.GenerateId()}.call";
+                var path = $"/var/spool/{Globals.VoipCore}/outgoing/{Globals.GenerateId()}.call";
                 File.WriteAllText(path, strCall, Encoding.ASCII);
                 Globals.RunCmd("/usr/bin/chmod", "0777 " + path);
                 return string.Empty;
             }
             catch (Exception ex)
             {
+                _logger.Log(LogLevel.Error, $"پخش اوقات زمانبندی شده{ex}");
                 return ex.ToString();
             }
         }
 
         private string CallFileAzanOnArea(TblAzan azan, int time)
         {
+            _logger.Log(LogLevel.Information, "پخش آذان");
             try
             {
                 var finalSounds = string.Empty;
@@ -741,13 +762,14 @@ namespace PlinePager.Tools
                               "CallerID: \"00000000\"<pline-page>\n" +
                               "Application: Playback\n" +
                               $"Data: {finalSounds}\n";
-                var path = $"/var/spool/asterisk/outgoing/{Globals.GenerateId()}.call";
+                var path = $"/var/spool/{Globals.VoipCore}/outgoing/{Globals.GenerateId()}.call";
                 File.WriteAllText(path, strCall, Encoding.ASCII);
                 Globals.RunCmd("/usr/bin/chmod", "0777 " + path);
                 return string.Empty;
             }
             catch (Exception ex)
             {
+                _logger.Log(LogLevel.Error, $"پخش اذان {ex}");
                 return ex.ToString();
             }
         }

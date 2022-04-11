@@ -191,6 +191,8 @@ namespace PlinePager.Controllers
                     });
                 }
 
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", tblSound.FileName);
+                System.IO.File.Delete(path);
                 return Json(new {error = ""});
             }
             catch

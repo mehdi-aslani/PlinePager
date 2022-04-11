@@ -14,7 +14,7 @@ namespace PlinePager.Data
         public PlinePagerContext(DbContextOptions<PlinePagerContext> options)
             : base(options)
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

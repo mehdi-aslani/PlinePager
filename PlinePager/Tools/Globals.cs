@@ -5,10 +5,8 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
-using Newtonsoft.Json;
 using PlinePager.Models;
 
 namespace PlinePager.Tools
@@ -26,12 +24,14 @@ namespace PlinePager.Tools
             Console = 1,
         }
 
+        public static string VoipCore = "asterisk";
+
         public static bool ForceReload { get; set; } = true;
         public static bool ForceReloadAzan { get; set; } = true;
 
         public static void CreateAgents(IEnumerable<TblAgent> agents)
         {
-            var ext = File.ReadAllText("/etc/asterisk/extensions.conf", Encoding.ASCII);
+            var ext = File.ReadAllText($"/etc/{VoipCore}/extensions.conf", Encoding.ASCII);
             if (!ext.Contains("[pline-page]"))
             {
                 var extentions = "[pline-page]\n" +
@@ -41,14 +41,14 @@ namespace PlinePager.Tools
                                  "\tsame => n,Page(${users})\n" +
                                  "\tsame => n,Hangup()\n";
                 ext += $"\n{extentions}\n";
-                File.WriteAllText("/etc/asterisk/extensions.conf", ext, Encoding.ASCII);
+                File.WriteAllText($"/etc/{VoipCore}/extensions.conf", ext, Encoding.ASCII);
             }
 
-            var sip = File.ReadAllText("/etc/asterisk/sip.conf", Encoding.ASCII);
+            var sip = File.ReadAllText($"/etc/{VoipCore}/sip.conf", Encoding.ASCII);
             if (!sip.Contains("#include sip-pline-pager.conf"))
             {
                 sip += "\n#include sip-pline-pager.conf\n";
-                File.WriteAllText("/etc/asterisk/sip.conf", sip, Encoding.ASCII);
+                File.WriteAllText($"/etc/{VoipCore}/sip.conf", sip, Encoding.ASCII);
             }
 
             string plinePager = "";
@@ -68,8 +68,8 @@ namespace PlinePager.Tools
                 }
             }
 
-            File.WriteAllText("/etc/asterisk/sip-pline-pager.conf", plinePager, Encoding.ASCII);
-            RunCmd("/usr/sbin/asterisk", "-x reload");
+            File.WriteAllText($"/etc/{VoipCore}/sip-pline-pager.conf", plinePager, Encoding.ASCII);
+            RunCmd($"/usr/sbin/{VoipCore}", "-x reload");
         }
 
         public static string RunCmd(string app, string args)
@@ -142,7 +142,7 @@ namespace PlinePager.Tools
                               //"RetryTime: 1\n" +
                               "Application: Playback\n" +
                               "Data: " + sound + "\n";
-                var path = $"/var/spool/asterisk/outgoing/{Globals.GenerateId()}.call";
+                var path = $"/var/spool/{VoipCore}/outgoing/{Globals.GenerateId()}.call";
                 File.WriteAllText(path, strCall, Encoding.ASCII);
                 RunCmd("/usr/bin/chmod", "0777 " + path);
                 return string.Empty;
@@ -156,7 +156,7 @@ namespace PlinePager.Tools
         public static bool Hangup(string agent)
         {
             bool r = false;
-            string result = RunCmd("/usr/sbin/asterisk", "-x \"core show channels\"");
+            string result = RunCmd($"/usr/sbin/{VoipCore}", "-x \"core show channels\"");
             if (result != null && result.Trim() != string.Empty)
             {
                 string[] items = result.Split(new string[] {"\n"}, StringSplitOptions.RemoveEmptyEntries);
@@ -167,7 +167,7 @@ namespace PlinePager.Tools
                         var channels = i.Split(new string[] {" "}, StringSplitOptions.RemoveEmptyEntries);
                         if (channels.Length > 0)
                         {
-                            RunCmd("/usr/sbin/asterisk", $"-x \"hangup request {channels[0].Trim()}\"");
+                            RunCmd($"/usr/sbin/{VoipCore}", $"-x \"hangup request {channels[0].Trim()}\"");
                             r = true;
                         }
                     }
@@ -179,7 +179,7 @@ namespace PlinePager.Tools
 
         public static void HangupAll()
         {
-            RunCmd("/usr/sbin/asterisk", $"-x \"hangup request all\"");
+            RunCmd($"/usr/sbin/{VoipCore}", $"-x \"hangup request all\"");
         }
 
         public static List<T> ConvertToList<T>(DataTable dt)

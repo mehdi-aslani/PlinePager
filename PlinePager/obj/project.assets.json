@@ -40,15 +40,6 @@
           "lib/netstandard2.0/Humanizer.dll": {}
         }
       },
-      "IronXL.Excel/2022.3.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/IronXL.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/IronXL.dll": {}
-        }
-      },
       "jQuery/1.9.0": {
         "type": "package"
       },
@@ -3496,24 +3487,6 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
-      ]
-    },
-    "IronXL.Excel/2022.3.0": {
-      "sha512": "Sunj3e+i6gwwq00nOYd62Zd/bh42adpVTs2Fk3YSNa7iryM3kW0DFE2pMpfVJjHWdwFKfkf5sA3moZaQ/C6CZg==",
-      "type": "package",
-      "path": "ironxl.excel/2022.3.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "EULA.txt",
-        "ironxl.excel.2022.3.0.nupkg.sha512",
-        "ironxl.excel.nuspec",
-        "lib/net45/IronXL.dll",
-        "lib/net45/IronXL.xml",
-        "lib/netstandard2.0/IronXL.dll",
-        "lib/netstandard2.0/IronXL.xml",
-        "readme-setup.txt",
-        "readme.txt"
       ]
     },
     "jQuery/1.9.0": {
@@ -10372,7 +10345,6 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "AspNetCoreHero.ToastNotification >= 1.1.0",
-      "IronXL.Excel >= 2022.3.0",
       "MD.BootstrapPersianDateTimePicker >= 2.3.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.2",
       "Microsoft.EntityFrameworkCore >= 6.0.2",
@@ -10391,11 +10363,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/aslani/Desktop/PlinePager/PlinePager/PlinePager.csproj",
+      "projectUniqueName": "/home/aslani/Project/PlinePager/PlinePager/PlinePager.csproj",
       "projectName": "PlinePager",
-      "projectPath": "/home/aslani/Desktop/PlinePager/PlinePager/PlinePager.csproj",
+      "projectPath": "/home/aslani/Project/PlinePager/PlinePager/PlinePager.csproj",
       "packagesPath": "/home/aslani/.nuget/packages/",
-      "outputPath": "/home/aslani/Desktop/PlinePager/PlinePager/obj/",
+      "outputPath": "/home/aslani/Project/PlinePager/PlinePager/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/aslani/.nuget/NuGet/NuGet.Config"
@@ -10425,10 +10397,6 @@
           "AspNetCoreHero.ToastNotification": {
             "target": "Package",
             "version": "[1.1.0, )"
-          },
-          "IronXL.Excel": {
-            "target": "Package",
-            "version": "[2022.3.0, )"
           },
           "MD.BootstrapPersianDateTimePicker": {
             "target": "Package",
