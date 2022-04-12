@@ -173,8 +173,9 @@ namespace PlinePager.Tools
             var p = new PersianCalendar();
             var date = $"{p.GetYear(curTime):0000}/{p.GetMonth(curTime):00}/{p.GetDayOfMonth(curTime):00}";
 
-            if (Globals.ForceReloadAzan || string.Compare(_azanUpdate, date, StringComparison.Ordinal) < 0 ||
-                (curTime.Hour == 0 && curTime.Minute == 0))
+            if (Globals.ForceReloadAzan ||
+                (string.Compare(date, _azanUpdate, StringComparison.Ordinal) > 0 &&
+                 curTime.Hour == 0 && curTime.Minute == 0))
             {
                 Globals.ForceReloadAzan = false;
                 _azanUpdate = date;
@@ -252,7 +253,7 @@ namespace PlinePager.Tools
             var year = dt.Year;
             var p = new PersianCalendar();
             var date = $"{p.GetYear(dt):0000}/{p.GetMonth(dt):00}/{p.GetDayOfMonth(dt):00}";
-            Console.WriteLine(dt.ToString());
+
             try
             {
                 if (Globals.ForceReload ||

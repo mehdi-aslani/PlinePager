@@ -5,83 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37e56588-1397-418f-8bb2-263a81bfb6e1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.20.04-x64/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.20.04-x64/PlinePager.AssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.20.04-x64/PlinePager.AssemblyInfoInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.20.04-x64/PlinePager.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.20.04-x64/PlinePager.MvcApplicationPartsAssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.20.04-x64/PlinePager.RazorAssemblyInfo.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.20.04-x64/PlinePager.RazorAssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.20.04-x64/PlinePager.assets.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.20.04-x64/PlinePager.csproj.AssemblyReference.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.20.04-x64/PlinePager.csproj.CopyComplete" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.20.04-x64/PlinePager.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.20.04-x64/PlinePager.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.20.04-x64/PlinePager.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.20.04-x64/PlinePager.genruntimeconfig.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.20.04-x64/PlinePager.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.20.04-x64/apphost" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.20.04-x64/ref/PlinePager.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.20.04-x64/refint/PlinePager.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/wwwroot/tmp/022830cdc57e4f84865fde281ae2686e.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/wwwroot/tmp/1a627f96d41048c2a34b261a16df32f7.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/wwwroot/tmp/64b32b031fea470db0f04bbee9d40e5c.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/wwwroot/tmp/841e049135e24971942a6ce3d0ed7ead.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/wwwroot/tmp/87f3edcb34054d77beb0a9b601ce2d7e.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PlinePager/wwwroot/tmp/cfbd6548af794583bb1cdcd722389141.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PlinePager/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PlinePager/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PlinePager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PlinePager/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Controllers/AzansController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Controllers/AzansController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Controllers/SoundsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Controllers/SoundsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/Data/PlinePagerContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Data/PlinePagerContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Db/pline-pagr.db" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.20.04-x64/PlinePager.MvcApplicationPartsAssemblyInfo.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Db/pline-pagr.db-shm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Db/pline-pagr.db-wal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Migrations/20220331183755_migr1.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Migrations/20220331183755_migr1.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Migrations/20220401052616_migr2.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Migrations/20220401052616_migr2.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Migrations/20220403220159_create.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Migrations/20220403220159_create.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Migrations/PlinePagerContextModelSnapshot.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/PlinePager.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/PlinePager.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Tools/Globals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Tools/Globals.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/Tools/Seeder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Tools/Seeder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Views/Azans/CreateOfXls.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Views/Azans/CreateOfXls.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Views/Azans/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Views/Azans/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.genruntimeconfig.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/PlinePager.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/ref/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/ref/PlinePager.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/refint/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/refint/PlinePager.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/staticwebassets.build.json" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/staticwebassets.build.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/staticwebassets.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Debug/net6.0/staticwebassets.development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/PlinePager.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/PlinePager.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/PlinePager.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/PlinePager.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/PlinePager.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/PlinePager.csproj.nuget.g.targets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ref/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ref/PlinePager.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/refint/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/refint/PlinePager.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/staticwebassets.build.json" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/staticwebassets.build.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/staticwebassets.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/staticwebassets.development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.16.04-x64/PlinePager.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.16.04-x64/PlinePager.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.16.04-x64/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.16.04-x64/PlinePager.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.16.04-x64/PlinePager.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.16.04-x64/PlinePager.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.16.04-x64/ref/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.16.04-x64/ref/PlinePager.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.16.04-x64/refint/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.16.04-x64/refint/PlinePager.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlinePager/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/staticwebassets.pack.sentinel" afterDir="false" />
     </list>
@@ -153,7 +88,6 @@
       <option value="$PROJECT_DIR$/PlinePager/Controllers/SoundsController.cs" />
       <option value="$PROJECT_DIR$/PlinePager/appsettings.Development.json" />
       <option value="$PROJECT_DIR$/PlinePager/Tools/Globals.cs" />
-      <option value="$PROJECT_DIR$/PlinePager/Data/PlinePagerContext.cs" />
       <option value="$PROJECT_DIR$/PlinePager/Models/TblAgent.cs" />
       <option value="$PROJECT_DIR$/PlinePager/Models/TblArea.cs" />
       <option value="$PROJECT_DIR$/PlinePager/Models/TblAzan.cs" />
@@ -162,6 +96,7 @@
       <option value="$PROJECT_DIR$/PlinePager/Startup.cs" />
       <option value="$PROJECT_DIR$/PlinePager/appsettings.json" />
       <option value="$PROJECT_DIR$/PlinePager/Tools/Seeder.cs" />
+      <option value="$PROJECT_DIR$/PlinePager/Data/PlinePagerContext.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="26c5Wo03BJlPcqZaGi6jkGMo15M" />
@@ -265,7 +200,8 @@
       <workItem from="1649500656871" duration="8071000" />
       <workItem from="1649559966059" duration="3842000" />
       <workItem from="1649589434234" duration="2225000" />
-      <workItem from="1649666498114" duration="2284000" />
+      <workItem from="1649666498114" duration="7896000" />
+      <workItem from="1649756855547" duration="2140000" />
     </task>
     <servers />
   </component>
@@ -294,52 +230,52 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/PlinePager/Tools/Seeder.cs</url>
-          <line>234</line>
+          <line>236</line>
           <properties documentPath="$PROJECT_DIR$/PlinePager/Tools/Seeder.cs" initialLine="230" containingFunctionPresentation="method 'TimerAzanOnElapsed'">
             <startOffsets>
-              <option value="9483" />
+              <option value="9562" />
             </startOffsets>
             <endOffsets>
-              <option value="9508" />
+              <option value="9587" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/PlinePager/Tools/Seeder.cs</url>
-          <line>225</line>
+          <line>227</line>
           <properties documentPath="$PROJECT_DIR$/PlinePager/Tools/Seeder.cs" initialLine="221" containingFunctionPresentation="method 'TimerAzanOnElapsed'">
             <startOffsets>
-              <option value="8960" />
+              <option value="9039" />
             </startOffsets>
             <endOffsets>
-              <option value="8985" />
+              <option value="9064" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/PlinePager/Tools/Seeder.cs</url>
-          <line>216</line>
+          <line>218</line>
           <properties documentPath="$PROJECT_DIR$/PlinePager/Tools/Seeder.cs" initialLine="212" containingFunctionPresentation="method 'TimerAzanOnElapsed'">
             <startOffsets>
-              <option value="8437" />
+              <option value="8516" />
             </startOffsets>
             <endOffsets>
-              <option value="8462" />
+              <option value="8541" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/PlinePager/Tools/Seeder.cs</url>
-          <line>465</line>
+          <line>467</line>
           <properties documentPath="$PROJECT_DIR$/PlinePager/Tools/Seeder.cs" initialLine="464" containingFunctionPresentation="method 'CallFileAzanOnArea'">
             <startOffsets>
-              <option value="20099" />
+              <option value="20133" />
             </startOffsets>
             <endOffsets>
-              <option value="20145" />
+              <option value="20179" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="23" />
@@ -385,16 +321,16 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/PlinePager/Tools/Seeder.cs</url>
-          <line>262</line>
+          <line>264</line>
           <properties documentPath="$PROJECT_DIR$/PlinePager/Tools/Seeder.cs" initialLine="264" containingFunctionPresentation="method 'TimerOnElapsedUpdate'">
             <startOffsets>
-              <option value="10580" />
+              <option value="10614" />
             </startOffsets>
             <endOffsets>
-              <option value="11121" />
+              <option value="11155" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="28" />
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

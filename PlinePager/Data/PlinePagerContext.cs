@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PlinePager.Models;
@@ -11,10 +12,15 @@ namespace PlinePager.Data
 {
     public sealed class PlinePagerContext : IdentityDbContext<TblUser>
     {
-        public PlinePagerContext(DbContextOptions<PlinePagerContext> options)
+        private readonly IHostingEnvironment _hostingEnv;
+
+        public PlinePagerContext(DbContextOptions<PlinePagerContext> options,
+            IHostingEnvironment hostingEnv)
             : base(options)
         {
-            //Database.EnsureCreated();
+            _hostingEnv = hostingEnv ?? throw new ArgumentNullException(nameof(hostingEnv));
+            if (!_hostingEnv.IsDevelopment())
+                Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
