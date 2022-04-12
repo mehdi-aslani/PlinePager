@@ -104,18 +104,12 @@ namespace PlinePager.Tools
                 const string cmd = "/usr/bin/ffmpeg";
                 var args = $" -i {mp3} -ar 8000 -ac 1 -acodec pcm_s16le {wav}";
                 if (File.Exists(wav)) File.Delete(wav);
-                var p = new Process();
-                p.StartInfo.UseShellExecute = false;
-                p.StartInfo.RedirectStandardOutput = true;
-                p.StartInfo.FileName = cmd;
-                p.StartInfo.Arguments = args;
-                p.Start();
+                RunCmd(cmd, args);
                 if (deleteMp3)
                 {
                     Thread.Sleep(3000);
                     File.Delete(mp3);
                 }
-
                 return true;
             }
             catch
@@ -162,7 +156,7 @@ namespace PlinePager.Tools
                 string[] items = result.Split(new string[] {"\n"}, StringSplitOptions.RemoveEmptyEntries);
                 foreach (var i in items)
                 {
-                    if (i.StartsWith(agent))
+                    if (i.Trim().StartsWith(agent))
                     {
                         var channels = i.Split(new string[] {" "}, StringSplitOptions.RemoveEmptyEntries);
                         if (channels.Length > 0)

@@ -6,19 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="37e56588-1397-418f-8bb2-263a81bfb6e1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PlinePager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PlinePager/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Data/PlinePagerContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Data/PlinePagerContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/Tools/Seeder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/Tools/Seeder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/PlinePager.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ref/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ref/PlinePager.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/refint/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/refint/PlinePager.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.16.04-x64/PlinePager.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.16.04-x64/PlinePager.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.16.04-x64/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.16.04-x64/PlinePager.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.16.04-x64/PlinePager.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.16.04-x64/PlinePager.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.16.04-x64/ref/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.16.04-x64/ref/PlinePager.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.16.04-x64/refint/PlinePager.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/Release/net6.0/ubuntu.16.04-x64/refint/PlinePager.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlinePager/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/PlinePager/obj/staticwebassets.pack.sentinel" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +74,6 @@
       <option value="$PROJECT_DIR$/PlinePager/Controllers/HomeController.cs" />
       <option value="$PROJECT_DIR$/PlinePager/Controllers/SoundsController.cs" />
       <option value="$PROJECT_DIR$/PlinePager/appsettings.Development.json" />
-      <option value="$PROJECT_DIR$/PlinePager/Tools/Globals.cs" />
       <option value="$PROJECT_DIR$/PlinePager/Models/TblAgent.cs" />
       <option value="$PROJECT_DIR$/PlinePager/Models/TblArea.cs" />
       <option value="$PROJECT_DIR$/PlinePager/Models/TblAzan.cs" />
@@ -97,6 +83,7 @@
       <option value="$PROJECT_DIR$/PlinePager/appsettings.json" />
       <option value="$PROJECT_DIR$/PlinePager/Tools/Seeder.cs" />
       <option value="$PROJECT_DIR$/PlinePager/Data/PlinePagerContext.cs" />
+      <option value="$PROJECT_DIR$/PlinePager/Tools/Globals.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="26c5Wo03BJlPcqZaGi6jkGMo15M" />
@@ -201,7 +188,7 @@
       <workItem from="1649559966059" duration="3842000" />
       <workItem from="1649589434234" duration="2225000" />
       <workItem from="1649666498114" duration="7896000" />
-      <workItem from="1649756855547" duration="2140000" />
+      <workItem from="1649756855547" duration="3119000" />
     </task>
     <servers />
   </component>
